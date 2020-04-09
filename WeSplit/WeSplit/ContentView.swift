@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
 
@@ -14,13 +15,17 @@ struct ContentView: View {
     @State private var numberOfPeople = 0
     @State private var tipPercentage = 2
 
-    var totalPerPerson: Double {
-        let peopleCount = Double(numberOfPeople + 2)
+    var grandTotal: Double {
         let tipSelection = Double(tipPercentages[tipPercentage])
         let orderAmount = Double(checkAmount) ?? 0
 
         let tipValue = orderAmount * (tipSelection / 100)
         let grandTotal = orderAmount + tipValue
+        return grandTotal
+    }
+
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
         let amountPerPerson = grandTotal / peopleCount
         return amountPerPerson
     }
@@ -33,10 +38,16 @@ struct ContentView: View {
                 Section {
                     TextField("Amount", text: $checkAmount)
                         .keyboardType(.decimalPad)
+                        .onReceive(Just(checkAmount)) { newValue in
+                            let filtered = newValue.filter { "012345679.".contains($0) }
+                            if filtered != newValue {
+                                self.checkAmount = filtered
+                            }
+                        }
 
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2 ..< 100) {
-                            Text("\($0) people")
+                            Text("\($0)")
                         }
                     }
                 }
@@ -50,7 +61,10 @@ struct ContentView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
 
-                Section {
+                Section(header: Text("Total Amount")) {
+                    Text("$\(grandTotal, specifier: "%.2f")")
+                }
+                Section(header: Text("Amount per person")) {
                     Text("$\(totalPerPerson, specifier: "%.2f")")
                 }
             }
