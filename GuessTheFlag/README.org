@@ -1,0 +1,14 @@
+* Guess the Flag
+
+Project followed according to tutorial from [[https://www.hackingwithswift.com/100/swiftui/20][Hacking With SwiftUI]]
+
+* Lessons Learned
+- Several new elements:
+  - VStack, HStack, ZStack
+  - Spacer
+  - Placing images
+    - modifiers: overlay, clipShape
+  - Buttons
+  - Gradients (Linear, Angular, Radial)
+  - Text modifiers: foregroundColor and fontWeight
+  - Alert
