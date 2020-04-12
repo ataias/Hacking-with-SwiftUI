@@ -8,9 +8,19 @@
 
 import SwiftUI
 
+struct Score {
+    var count: Int
+    var correct: Int
+
+    func toString() -> String {
+        return "\(correct)/\(count)"
+    }
+}
+
 struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
+    @State private var score = Score.init(count: 0, correct: 0)
 
     @State private var countries = [
         "Estonia",
@@ -44,6 +54,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.black)
+                        .fixedSize(horizontal: true, vertical: false)
                 }
 
                 ForEach(0 ..< 3) { number in
@@ -61,24 +72,36 @@ struct ContentView: View {
                     .alert(isPresented: self.$showingScore) {
                         Alert(
                             title: Text(self.scoreTitle),
-                            message: Text("Your score is ???"),
+                            message: Text(
+                                "Your score is \(self.score.toString())"
+                            ),
                             dismissButton: .default(Text("Continue")) {
                                 self.askQuestion()
                             })
                     }
                 }
                 Spacer()
+
+                Section {
+                    Text("Score: \(self.score.toString())")
+                        .foregroundColor(.white)
+                        .fontWeight(.black)
+                }
             }
         }
     }
 
     func flagTapped(_ number: Int) {
+        var correct = score.correct;
         if number == correctAnswer {
-            scoreTitle = "Correct"
+            scoreTitle = "Correct!"
+            correct += 1
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong! That's the flag of \(countries[number])"
         }
         showingScore = true
+
+        score = Score(count: score.count + 1, correct: correct)
     }
 
     func askQuestion() {
