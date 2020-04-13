@@ -7,27 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42E0A3A224430B57007F7FB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E0A3A124430B57007F7FB8 /* AppDelegate.swift */; };
-		42E0A3A424430B57007F7FB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E0A3A324430B57007F7FB8 /* SceneDelegate.swift */; };
-		42E0A3A624430B57007F7FB8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E0A3A524430B57007F7FB8 /* ContentView.swift */; };
-		42E0A3A824430B58007F7FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E0A3A724430B58007F7FB8 /* Assets.xcassets */; };
-		42E0A3AB24430B58007F7FB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E0A3AA24430B58007F7FB8 /* Preview Assets.xcassets */; };
-		42E0A3AE24430B58007F7FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E0A3AC24430B58007F7FB8 /* LaunchScreen.storyboard */; };
+		42EBD56724439D340084F58B /* MyTestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EBD56624439D340084F58B /* MyTestTest.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		42EBD56124439D340084F58B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		42E0A39E24430B57007F7FB8 /* GuessTheFlag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheFlag.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		42E0A3A124430B57007F7FB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42E0A3A324430B57007F7FB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		42E0A3A524430B57007F7FB8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		42E0A3A724430B58007F7FB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		42E0A3AA24430B58007F7FB8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		42E0A3AD24430B58007F7FB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		42E0A3AF24430B58007F7FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42EBD56324439D340084F58B /* libMyTestTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyTestTest.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		42EBD56624439D340084F58B /* MyTestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTestTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		42E0A39B24430B57007F7FB8 /* Frameworks */ = {
+		42EBD56024439D340084F58B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,80 +38,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		42E0A39524430B57007F7FB8 = {
+		42EBD55A24439D340084F58B = {
 			isa = PBXGroup;
 			children = (
-				42E0A3A024430B57007F7FB8 /* GuessTheFlag */,
-				42E0A39F24430B57007F7FB8 /* Products */,
+				42EBD56524439D340084F58B /* MyTestTest */,
+				42EBD56424439D340084F58B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		42E0A39F24430B57007F7FB8 /* Products */ = {
+		42EBD56424439D340084F58B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				42E0A39E24430B57007F7FB8 /* GuessTheFlag.app */,
+				42EBD56324439D340084F58B /* libMyTestTest.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		42E0A3A024430B57007F7FB8 /* GuessTheFlag */ = {
+		42EBD56524439D340084F58B /* MyTestTest */ = {
 			isa = PBXGroup;
 			children = (
-				42E0A3A124430B57007F7FB8 /* AppDelegate.swift */,
-				42E0A3A324430B57007F7FB8 /* SceneDelegate.swift */,
-				42E0A3A524430B57007F7FB8 /* ContentView.swift */,
-				42E0A3A724430B58007F7FB8 /* Assets.xcassets */,
-				42E0A3AC24430B58007F7FB8 /* LaunchScreen.storyboard */,
-				42E0A3AF24430B58007F7FB8 /* Info.plist */,
-				42E0A3A924430B58007F7FB8 /* Preview Content */,
+				42EBD56624439D340084F58B /* MyTestTest.swift */,
 			);
-			path = GuessTheFlag;
-			sourceTree = "<group>";
-		};
-		42E0A3A924430B58007F7FB8 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				42E0A3AA24430B58007F7FB8 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
+			path = MyTestTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		42E0A39D24430B57007F7FB8 /* GuessTheFlag */ = {
+		42EBD56224439D340084F58B /* MyTestTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 42E0A3B224430B58007F7FB8 /* Build configuration list for PBXNativeTarget "GuessTheFlag" */;
+			buildConfigurationList = 42EBD56A24439D340084F58B /* Build configuration list for PBXNativeTarget "MyTestTest" */;
 			buildPhases = (
-				42E0A39A24430B57007F7FB8 /* Sources */,
-				42E0A39B24430B57007F7FB8 /* Frameworks */,
-				42E0A39C24430B57007F7FB8 /* Resources */,
+				42EBD55F24439D340084F58B /* Sources */,
+				42EBD56024439D340084F58B /* Frameworks */,
+				42EBD56124439D340084F58B /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GuessTheFlag;
-			productName = GuessTheFlag;
-			productReference = 42E0A39E24430B57007F7FB8 /* GuessTheFlag.app */;
-			productType = "com.apple.product-type.application";
+			name = MyTestTest;
+			productName = MyTestTest;
+			productReference = 42EBD56324439D340084F58B /* libMyTestTest.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		42E0A39624430B57007F7FB8 /* Project object */ = {
+		42EBD55B24439D340084F58B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = ataias;
 				TargetAttributes = {
-					42E0A39D24430B57007F7FB8 = {
+					42EBD56224439D340084F58B = {
 						CreatedOnToolsVersion = 11.4;
 					};
 				};
 			};
-			buildConfigurationList = 42E0A39924430B57007F7FB8 /* Build configuration list for PBXProject "GuessTheFlag" */;
+			buildConfigurationList = 42EBD55E24439D340084F58B /* Build configuration list for PBXProject "MyTestTest" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,55 +105,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 42E0A39524430B57007F7FB8;
-			productRefGroup = 42E0A39F24430B57007F7FB8 /* Products */;
+			mainGroup = 42EBD55A24439D340084F58B;
+			productRefGroup = 42EBD56424439D340084F58B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				42E0A39D24430B57007F7FB8 /* GuessTheFlag */,
+				42EBD56224439D340084F58B /* MyTestTest */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		42E0A39C24430B57007F7FB8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				42E0A3AE24430B58007F7FB8 /* LaunchScreen.storyboard in Resources */,
-				42E0A3AB24430B58007F7FB8 /* Preview Assets.xcassets in Resources */,
-				42E0A3A824430B58007F7FB8 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		42E0A39A24430B57007F7FB8 /* Sources */ = {
+		42EBD55F24439D340084F58B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E0A3A224430B57007F7FB8 /* AppDelegate.swift in Sources */,
-				42E0A3A424430B57007F7FB8 /* SceneDelegate.swift in Sources */,
-				42E0A3A624430B57007F7FB8 /* ContentView.swift in Sources */,
+				42EBD56724439D340084F58B /* MyTestTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		42E0A3AC24430B58007F7FB8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				42E0A3AD24430B58007F7FB8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		42E0A3B024430B58007F7FB8 /* Debug */ = {
+		42EBD56824439D340084F58B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +187,7 @@
 			};
 			name = Debug;
 		};
-		42E0A3B124430B58007F7FB8 /* Release */ = {
+		42EBD56924439D340084F58B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,43 +241,27 @@
 			};
 			name = Release;
 		};
-		42E0A3B324430B58007F7FB8 /* Debug */ = {
+		42EBD56B24439D340084F58B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"GuessTheFlag/Preview Content\"";
 				DEVELOPMENT_TEAM = 8XPT9US388;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GuessTheFlag/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.ataias.GuessTheFlag;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		42E0A3B424430B58007F7FB8 /* Release */ = {
+		42EBD56C24439D340084F58B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"GuessTheFlag/Preview Content\"";
 				DEVELOPMENT_TEAM = 8XPT9US388;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GuessTheFlag/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.ataias.GuessTheFlag;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -325,25 +270,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		42E0A39924430B57007F7FB8 /* Build configuration list for PBXProject "GuessTheFlag" */ = {
+		42EBD55E24439D340084F58B /* Build configuration list for PBXProject "MyTestTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				42E0A3B024430B58007F7FB8 /* Debug */,
-				42E0A3B124430B58007F7FB8 /* Release */,
+				42EBD56824439D340084F58B /* Debug */,
+				42EBD56924439D340084F58B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		42E0A3B224430B58007F7FB8 /* Build configuration list for PBXNativeTarget "GuessTheFlag" */ = {
+		42EBD56A24439D340084F58B /* Build configuration list for PBXNativeTarget "MyTestTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				42E0A3B324430B58007F7FB8 /* Debug */,
-				42E0A3B424430B58007F7FB8 /* Release */,
+				42EBD56B24439D340084F58B /* Debug */,
+				42EBD56C24439D340084F58B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 42E0A39624430B57007F7FB8 /* Project object */;
+	rootObject = 42EBD55B24439D340084F58B /* Project object */;
 }
