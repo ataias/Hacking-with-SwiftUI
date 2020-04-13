@@ -106,7 +106,7 @@ struct ContentView: View {
 
     var body: some View {
 
-        let unitTypeBinding = Binding<Int>(
+        let unitTypeBinding = Binding(
             get: { self.unitType },
             set: {
                 self.unitType = $0;
