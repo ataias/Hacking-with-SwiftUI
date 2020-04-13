@@ -13,10 +13,10 @@ struct ContentView: View {
 
     @State private var checkAmount = ""
     @State private var numberOfPeople = 0
-    @State private var tipPercentage = 2
+    @State private var tipPercentageId = 2
 
     var grandTotal: Double {
-        let tipSelection = Double(tipPercentages[tipPercentage])
+        let tipSelection = Double(tipPercentage)
         let orderAmount = Double(checkAmount) ?? 0
 
         let tipValue = orderAmount * (tipSelection / 100)
@@ -32,6 +32,10 @@ struct ContentView: View {
 
     let tipPercentages = [10, 15, 20, 25, 0]
 
+    var tipPercentage: Int {
+        return tipPercentages[tipPercentageId]
+    }
+
     var body: some View {
         NavigationView {
             Form {
@@ -43,7 +47,7 @@ struct ContentView: View {
                             if filtered != newValue {
                                 self.checkAmount = filtered
                             }
-                        }
+                    }
 
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2 ..< 100) {
@@ -53,7 +57,7 @@ struct ContentView: View {
                 }
 
                 Section(header: Text("How much tip do you want to leave?")) {
-                    Picker("Tip percentage", selection: $tipPercentage) {
+                    Picker("Tip percentage", selection: $tipPercentageId) {
                         ForEach(0 ..< tipPercentages.count) {
                             Text("\(self.tipPercentages[$0])%")
                         }
@@ -63,6 +67,7 @@ struct ContentView: View {
 
                 Section(header: Text("Total Amount")) {
                     Text("$\(grandTotal, specifier: "%.2f")")
+                    .red(iff: tipPercentage == 0)
                 }
                 Section(header: Text("Amount per person")) {
                     Text("$\(totalPerPerson, specifier: "%.2f")")
@@ -71,6 +76,20 @@ struct ContentView: View {
             .navigationBarTitle("WeSplit")
         }
 
+    }
+}
+
+struct RedIf: ViewModifier {
+    var iff: Bool
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(iff ? .red : .primary)
+    }
+}
+
+extension View {
+    func red(iff: Bool) -> some View {
+        self.modifier(RedIf(iff: iff))
     }
 }
 
