@@ -110,11 +110,11 @@ struct ContentView: View {
         switch (gameResult, shouldWin) {
         case (.Win, true), (.Lose, false):
             points += 1
-            self.scoreTitle = "You win! \(userMove) > \(moves[correctAnswer])"
+            self.scoreTitle = "You win! \(userMove) vs \(moves[correctAnswer])"
         case (.Draw, _):
             self.scoreTitle = "Game was a draw!"
         default:
-            self.scoreTitle = "You lose! \(userMove) < \(moves[correctAnswer])"
+            self.scoreTitle = "You lose! \(userMove) vs \(moves[correctAnswer])"
         }
 
         self.score = Score(
