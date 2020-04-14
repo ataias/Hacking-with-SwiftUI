@@ -11,7 +11,6 @@ import SwiftUI
 struct Score {
     var points: Int
     var totalGames: Int
-    let maxGames: Int
 }
 
 enum GameResult {
@@ -36,14 +35,24 @@ enum JackEnPoy: String {
     }
 }
 
+struct AlertItem: Identifiable {
+    var id = UUID()
+    var title: Text
+    var message: Text?
+    var dismissButton: Alert.Button?
+}
+
 struct ContentView: View {
     let moves = [JackEnPoy.Rock, .Paper, .Scissors]
 
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var shouldWin = true
-    @State private var score = Score(points: 0, totalGames: 0, maxGames: 10)
-    @State private var showingScore = false
+    @State private var score = Score(points: 0, totalGames: 0)
     @State private var scoreTitle = ""
+    @State private var endOfGame = false
+    @State private var gamesLeft = 10
+
+    @State private var alertItem: AlertItem?
 
     var body: some View {
         VStack(spacing: 20) {
@@ -64,13 +73,8 @@ struct ContentView: View {
                     }) {
                         MoveImage(image: self.moves[n].rawValue)
                     }
-                    .alert(isPresented: self.$showingScore) {
-                        Alert(
-                            title: Text(self.scoreTitle),
-                            message: Text("Points: \(self.score.points); Game# \(self.score.totalGames)"),
-                            dismissButton: .default(Text("Continue")) {
-                                self.prepareNewGame()
-                            })
+                    .alert(item: self.$alertItem) { alertItem in
+                        Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
                     }
                 }
             }
@@ -84,7 +88,6 @@ struct ContentView: View {
     func prepareNewGame() {
         self.correctAnswer = Int.random(in: 0...2)
         //        self.shouldWin = ...
-        self.showingScore = false
     }
 
     func update(forUserMove userMove: JackEnPoy) {
@@ -107,11 +110,32 @@ struct ContentView: View {
 
         self.score = Score(
             points: points,
-            totalGames: totalGames,
-            maxGames: score.maxGames
+            totalGames: totalGames
         )
-        self.showingScore = true
 
+        self.gamesLeft -= 1
+
+        if self.gamesLeft > 0 {
+            self.alertItem = AlertItem(
+                title: Text(self.scoreTitle),
+                message: Text("Points: \(self.score.points); Game# \(self.score.totalGames)"),
+                dismissButton: .default(Text("Continue"), action: self.prepareNewGame)
+            )
+            print("Continue game")
+        } else {
+            self.alertItem = AlertItem(
+                title: Text(self.scoreTitle),
+                message: Text("Points: \(self.score.points); Game# \(self.score.totalGames)"),
+                dismissButton:
+                .destructive(Text("Reset"), action: {
+                    self.score = Score(points: 0, totalGames: 0)
+                    self.gamesLeft = 10
+                    self.endOfGame = false
+                    self.prepareNewGame()
+                })
+            )
+            print("Reset game")
+        }
     }
 }
 
@@ -146,7 +170,7 @@ struct ScoreView: View {
     var body: some View {
         VStack {
             Text("Points: \(score.points)")
-            Text("Game#: \(score.totalGames)/\(score.maxGames)")
+            Text("Game#: \(score.totalGames)")
         }
     }
 }
