@@ -65,6 +65,14 @@ struct ContentView: View {
                 Text("To win you should lose")
             }
 
+
+            Button(action: {
+                self.shouldWin = !self.shouldWin
+            }) {
+                Text("Toggle Win Condition")
+                .bold()
+            }
+
             Spacer()
             VStack(spacing: 30) {
                 ForEach(0 ..< moves.count) { n in
@@ -74,7 +82,11 @@ struct ContentView: View {
                         MoveImage(image: self.moves[n].rawValue)
                     }
                     .alert(item: self.$alertItem) { alertItem in
-                        Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+                        Alert(
+                            title: alertItem.title,
+                            message: alertItem.message,
+                            dismissButton: alertItem.dismissButton
+                        )
                     }
                 }
             }
@@ -94,18 +106,16 @@ struct ContentView: View {
         var points = score.points
         let totalGames = score.totalGames + 1
 
-        let title = "You chose \(userMove) and the opponent chose \(moves[correctAnswer])"
-
         let gameResult = userMove.win(against: moves[correctAnswer])
 
         switch (gameResult, shouldWin) {
-        case (.Win, shouldWin), (.Lose, !shouldWin):
+        case (.Win, true), (.Lose, false):
             points += 1
-            self.scoreTitle = "You win! " + title
+            self.scoreTitle = "You win! \(userMove) > \(moves[correctAnswer])"
         case (.Draw, _):
             self.scoreTitle = "Game was a draw!"
         default:
-            self.scoreTitle = "You lose! " + title
+            self.scoreTitle = "You lose! \(userMove) < \(moves[correctAnswer])"
         }
 
         self.score = Score(
@@ -121,7 +131,6 @@ struct ContentView: View {
                 message: Text("Points: \(self.score.points); Game# \(self.score.totalGames)"),
                 dismissButton: .default(Text("Continue"), action: self.prepareNewGame)
             )
-            print("Continue game")
         } else {
             self.alertItem = AlertItem(
                 title: Text(self.scoreTitle),
@@ -134,7 +143,6 @@ struct ContentView: View {
                     self.prepareNewGame()
                 })
             )
-            print("Reset game")
         }
     }
 }
@@ -179,7 +187,7 @@ struct BackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [.blue, .blue]),
+                gradient: Gradient(colors: [.red, .black]),
                 startPoint: .top,
                 endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
