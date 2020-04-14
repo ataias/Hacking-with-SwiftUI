@@ -99,7 +99,6 @@ struct ContentView: View {
 
     func prepareNewGame() {
         self.correctAnswer = Int.random(in: 0...2)
-        //        self.shouldWin = ...
     }
 
     func update(forUserMove userMove: JackEnPoy) {

@@ -1,3 +1,11 @@
+* Lessons Learned
+- Alerts are tricky; my initial solution with a single alert and a ternary
+  operator to change the button led to a non-changing alert after the first
+  change from "Continue" to "Reset"
+  - I changed to AlertItem, but using the same solution yielded no results
+  - Afterwards I thought it could be a problem of using a method to decide
+    which alert to show
+  - I added some state and it was fixed
 
 * Credits
 By Enzoklop - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=27958688
