@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:WordScramble.xcodeproj">
+      location = "group:../../../../twostraws/HackingWithSwift/SwiftUI/project15/FixedProjects/Project5/Project5/start.txt">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ataias/Projects/github.com/ataias/hacking-with-swiftui/WordScramble/WordScramble/start.txt">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
