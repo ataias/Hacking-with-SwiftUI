@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42C452A8244C65BE00EBB56E /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 42C452A7244C65BE00EBB56E /* SleepCalculator.mlmodel */; };
 		42D8775D244B018300C11E99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8775C244B018300C11E99 /* AppDelegate.swift */; };
 		42D8775F244B018300C11E99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D8775E244B018300C11E99 /* SceneDelegate.swift */; };
 		42D87761244B018300C11E99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D87760244B018300C11E99 /* ContentView.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		42C452A6244C531500EBB56E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		42C452A7244C65BE00EBB56E /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = SOURCE_ROOT; };
 		42D87759244B018300C11E99 /* BetterRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42D8775C244B018300C11E99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42D8775E244B018300C11E99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				42D87762244B018500C11E99 /* Assets.xcassets */,
 				42D87767244B018500C11E99 /* LaunchScreen.storyboard */,
 				42D8776A244B018500C11E99 /* Info.plist */,
+				42C452A7244C65BE00EBB56E /* SleepCalculator.mlmodel */,
 				42D87764244B018500C11E99 /* Preview Content */,
 			);
 			path = BetterRest;
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D8775D244B018300C11E99 /* AppDelegate.swift in Sources */,
+				42C452A8244C65BE00EBB56E /* SleepCalculator.mlmodel in Sources */,
 				42D8775F244B018300C11E99 /* SceneDelegate.swift in Sources */,
 				42D87761244B018300C11E99 /* ContentView.swift in Sources */,
 			);
