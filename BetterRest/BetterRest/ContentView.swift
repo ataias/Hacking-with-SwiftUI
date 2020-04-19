@@ -11,7 +11,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var sleepAmount = 8.0
     @State private var wakeUp = defaultWakeTime
-    @State private var coffeeAmount = 1
+    @State private var coffeeAmountIndex = 0
+
+    var coffeeAmount: Double {
+        return Double(coffeeAmountIndex + 1)
+    }
 
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -22,14 +26,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("When do you want to wake up?")
                         .font(.headline)
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
                         .labelsHidden()
                         .datePickerStyle(WheelDatePickerStyle())
                 }
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("Desired amount of sleep")
                         .font(.headline)
 
@@ -37,15 +41,17 @@ struct ContentView: View {
                         Text("\(sleepAmount, specifier: "%g") hours")
                     }
                 }
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("Daily coffee intake")
                         .font(.headline)
 
-                    Stepper(value: $coffeeAmount, in: 1...20) {
-                        if coffeeAmount == 1 {
-                            Text("1 cup")
-                        } else {
-                            Text("\(coffeeAmount) cups")
+                    Picker("", selection: $coffeeAmountIndex) {
+                        ForEach(1 ..< 20) { n in
+                            if n == 1 {
+                                Text("1 cup")
+                            } else {
+                                Text("\(n) cups")
+                            }
                         }
                     }
                 }
