@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42C452A6244C531500EBB56E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		42D87759244B018300C11E99 /* BetterRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42D8775C244B018300C11E99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42D8775E244B018300C11E99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		42D8775B244B018300C11E99 /* BetterRest */ = {
 			isa = PBXGroup;
 			children = (
+				42C452A6244C531500EBB56E /* MyPlayground.playground */,
 				42D8775C244B018300C11E99 /* AppDelegate.swift */,
 				42D8775E244B018300C11E99 /* SceneDelegate.swift */,
 				42D87760244B018300C11E99 /* ContentView.swift */,
