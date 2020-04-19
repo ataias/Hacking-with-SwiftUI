@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var rootWord = ""
     @State private var newWord = ""
 
+    @State private var score = 0
+
     // Alert state
     @State private var errorTitle = ""
     @State private var errorMessage = ""
@@ -33,8 +35,14 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+                Text("Score: \(score)")
             }
             .navigationBarTitle(rootWord)
+            .navigationBarItems(leading:
+                Button(action: startGame) {
+                    Text("Reset")
+                }
+            )
             .onAppear(perform: startGame)
             .alert(isPresented: $showingError) {
                 Alert(
@@ -65,6 +73,14 @@ struct ContentView: View {
             return
         }
 
+        guard answer != rootWord else {
+            wordError(
+                title: "Error",
+                message: "Word is the root word")
+            newWord = ""
+            return
+        }
+
         guard isOriginal(word: answer) else {
             wordError(
                 title: "Error",
@@ -90,6 +106,7 @@ struct ContentView: View {
         }
 
         usedWords.insert(answer, at: 0)
+        score += answer.count
         newWord = ""
     }
 
@@ -127,6 +144,9 @@ struct ContentView: View {
         errorTitle = title
         errorMessage = message
         showingError = true
+
+        // if we reached here, newAnswer was invalid and we update the score
+        score -= newWord.count
     }
 
 
