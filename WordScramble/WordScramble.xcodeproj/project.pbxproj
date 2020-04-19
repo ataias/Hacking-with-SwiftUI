@@ -13,6 +13,7 @@
 		42323E7F244CC51A001EE96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42323E7E244CC51A001EE96B /* Assets.xcassets */; };
 		42323E82244CC51A001EE96B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42323E81244CC51A001EE96B /* Preview Assets.xcassets */; };
 		42323E85244CC51A001EE96B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42323E83244CC51A001EE96B /* LaunchScreen.storyboard */; };
+		42323E91244CE0EC001EE96B /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42323E90244CE0EC001EE96B /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		42323E86244CC51A001EE96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42323E8C244CC91D001EE96B /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = WordScramble/MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		42323E8F244CDEAE001EE96B /* start.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = start.txt; path = "/Users/ataias/Projects/github.com/ataias/hacking-with-swiftui/WordScramble/WordScramble/start.txt"; sourceTree = "<absolute>"; };
+		42323E90244CE0EC001EE96B /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = start.txt; path = ../../../../twostraws/HackingWithSwift/SwiftUI/project15/FixedProjects/Project5/Project5/start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				42323E7A244CC517001EE96B /* SceneDelegate.swift */,
 				42323E7C244CC517001EE96B /* ContentView.swift */,
 				42323E8F244CDEAE001EE96B /* start.txt */,
+				42323E90244CE0EC001EE96B /* start.txt */,
 				42323E7E244CC51A001EE96B /* Assets.xcassets */,
 				42323E83244CC51A001EE96B /* LaunchScreen.storyboard */,
 				42323E86244CC51A001EE96B /* Info.plist */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42323E85244CC51A001EE96B /* LaunchScreen.storyboard in Resources */,
+				42323E91244CE0EC001EE96B /* start.txt in Resources */,
 				42323E82244CC51A001EE96B /* Preview Assets.xcassets in Resources */,
 				42323E7F244CC51A001EE96B /* Assets.xcassets in Resources */,
 			);
