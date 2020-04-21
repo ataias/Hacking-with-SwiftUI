@@ -1,0 +1,5 @@
+* Lessons Learned
+- You can animate not only views, but also bindings
+- Animating bindings means to mark a state value as animated and then you can
+  expect swiftui to figure out how to animate the view associated with the
+  binding. You have never told the view so though.
