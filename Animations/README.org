@@ -3,3 +3,8 @@
 - Animating bindings means to mark a state value as animated and then you can
   expect swiftui to figure out how to animate the view associated with the
   binding. You have never told the view so though.
+- 3D animations can be added via explicit animations and they are quite cool
+- The animation stack refers to using the "animation" modifier multiple times.
+  The order they are used matters. You can have an animation for multiple other
+  changes and you can even disable for part of the changes.
+- Drag Gestures are simple to make and super cool
