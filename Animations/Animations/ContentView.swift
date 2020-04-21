@@ -17,22 +17,25 @@ struct ContentView: View {
 struct AnimatedBindings: View {
     @State private var animationAmount: CGFloat = 1
     var body: some View {
-        VStack {
-            Stepper(
-                "Scale amount",
-                value: $animationAmount.animation(),
-                in: 1...10)
-            Spacer()
-            Button("Tap Me") {
-                self.animationAmount += 1
+        print(animationAmount)
+        return (
+            VStack {
+                Stepper(
+                    "Scale amount",
+                    value: $animationAmount.animation(),
+                    in: 1...10)
+                Spacer()
+                Button("Tap Me") {
+                    self.animationAmount += 1
+                }
+                .padding(40)
+                .background(Color.red)
+                .foregroundColor(.white)
+                .clipShape(Circle())
+                .scaleEffect(animationAmount)
             }
-            .padding(40)
-            .background(Color.red)
-            .foregroundColor(.white)
-            .clipShape(Circle())
-            .scaleEffect(animationAmount)
-        }
-        .padding()
+            )
+            .padding()
     }
 }
 
@@ -56,8 +59,7 @@ struct AnimatedCircle: View {
                 .blur(radius: (animationAmount - 1) * 3)
                 .animation(
                     Animation.easeIn(duration: 1)
-                        .repeatForever(autoreverses: true))
-        )
+                        .repeatForever(autoreverses: true)))
             .onAppear {
                 self.animationAmount = 2
         }
