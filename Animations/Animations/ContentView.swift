@@ -10,7 +10,28 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        CoolStringAnimation()
+        Transitions()
+    }
+}
+
+struct Transitions: View {
+    @State private var isShowingRed = false
+
+    var body: some View {
+        VStack {
+            Button("Tap Me") {
+                withAnimation {
+                self.isShowingRed.toggle()
+                }
+            }
+
+            if isShowingRed {
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: 200, height: 200)
+                    .transition(.scale)
+            }
+        }
     }
 }
 
