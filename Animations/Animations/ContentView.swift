@@ -29,7 +29,8 @@ extension AnyTransition {
 
 struct ContentView: View {
     var body: some View {
-        Transitions()
+//        Transitions()
+        ExplicitAnimations()
     }
 }
 

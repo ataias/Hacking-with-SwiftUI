@@ -21,6 +21,7 @@ struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var score = Score.init(count: 0, correct: 0)
+    @State private var animationAmount = 0.0
 
     @State private var countries = [
         "Estonia",
@@ -59,9 +60,17 @@ struct ContentView: View {
 
                 ForEach(0 ..< 3) { number in
                     Button(action: {
-                        self.flagTapped(number)
+//                        withAnimation(.spring()) {
+                            self.flagTapped(number)
+//                        }
                     }) {
                         FlagImage(image: self.countries[number])
+                            .rotation3DEffect(
+                                .degrees(self.animationAmount * (number == self.correctAnswer ? 1.0 : 0.0)),
+                                axis: (x: 0, y: 1, z: 0))
+                            .animation(.default)
+
+
 
                     }
                     .alert(isPresented: self.$showingScore) {
@@ -88,7 +97,8 @@ struct ContentView: View {
 
     func flagTapped(_ number: Int) {
         var correct = score.correct;
-        if number == correctAnswer {
+        let isCorrect = number == correctAnswer
+        if isCorrect {
             scoreTitle = "Correct!"
             correct += 1
         } else {
@@ -97,6 +107,8 @@ struct ContentView: View {
         showingScore = true
 
         score = Score(count: score.count + 1, correct: correct)
+
+        animationAmount = isCorrect ? 360.0 : 0.0
     }
 
     func askQuestion() {
