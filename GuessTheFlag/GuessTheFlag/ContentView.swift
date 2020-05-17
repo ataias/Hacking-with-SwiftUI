@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var score = Score.init(count: 0, correct: 0)
     @State private var animationAmount = 0.0
+    @State private var answered: Optional<Int> = .none
 
     @State private var countries = [
         "Estonia",
@@ -60,17 +61,20 @@ struct ContentView: View {
 
                 ForEach(0 ..< 3) { number in
                     Button(action: {
-//                        withAnimation(.spring()) {
-                            self.flagTapped(number)
-//                        }
+                        withAnimation(.default) {
+                            self.answered = .some(number)
+                            self.flagTapped()
+                        }
                     }) {
                         FlagImage(image: self.countries[number])
                             .rotation3DEffect(
-                                .degrees(self.animationAmount * (number == self.correctAnswer ? 1.0 : 0.0)),
-                                axis: (x: 0, y: 1, z: 0))
-                            .animation(.default)
-
-
+                                .degrees(self.animationAmount),
+                                axis: (x: 0, y: 1, z: 0),
+                                perspective: 0)
+                            .animation(self.animateCorrect(answer: number))
+                            .opacity(self.getCardOpacity(answer: number))
+                            .offset(self.getOffset(answer: number))
+                            .animation(self.answered != .none ? .linear : nil)
 
                     }
                     .alert(isPresented: self.$showingScore) {
@@ -95,7 +99,45 @@ struct ContentView: View {
         }
     }
 
-    func flagTapped(_ number: Int) {
+    func animateCorrect(answer number: Int) -> Animation? {
+        return isCorrect(answer: number) ? .default : nil
+    }
+
+    func animateWrong(answer number: Int) -> Animation? {
+        return isWrong(answer: number) ? .default : nil
+    }
+
+    func getOffset(answer number: Int) -> CGSize {
+        if self.answered == .none {
+            return CGSize.zero
+        }
+
+        return self.correctAnswer != number
+            ? CGSize.init(width: 500, height: 0)
+            : CGSize.zero
+    }
+
+    func getCardOpacity(answer number: Int) -> Double {
+        // cards are in normal opacity in an unanswered state
+        if self.answered == .none {
+            return 1.0
+        }
+
+        return self.correctAnswer == number ? 1.0 : 0.25
+    }
+
+    func isCorrect(answer number: Int) -> Bool {
+        return self.answered != .none && self.correctAnswer == number
+    }
+
+    func isWrong(answer number: Int) -> Bool {
+        return self.answered != .none && self.correctAnswer == number
+    }
+
+    func flagTapped() {
+        guard let number = self.answered else {
+            return
+        }
         var correct = score.correct;
         let isCorrect = number == correctAnswer
         if isCorrect {
@@ -108,10 +150,13 @@ struct ContentView: View {
 
         score = Score(count: score.count + 1, correct: correct)
 
-        animationAmount = isCorrect ? 360.0 : 0.0
+        animationAmount = isCorrect ? 360 : 0
+
     }
 
     func askQuestion() {
+        answered = .none
+        animationAmount = 0
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
@@ -121,11 +166,11 @@ struct ContentView: View {
 
         var body: some View {
             Image(image)
-            .renderingMode(.original)
-            .clipShape(Capsule())
-            .overlay(Capsule()
-                .stroke(Color.black, lineWidth: 1))
-            .shadow(color: .black, radius: 2)
+                .renderingMode(.original)
+                .clipShape(Capsule())
+                .overlay(Capsule()
+                    .stroke(Color.black, lineWidth: 1))
+                .shadow(color: .black, radius: 2)
         }
     }
 

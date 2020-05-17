@@ -12,3 +12,6 @@ Project followed according to tutorial from [[https://www.hackingwithswift.com/1
   - Gradients (Linear, Angular, Radial)
   - Text modifiers: foregroundColor and fontWeight
   - Alert
+- During the challenge for animations, I updated this project with some
+  animations and then I learned better how to update variables to make
+  animations happen
