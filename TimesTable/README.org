@@ -1,0 +1,7 @@
+* Lessons Learned
+
+- Animations are kind of cumbersome when you create a function to get the
+  reference value for the animation. If you use a structure it becomes easier.
+  For this project, I added the button color to the "AnswerOption" struct and it
+  became much easier to make the animations
+- Chaining a function to be executed after an animation can be done with a timer.
