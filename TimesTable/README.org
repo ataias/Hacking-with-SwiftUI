@@ -5,3 +5,7 @@
   For this project, I added the button color to the "AnswerOption" struct and it
   became much easier to make the animations
 - Chaining a function to be executed after an animation can be done with a timer.
+
+* Next Steps
+- Make it more "for kids" (as in challenge on [[https://www.hackingwithswift.com/100/swiftui/35][SwiftUI Day 35]])
+- Add SRS capabilities (store statistics of answers, to make reviews more intelligent like Anki or similar program)
