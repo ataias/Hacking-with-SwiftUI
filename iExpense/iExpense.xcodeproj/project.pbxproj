@@ -13,7 +13,6 @@
 		4234B5E12497693E00573AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4234B5E02497693E00573AE5 /* Assets.xcassets */; };
 		4234B5E42497693E00573AE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4234B5E32497693E00573AE5 /* Preview Assets.xcassets */; };
 		4234B5E72497693E00573AE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4234B5E52497693E00573AE5 /* LaunchScreen.storyboard */; };
-		426CD69B2497755200566AE2 /* DummyTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CD69A2497755200566AE2 /* DummyTestViews.swift */; };
 		42DE608A24977EA1001B2EC2 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE608924977EA1001B2EC2 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +25,6 @@
 		4234B5E32497693E00573AE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4234B5E62497693E00573AE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4234B5E82497693E00573AE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		426CD69A2497755200566AE2 /* DummyTestViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTestViews.swift; sourceTree = "<group>"; };
 		42DE608924977EA1001B2EC2 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,7 +60,6 @@
 			children = (
 				4234B5DA2497693C00573AE5 /* AppDelegate.swift */,
 				4234B5DC2497693C00573AE5 /* SceneDelegate.swift */,
-				426CD69A2497755200566AE2 /* DummyTestViews.swift */,
 				4234B5DE2497693C00573AE5 /* ContentView.swift */,
 				42DE608924977EA1001B2EC2 /* AddView.swift */,
 				4234B5E02497693E00573AE5 /* Assets.xcassets */,
@@ -153,7 +150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4234B5DB2497693C00573AE5 /* AppDelegate.swift in Sources */,
-				426CD69B2497755200566AE2 /* DummyTestViews.swift in Sources */,
 				42DE608A24977EA1001B2EC2 /* AddView.swift in Sources */,
 				4234B5DD2497693C00573AE5 /* SceneDelegate.swift in Sources */,
 				4234B5DF2497693C00573AE5 /* ContentView.swift in Sources */,
