@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Combine
+
 
 struct AddView: View {
     @State private var name = ""
@@ -29,6 +31,9 @@ struct AddView: View {
                 }
                 TextField("Amount", text: $amount)
                     .keyboardType(.numberPad)
+                    .onReceive(Just(amount)) { newValue in
+                        self.amount = newValue.sanitizeDecimal()
+                    }
             }
             .navigationBarTitle("Add new expense")
             .navigationBarItems(trailing: Button("Save") {

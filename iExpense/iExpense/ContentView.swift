@@ -47,31 +47,73 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(expenses.items) { item in
-                    Text(item.name)
+                    HStack {
+                        VStack {
+                            Text(item.name)
+                                .font(.headline)
+                            Text(item.type)
+                                .font(.subheadline)
+                        }
+                        Spacer()
+                        Text("\(item.amount)")
+                            .foregroundColor(self.getExpenseColor(item.amount))
+                    }
                 }
                 .onDelete(perform: removeItems)
             }
             .navigationBarTitle("iExpense")
-            .navigationBarItems(trailing:
-                Button(action: {
-                    self.showingAddExpense.toggle()
+            .navigationBarItems(
+                leading: EditButton(),
+                // TODO Is this a SwiftUI? The button is unresponsive. The first time it works and you can add an item, but afterwards it stops working. I tried investigating if variables were being set correctly, but they seemed ok, except that the button is not triggered anymore after adding an item.
+                trailing: Button(action: {
+                    self.showingAddExpense = true
+                    print(self.showingAddExpense)
                 }) {
                     Image(systemName: "plus")
                 }
             )
-        }
-        .sheet(isPresented: $showingAddExpense) {
-            AddView(expenses: self.expenses)
+                .sheet(isPresented: $showingAddExpense) {
+                    AddView(expenses: self.expenses)
+            }
         }
     }
 
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
     }
+
+    func getExpenseColor(_ value: Int) -> Color {
+        if value <= 10 {
+            return Color.blue
+        }
+        if value <= 100 {
+            return Color.green
+        }
+        return Color.red
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension String {
+    func sanitizeDecimal() -> String {
+        var value = self
+        var parsed = value.filter { "0123456789.".contains($0) }
+        let dots = (parsed.filter {$0 == "."}).count
+
+        if parsed != self {
+            value = parsed
+        }
+
+        if dots > 1 {
+            parsed.remove(at: parsed.lastIndex(of: ".")!)
+            value = parsed
+        }
+
+        return value
     }
 }
