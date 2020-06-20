@@ -19,6 +19,7 @@
 		42274129249E764700BD2895 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42274128249E764700BD2895 /* Bundle-Decodable.swift */; };
 		4227412B249E780000BD2895 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227412A249E780000BD2895 /* Mission.swift */; };
 		4227412D249E817400BD2895 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227412C249E817400BD2895 /* MissionView.swift */; };
+		4227412F249E8A8C00BD2895 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227412E249E8A8C00BD2895 /* AstronautView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		42274128249E764700BD2895 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		4227412A249E780000BD2895 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		4227412C249E817400BD2895 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
+		4227412E249E8A8C00BD2895 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				42274128249E764700BD2895 /* Bundle-Decodable.swift */,
 				4227412A249E780000BD2895 /* Mission.swift */,
 				4227412C249E817400BD2895 /* MissionView.swift */,
+				4227412E249E8A8C00BD2895 /* AstronautView.swift */,
 				4219CDC02498C2A80015862C /* Assets.xcassets */,
 				4219CDC52498C2A80015862C /* LaunchScreen.storyboard */,
 				4219CDD42498CE110015862C /* missions.json */,
@@ -168,6 +171,7 @@
 			files = (
 				4227412D249E817400BD2895 /* MissionView.swift in Sources */,
 				4227412B249E780000BD2895 /* Mission.swift in Sources */,
+				4227412F249E8A8C00BD2895 /* AstronautView.swift in Sources */,
 				4219CDBB2498C2A60015862C /* AppDelegate.swift in Sources */,
 				4219CDBD2498C2A60015862C /* SceneDelegate.swift in Sources */,
 				42274129249E764700BD2895 /* Bundle-Decodable.swift in Sources */,
