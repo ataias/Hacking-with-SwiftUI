@@ -1,0 +1,9 @@
+* Lessons Learned
+
+- We can use images for fills and borders, but for that we need to use ImagePaint
+- If rendering is slow, we can try drawingGroup; it is not something to be used
+  often, but only if you run into rendering performance problems
+
+* Issues
+- Although I saw the tutorial with an example image that worked, I always had
+  issues when running on my simulator.
