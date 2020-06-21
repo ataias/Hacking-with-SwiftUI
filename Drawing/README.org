@@ -3,6 +3,10 @@
 - We can use images for fills and borders, but for that we need to use ImagePaint
 - If rendering is slow, we can try drawingGroup; it is not something to be used
   often, but only if you run into rendering performance problems
+- The multiply blend mode is quite common and there is a shortcut modifier: colorMultiply
+- SwiftUI Color.blue, .red and .green are not pure. They are blends of colors
+  made to appear well in dark and light modes. For pure colors, you can
+  initialize them manually: Color(red: 1, green: 0, blue: 0)
 
 * Issues
 - Although I saw the tutorial with an example image that worked, I always had
