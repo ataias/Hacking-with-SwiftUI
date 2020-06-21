@@ -7,7 +7,11 @@
 - SwiftUI Color.blue, .red and .green are not pure. They are blends of colors
   made to appear well in dark and light modes. For pure colors, you can
   initialize them manually: Color(red: 1, green: 0, blue: 0)
-
+- SwiftUI is smart to interpolate values that changed abruptly for animations.
+  However, its usage in withAnimation is not automatic. SwiftUI will update the
+  'animatableData' property (defined in the Animatable protocol) with the last
+  interpolated value. By defining it with a getter and setter you can make use
+  of it in your Shape
 * Issues
 - Although I saw the tutorial with an example image that worked, I always had
   issues when running on my simulator.
