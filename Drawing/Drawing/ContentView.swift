@@ -76,6 +76,14 @@ struct ContentView: View {
     @State private var colorCycle = 0.0
 
     var body: some View {
+        SpecialEffectsView()
+    }
+}
+
+struct ColorCyclingView: View {
+    @State private var colorCycle = 0.0
+
+    var body: some View {
         VStack {
             ColorCyclingCircle(amount: self.colorCycle)
                 .frame(width: 300, height: 300)
@@ -84,6 +92,8 @@ struct ContentView: View {
         }
     }
 }
+
+
 
 struct FailedExampleImagePaintView: View {
 
