@@ -1,0 +1,14 @@
+* Lessons Learned
+
+- SwiftUI makes sure lines connect up neatly with what comes before and after.
+  Because of that, you might need sometimes to draw a line in Path twice to
+  make sure the borders look nice
+  - an alternative is using the StrokeStyle struct
+
+- The stroke and strokeBorder modifiers are pretty similar, but the frame of
+  drawing is different. On the first, the drawing might go over the edges if
+  your border is too thick, while the second frames them inside the screen
+- strokeBorder can be used with views that follow the "InsettableShape" protocol
+- When filling a complex shape with different overlapping paths, the even-odd
+  fills can make interesting effects. To use it, you use the fill modifier with
+  a style: =.fill(Color.red, style: FillStyle(eoFill: true))=
