@@ -31,6 +31,19 @@ struct Mission: Codable, Identifiable {
         return "N/A"
     }
 
+    var formattedCrewMembers: String {
+        return self.crew.map({$0.name}).joined(separator: ", ")
+    }
+
+    func formattedSubtitle(_ missionOverview: MissionOverview) -> String {
+        switch missionOverview {
+        case .LaunchDate:
+            return formattedLaunchDate
+        default:
+            return formattedCrewMembers
+        }
+    }
+
     struct CrewRole: Codable {
         let name: String
         let role: String
