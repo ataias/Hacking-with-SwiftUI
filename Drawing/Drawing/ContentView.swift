@@ -72,11 +72,69 @@ struct Arc: InsettableShape {
 
 }
 
-struct ContentView: View {
-    @State private var colorCycle = 0.0
+struct Checkerboard: Shape {
+    var rows: Int
+    var columns: Int
+
+    public var animatableData: AnimatablePair<Double, Double> {
+        get {
+            AnimatablePair(Double(rows), Double(columns))
+        }
+
+        set {
+            self.rows = Int(newValue.first)
+            self.columns = Int(newValue.second)
+        }
+    }
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let rowSize = rect.height / CGFloat(rows)
+        let columnSize = rect.width / CGFloat(columns)
+
+        for row in 0..<rows {
+            for column in 0..<columns {
+                if (row + column).isMultiple(of: 2) {
+                    let startX = columnSize * CGFloat(column)
+                    let startY = rowSize * CGFloat(row)
+
+                    let rect = CGRect(x: startX, y: startY, width: columnSize, height: rowSize)
+                    path.addRect(rect)
+
+                }
+            }
+        }
+
+        return path
+    }
+}
+
+struct CheckerboardView: View {
+    @State private var rows = 4
+    @State private var columns = 4
 
     var body: some View {
-        SpecialEffectsView()
+        Checkerboard(rows: rows, columns: columns)
+            .onTapGesture {
+                withAnimation(.linear(duration: 3)) {
+                    if self.rows == 4 {
+                        self.rows = 8
+                        self.columns = 16
+                    } else {
+                        self.rows = 4
+                        self.columns = 4
+                    }
+                }
+        }
+
+    }
+}
+
+
+struct ContentView: View {
+
+    var body: some View {
+        ArrowView()
     }
 }
 
@@ -103,17 +161,17 @@ struct FailedExampleImagePaintView: View {
                 .frame(width: 300, height: 300)
                 .background(Image("Example").resizable().scaledToFit())
 
-//            Text("Hello World")
-//                .frame(width: 300, height: 300)
-//                .border(ImagePaint(image: Image("Example")), width: 30)
+            //            Text("Hello World")
+            //                .frame(width: 300, height: 300)
+            //                .border(ImagePaint(image: Image("Example")), width: 30)
 
             Text("Hello World")
                 .frame(width: 300, height: 300)
                 .border(ImagePaint(image: Image("Example"), sourceRect: CGRect(x: 0, y: 0, width: 300, height: 300), scale: 0.05), width: 30)
 
-//            Capsule()
-//            .strokeBorder(ImagePaint(image: Image("Example"), scale: 0.005), lineWidth: 20)
-//            .frame(width: 300, height: 200)
+            //            Capsule()
+            //            .strokeBorder(ImagePaint(image: Image("Example"), scale: 0.005), lineWidth: 20)
+            //            .frame(width: 300, height: 200)
         }
     }
 }
@@ -126,15 +184,15 @@ struct ColorCyclingCircle: View {
         ZStack {
             ForEach(0..<steps) { value in
                 Circle()
-                .inset(by: CGFloat(value))
-//                    .strokeBorder(self.color(for: value, brightness: 1), lineWidth: 2)
-                .strokeBorder(LinearGradient(gradient: Gradient(colors: [
-                    self.color(for: value, brightness: 1),
-                    self.color(for: value, brightness: 0.5)
-                ]), startPoint: .top, endPoint: .bottom), lineWidth: 2)
+                    .inset(by: CGFloat(value))
+                    //                    .strokeBorder(self.color(for: value, brightness: 1), lineWidth: 2)
+                    .strokeBorder(LinearGradient(gradient: Gradient(colors: [
+                        self.color(for: value, brightness: 1),
+                        self.color(for: value, brightness: 0.5)
+                    ]), startPoint: .top, endPoint: .bottom), lineWidth: 2)
             }
         }
-    .drawingGroup()
+        .drawingGroup()
     }
 
     func color(for value: Int, brightness: Double) -> Color {
@@ -169,13 +227,13 @@ struct AwesomeAffineTransmationView: View {
 struct BasicArcsView: View {
     var body: some View {
         VStack {
-//            Path { path in
-//                path.move(to: CGPoint(x: 200, y: 100))
-//                path.addLine(to: CGPoint(x: 100, y: 300))
-//                path.addLine(to: CGPoint(x: 300, y: 300))
-//                path.addLine(to: CGPoint(x: 200, y: 100))
-//            }
-//            .stroke(Color.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            //            Path { path in
+            //                path.move(to: CGPoint(x: 200, y: 100))
+            //                path.addLine(to: CGPoint(x: 100, y: 300))
+            //                path.addLine(to: CGPoint(x: 300, y: 300))
+            //                path.addLine(to: CGPoint(x: 200, y: 100))
+            //            }
+            //            .stroke(Color.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
 
             Triangle()
                 .stroke(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
@@ -184,12 +242,12 @@ struct BasicArcsView: View {
             Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockwise: true)
                 .stroke(Color.blue, lineWidth: 10)
                 .padding()
-//                .frame(width: 200, height: 200)
+            //                .frame(width: 200, height: 200)
 
             Spacer()
-//            Circle()
-//                .strokeBorder(Color.blue, lineWidth: 40)
-////                .frame(width: 200, height: 200)
+            //            Circle()
+            //                .strokeBorder(Color.blue, lineWidth: 40)
+            ////                .frame(width: 200, height: 200)
         }
     }
 }
