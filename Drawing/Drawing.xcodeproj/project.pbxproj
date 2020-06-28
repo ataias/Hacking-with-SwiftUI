@@ -14,6 +14,8 @@
 		42046B35249F54FD00293D84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42046B34249F54FD00293D84 /* Preview Assets.xcassets */; };
 		42046B38249F54FD00293D84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42046B36249F54FD00293D84 /* LaunchScreen.storyboard */; };
 		4212420F249FF4B8002FC15A /* SpecialEffectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212420E249FF4B8002FC15A /* SpecialEffectsView.swift */; };
+		42BB87C024A92785000CF54C /* SpirographView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB87BF24A92785000CF54C /* SpirographView.swift */; };
+		42BB87C224A92E93000CF54C /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB87C124A92E93000CF54C /* ArrowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		42046B37249F54FD00293D84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42046B39249F54FD00293D84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4212420E249FF4B8002FC15A /* SpecialEffectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEffectsView.swift; sourceTree = "<group>"; };
+		42BB87BF24A92785000CF54C /* SpirographView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpirographView.swift; sourceTree = "<group>"; };
+		42BB87C124A92E93000CF54C /* ArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				42046B2B249F54FB00293D84 /* AppDelegate.swift */,
 				42046B2D249F54FB00293D84 /* SceneDelegate.swift */,
 				42046B2F249F54FB00293D84 /* ContentView.swift */,
+				42BB87C124A92E93000CF54C /* ArrowView.swift */,
+				42BB87BF24A92785000CF54C /* SpirographView.swift */,
 				4212420E249FF4B8002FC15A /* SpecialEffectsView.swift */,
 				42046B31249F54FD00293D84 /* Assets.xcassets */,
 				42046B36249F54FD00293D84 /* LaunchScreen.storyboard */,
@@ -150,6 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				42046B2C249F54FB00293D84 /* AppDelegate.swift in Sources */,
+				42BB87C024A92785000CF54C /* SpirographView.swift in Sources */,
+				42BB87C224A92E93000CF54C /* ArrowView.swift in Sources */,
 				42046B2E249F54FB00293D84 /* SceneDelegate.swift in Sources */,
 				42046B30249F54FB00293D84 /* ContentView.swift in Sources */,
 				4212420F249FF4B8002FC15A /* SpecialEffectsView.swift in Sources */,
