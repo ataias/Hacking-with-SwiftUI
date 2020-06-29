@@ -15,3 +15,13 @@
 * Issues
 - Although I saw the tutorial with an example image that worked, I always had
   issues when running on my simulator.
+- I didn't understand the last challenge of "Day 46 - Project 9 - Part 4" which
+  is "Create a ColorCyclingRectangle shape that is the rectangular cousin of
+  ColorCyclingCircle, allowing us to control the position of the gradient using
+  a property.". I couldn't understand what he meant changing the gradient
+  position. I can imagine it for a ConicGradient that you just change the
+  center, but a LinerGradient? The fact that he said "Cousin" made me interpret
+  that all the rest is the same, including the LinearGradient, and I just
+  change the view to a rectangle and change the position of the gradient (maybe
+  its center? but even so I coudln't figure out how to do it for a
+  LinearGradient
