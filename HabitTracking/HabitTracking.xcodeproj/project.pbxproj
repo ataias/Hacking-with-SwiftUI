@@ -14,6 +14,9 @@
 		425ECB4924A9EAFF0001A1EE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425ECB4824A9EAFF0001A1EE /* Preview Assets.xcassets */; };
 		425ECB4C24A9EAFF0001A1EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425ECB4A24A9EAFF0001A1EE /* LaunchScreen.storyboard */; };
 		425ECB5424A9EB8C0001A1EE /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ECB5324A9EB8C0001A1EE /* Habit.swift */; };
+		4273F23424AB389300076445 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4273F23324AB389300076445 /* HabitView.swift */; };
+		42D53E4D24AB4168002C4A57 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D53E4C24AB4168002C4A57 /* Bundle-Decodable.swift */; };
+		42D53E4F24AB43C9002C4A57 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D53E4E24AB43C9002C4A57 /* AddHabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		425ECB4B24A9EAFF0001A1EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		425ECB4D24A9EAFF0001A1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		425ECB5324A9EB8C0001A1EE /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		4273F23324AB389300076445 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		42D53E4C24AB4168002C4A57 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		42D53E4E24AB43C9002C4A57 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +48,6 @@
 		425ECB3324A9EAFC0001A1EE = {
 			isa = PBXGroup;
 			children = (
-				425ECB5324A9EB8C0001A1EE /* Habit.swift */,
 				425ECB3E24A9EAFC0001A1EE /* HabitTracking */,
 				425ECB3D24A9EAFC0001A1EE /* Products */,
 			);
@@ -59,6 +64,10 @@
 		425ECB3E24A9EAFC0001A1EE /* HabitTracking */ = {
 			isa = PBXGroup;
 			children = (
+				4273F23324AB389300076445 /* HabitView.swift */,
+				42D53E4E24AB43C9002C4A57 /* AddHabitView.swift */,
+				42D53E4C24AB4168002C4A57 /* Bundle-Decodable.swift */,
+				425ECB5324A9EB8C0001A1EE /* Habit.swift */,
 				425ECB3F24A9EAFC0001A1EE /* AppDelegate.swift */,
 				425ECB4124A9EAFC0001A1EE /* SceneDelegate.swift */,
 				425ECB4324A9EAFC0001A1EE /* ContentView.swift */,
@@ -151,8 +160,11 @@
 			files = (
 				425ECB4024A9EAFC0001A1EE /* AppDelegate.swift in Sources */,
 				425ECB4224A9EAFC0001A1EE /* SceneDelegate.swift in Sources */,
+				42D53E4F24AB43C9002C4A57 /* AddHabitView.swift in Sources */,
 				425ECB5424A9EB8C0001A1EE /* Habit.swift in Sources */,
 				425ECB4424A9EAFC0001A1EE /* ContentView.swift in Sources */,
+				4273F23424AB389300076445 /* HabitView.swift in Sources */,
+				42D53E4D24AB4168002C4A57 /* Bundle-Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
