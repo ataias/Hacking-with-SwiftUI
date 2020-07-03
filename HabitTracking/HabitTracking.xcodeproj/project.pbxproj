@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42595C9624AF345A000499C4 /* AddActivityLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42595C9524AF345A000499C4 /* AddActivityLogView.swift */; };
 		425ECB4024A9EAFC0001A1EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ECB3F24A9EAFC0001A1EE /* AppDelegate.swift */; };
 		425ECB4224A9EAFC0001A1EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ECB4124A9EAFC0001A1EE /* SceneDelegate.swift */; };
 		425ECB4424A9EAFC0001A1EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ECB4324A9EAFC0001A1EE /* ContentView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42595C9524AF345A000499C4 /* AddActivityLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityLogView.swift; sourceTree = "<group>"; };
 		425ECB3C24A9EAFC0001A1EE /* HabitTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425ECB3F24A9EAFC0001A1EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		425ECB4124A9EAFC0001A1EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				4273F23324AB389300076445 /* HabitView.swift */,
 				42D53E4E24AB43C9002C4A57 /* AddHabitView.swift */,
+				42595C9524AF345A000499C4 /* AddActivityLogView.swift */,
 				42D53E4C24AB4168002C4A57 /* Bundle-Decodable.swift */,
 				425ECB5324A9EB8C0001A1EE /* Habit.swift */,
 				425ECB3F24A9EAFC0001A1EE /* AppDelegate.swift */,
@@ -164,6 +167,7 @@
 				425ECB5424A9EB8C0001A1EE /* Habit.swift in Sources */,
 				425ECB4424A9EAFC0001A1EE /* ContentView.swift in Sources */,
 				4273F23424AB389300076445 /* HabitView.swift in Sources */,
+				42595C9624AF345A000499C4 /* AddActivityLogView.swift in Sources */,
 				42D53E4D24AB4168002C4A57 /* Bundle-Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

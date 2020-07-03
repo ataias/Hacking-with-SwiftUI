@@ -37,22 +37,29 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             // TODO Besides showing the habits, add an extra element on top that shows overall statistics like number of entries logged in the day, week,...
-            List() {
+            List {
                 ForEach(habits) { habit in
-                    // TODO filter activity logs
-                    NavigationLink(destination: HabitView(habit: habit, activityLogs: self.activityLogs)) {
-                        VStack(alignment: .leading) {
-                            Text(habit.name)
-                                .font(.headline)
-                        }
-                    }
+                        NavigationLink(destination: HabitView(habit: habit, activityLogs: self.activityLogs)) {
+                            HStack {
+                                Circle()
+                                    .frame(width: 20, height: 20, alignment: .leading)
+                                    .foregroundColor(self.getColor(habit: habit))
+                                VStack(alignment: .leading) {
+                                    Text(habit.name)
+                                        .font(.headline)
+                                    Text(habit.type)
+                                        .font(.subheadline)
+                                }
+                                Spacer()
 
+                            }
+                    }
                 }
+                .onDelete(perform: removeItems)
             }
             .navigationBarTitle("HabitTracking")
             .navigationBarItems(
                 leading: EditButton(),
-                // TODO Is this a SwiftUI? The button is unresponsive. The first time it works and you can add an item, but afterwards it stops working. I tried investigating if variables were being set correctly, but they seemed ok, except that the button is not triggered anymore after adding an item.
                 trailing: Button(action: {
                     self.showingAddHabit = true
                 }) {
@@ -66,6 +73,32 @@ struct ContentView: View {
         }
 
     }
+
+    func getColor(habit: Habit) -> Color {
+        let oneWeekAgo = Date().addingTimeInterval(-7*24*60*60)
+        let activityLogs = self.activityLogs.filter { $0.habitId == habit.id && $0.date >= oneWeekAgo }
+        let latestActivity = activityLogs.max(by: { $0.date > $1.date })
+        var trackedToday = false
+        if let latestActivity = latestActivity {
+            trackedToday = Calendar.current.isDateInToday(latestActivity.date)
+        }
+
+        switch (activityLogs.count, trackedToday) {
+        case (0, _) :
+            return Color.red
+        case (_, true) :
+            return Color.green
+        case (_, false) :
+            return Color.blue
+        }
+
+    }
+
+    func removeItems(at offsets: IndexSet) {
+        storage.habits.remove(atOffsets: offsets)
+    }
+
+
 
 }
 
