@@ -11,9 +11,10 @@ import SwiftUI
 class Storage: ObservableObject {
 
     init() {
-        self.habits = [Habit(name: "Strength Exercise")]
-        self.activityLogs = [
-            ActivityLog(habitId: habits[0].id, date: Date(), notes: "Nothing really")
+        let habit = Habit(name: "Strength Exercise", type: "Personal", notes: "")
+        habits = [habit]
+        activityLogs = [
+            ActivityLog(habitId: habit.id, date: Date(), notes: "Nothing really")
         ]
     }
 
@@ -39,7 +40,7 @@ struct ContentView: View {
             List() {
                 ForEach(habits) { habit in
                     // TODO filter activity logs
-                    NavigationLink(destination: HabitView(habit: habit, activityLogs: activityLogs)) {
+                    NavigationLink(destination: HabitView(habit: habit, activityLogs: self.activityLogs)) {
                         VStack(alignment: .leading) {
                             Text(habit.name)
                                 .font(.headline)
@@ -54,13 +55,12 @@ struct ContentView: View {
                 // TODO Is this a SwiftUI? The button is unresponsive. The first time it works and you can add an item, but afterwards it stops working. I tried investigating if variables were being set correctly, but they seemed ok, except that the button is not triggered anymore after adding an item.
                 trailing: Button(action: {
                     self.showingAddHabit = true
-                    print(self.showingAddHabit)
                 }) {
                     Image(systemName: "plus")
                 }
             )
                 .sheet(isPresented: $showingAddHabit) {
-                    AddHabitView(habits: self.habits)
+                    AddHabitView(storage: self.storage)
             }
 
         }

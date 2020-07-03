@@ -12,6 +12,12 @@ struct HabitView: View {
     let habit: Habit
     let activityLogs: [ActivityLog]
 
+    init(habit: Habit, activityLogs: [ActivityLog]) {
+        self.habit = habit
+        self.activityLogs = activityLogs.filter { $0.habitId == habit.id }
+
+    }
+
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
@@ -33,9 +39,13 @@ struct HabitView: View {
                     Text("Log")
                         .font(.largeTitle)
 
+                if self.activityLogs.count == 0 {
+                    Text("No Logs Available")
+                } else {
                     ForEach(self.activityLogs) { activityLog in
                         Text("\(activityLog.formattedDate)")
                     }
+                }
 
             }
         }
@@ -46,7 +56,7 @@ struct HabitView: View {
 }
 
 struct HabitView_Previews: PreviewProvider {
-    static let habit = Habit(name: "Strength Exercise")
+    static let habit = Habit(name: "Strength Exercise", type: "Personal", notes: "")
     static let activityLogs = [
         ActivityLog(habitId: habit.id, date: Date(), notes: "Nothing really")
     ]

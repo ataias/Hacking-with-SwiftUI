@@ -12,6 +12,7 @@ struct Habit: Codable, Identifiable {
     let id = UUID()
     let creationDate = Date()
     let name: String
+    let type: String
     let notes: String
     // TODO How to track which days the habit occurred?
 
