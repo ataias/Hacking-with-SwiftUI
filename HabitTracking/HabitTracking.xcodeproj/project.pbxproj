@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42508A1224B1F50900903C2D /* ActivityLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42508A1124B1F50900903C2D /* ActivityLog.swift */; };
 		42595C9624AF345A000499C4 /* AddActivityLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42595C9524AF345A000499C4 /* AddActivityLogView.swift */; };
 		425ECB4024A9EAFC0001A1EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ECB3F24A9EAFC0001A1EE /* AppDelegate.swift */; };
 		425ECB4224A9EAFC0001A1EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ECB4124A9EAFC0001A1EE /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42508A1124B1F50900903C2D /* ActivityLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLog.swift; sourceTree = "<group>"; };
 		42595C9524AF345A000499C4 /* AddActivityLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityLogView.swift; sourceTree = "<group>"; };
 		425ECB3C24A9EAFC0001A1EE /* HabitTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425ECB3F24A9EAFC0001A1EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				42595C9524AF345A000499C4 /* AddActivityLogView.swift */,
 				42D53E4C24AB4168002C4A57 /* Bundle-Decodable.swift */,
 				425ECB5324A9EB8C0001A1EE /* Habit.swift */,
+				42508A1124B1F50900903C2D /* ActivityLog.swift */,
 				425ECB3F24A9EAFC0001A1EE /* AppDelegate.swift */,
 				425ECB4124A9EAFC0001A1EE /* SceneDelegate.swift */,
 				425ECB4324A9EAFC0001A1EE /* ContentView.swift */,
@@ -117,7 +120,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = ataias;
 				TargetAttributes = {
 					425ECB3B24A9EAFC0001A1EE = {
@@ -163,6 +166,7 @@
 			files = (
 				425ECB4024A9EAFC0001A1EE /* AppDelegate.swift in Sources */,
 				425ECB4224A9EAFC0001A1EE /* SceneDelegate.swift in Sources */,
+				42508A1224B1F50900903C2D /* ActivityLog.swift in Sources */,
 				42D53E4F24AB43C9002C4A57 /* AddHabitView.swift in Sources */,
 				425ECB5424A9EB8C0001A1EE /* Habit.swift in Sources */,
 				425ECB4424A9EAFC0001A1EE /* ContentView.swift in Sources */,
@@ -212,6 +216,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -272,6 +277,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

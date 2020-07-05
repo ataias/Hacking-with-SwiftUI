@@ -42,6 +42,6 @@ struct AddHabitView: View {
 
 struct AddHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        AddHabitView(storage: Storage())
+        AddHabitView(storage: Storage(completed: true))
     }
 }

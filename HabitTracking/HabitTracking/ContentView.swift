@@ -11,15 +11,52 @@ import SwiftUI
 class Storage: ObservableObject {
 
     init() {
-        let habit = Habit(name: "Strength Exercise", type: "Personal", notes: "")
-        habits = [habit]
-        activityLogs = [
-            ActivityLog(habitId: habit.id, date: Date(), notes: "Nothing really")
+        let decoder = JSONDecoder()
+
+        self.habits = []
+        self.activityLogs = []
+
+        if let data = UserDefaults.standard.data(forKey: "Habits") {
+            if let habits = try? decoder.decode([Habit].self, from: data) {
+                self.habits = habits
+            }
+        }
+
+        if let data = UserDefaults.standard.data(forKey: "ActivityLogs") {
+            if let activityLogs = try? decoder.decode([ActivityLog].self, from: data) {
+                self.activityLogs = activityLogs
+            }
+        }
+    }
+
+    init(completed: Bool) {
+        var habits = [Habit]()
+        habits.append(Habit(name: "Strength Exercise", type: "Personal", notes: ""))
+        habits.append(Habit(name: "Cardio", type: "Personal", notes: ""))
+        habits.append(Habit(name: "Swift", type: "Professional", notes: ""))
+        self.habits = habits
+        self.activityLogs = [
+            ActivityLog(id: UUID(), habitId: habits[0].id, date: Date(), completed: completed, notes: "Squats with 70kg!")
         ]
     }
 
-    @Published var habits: [Habit]
-    @Published var activityLogs: [ActivityLog]
+    @Published var habits: [Habit] {
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(habits) {
+                UserDefaults.standard.set(encoded, forKey: "Habits")
+            }
+        }
+
+    }
+    @Published var activityLogs: [ActivityLog] {
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(habits) {
+                UserDefaults.standard.set(encoded, forKey: "ActivityLogs")
+            }
+        }
+    }
 }
 
 struct ContentView: View {
@@ -39,7 +76,7 @@ struct ContentView: View {
             // TODO Besides showing the habits, add an extra element on top that shows overall statistics like number of entries logged in the day, week,...
             List {
                 ForEach(habits) { habit in
-                        NavigationLink(destination: HabitView(habit: habit, activityLogs: self.activityLogs)) {
+                    NavigationLink(destination: HabitView(habit: habit, storage: self.storage)) {
                             HStack {
                                 Circle()
                                     .frame(width: 20, height: 20, alignment: .leading)

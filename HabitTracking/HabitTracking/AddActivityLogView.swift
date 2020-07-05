@@ -9,35 +9,62 @@
 import SwiftUI
 
 struct AddActivityLogView: View {
-    let habit: Habit
 
-    @State private var name = "My New Habit"
-    @State private var type = "Personal"
-    @State private var notes = ""
+    @State var habit: Habit
     @ObservedObject var storage: Storage
+    @State var completed: Bool = true
+    @State var notes: String = ""
+
+    @State private var date = Date()
+
     @Environment(\.presentationMode) var presentationMode
 
-    static let types = ["Business", "Personal"]
+    var dateFormatter: DateFormatter {
+           let formatter = DateFormatter()
+           formatter.dateStyle = .long
+           return formatter
+       }
 
     var body: some View {
         NavigationView {
             Form {
-                // TODO Habit Field is a picker whose default is the habit given but user can select any from storage
+                // REVIEW Habit Field is a picker whose default is the habit given but user can select any from storage
+
+                Section(header:
+                    Text("Habit").font(.headline)
+                ) {
+                    Picker(habit.name, selection: $habit) {
+                        // Notice we can use Self with upper case S to refer to a static thing
+                        ForEach(storage.habits) {
+                            Text($0.name)
+                        }
+                    }
+                    Toggle(isOn: $completed, label: {
+                        Text("Completed")
+                    })
+
+                }
+
+                Section(header: Text("DATE"), content: {
+                    DatePicker(selection: $date, in: ...Date(), displayedComponents: .date) {
+                        Text("Select a date")
+                    }
+
+                })
+
+                Section(header: Text("Notes"), content: {
+                    TextField("", text: $notes)
+                })
+
+
+
                 // TODO Idea: what about user goes to a screen just to fill habits? We send them habits to track for today one by one and he can skip or fill
                 // TODO Add a date picker; default is today but user can change
-                TextField("Name", text: $name)
-                Picker("Type", selection: $type) {
-                    // Notice we can use Self with upper case S to refer to a static thing
-                    ForEach(Self.types, id: \.self) {
-                        Text($0)
-                    }
-                }
-                TextField("Notes", text: $notes)
             }
-            .navigationBarTitle("Add new habit")
+            .navigationBarTitle("Add activity log")
             .navigationBarItems(trailing: Button("Save") {
-                let habit = Habit(name: self.name, type: self.type, notes: self.notes)
-                self.storage.habits.append(habit)
+                let activityLog = ActivityLog(id: UUID(), habitId: self.habit.id, date: self.date, completed: self.completed, notes: self.notes)
+                self.storage.activityLogs.append(activityLog)
                 self.presentationMode.wrappedValue.dismiss()
             })
         }
@@ -45,7 +72,9 @@ struct AddActivityLogView: View {
 }
 
 struct AddActivityLogView_Previews: PreviewProvider {
+    static var storage = Storage(completed: true)
+
     static var previews: some View {
-        AddActivityLogView()
+        AddActivityLogView(habit: storage.habits[0], storage: storage)
     }
 }

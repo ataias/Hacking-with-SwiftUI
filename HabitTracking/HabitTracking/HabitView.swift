@@ -11,11 +11,14 @@ import SwiftUI
 struct HabitView: View {
     let habit: Habit
     let activityLogs: [ActivityLog]
+    @ObservedObject var storage: Storage
 
-    init(habit: Habit, activityLogs: [ActivityLog]) {
+    @State private var showingAddActivityLog = false
+
+    init(habit: Habit, storage: Storage) {
         self.habit = habit
-        self.activityLogs = activityLogs.filter { $0.habitId == habit.id }
-
+        self.activityLogs = storage.activityLogs.filter { $0.habitId == habit.id }
+        self.storage = storage
     }
 
     var body: some View {
@@ -23,45 +26,71 @@ struct HabitView: View {
             ScrollView(.vertical) {
                 VStack {
                     // TODO Consider adding images to habits, or maybe special codes to ease finding them
-//                    Image(self.astronaut.id)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: geometry.size.width)
 
-                    Text("Habit")
-                        .font(.largeTitle)
+                    HStack {
+                        Text("Habit")
+                            .font(.largeTitle)
+                            .bold()
+                        Spacer()
+                        Text(self.habit.name)
+                            .bold()
+                    }
+                    .padding()
+
+
+                    HStack {
+                        Text("Log")
+                            .font(.largeTitle)
+                            .bold()
+                        Spacer()
+                    }
+                    .padding()
+
+                    Text("You completed this activity \(activityLogs.count) times")
                         .padding()
 
-                    Text(self.habit.name)
-                            .padding()
-                    }
+                    if self.activityLogs.count == 0 {
+                        Text("No Logs Available")
+                    } else {
+                        ForEach(activityLogs) { activityLog in
+                            HStack {
+                                Text("DATE").bold()
+                                Text("\(activityLog.formattedDate)")
+                                Spacer()
+                                Text("COMPLETED").bold()
+                                Text(activityLog.completed ? "YES" : "NO")
+                            }
+                            .padding([.all], 10)
 
-                    Text("Log")
-                        .font(.largeTitle)
-
-                if self.activityLogs.count == 0 {
-                    Text("No Logs Available")
-                } else {
-                    ForEach(self.activityLogs) { activityLog in
-                        Text("\(activityLog.formattedDate)")
+                        }
                     }
                 }
+
+
 
             }
         }
         .navigationBarTitle(Text(habit.name), displayMode: .inline)
+        .navigationBarItems(
+            //            leading: EditButton(),
+            trailing: Button(action: {
+                self.showingAddActivityLog = true
+            }) {
+                Image(systemName: "plus")
+            }
+        )
+        .sheet(isPresented: $showingAddActivityLog) {
+            AddActivityLogView(habit: self.habit, storage: self.storage)
+        }
 
     }
 
 }
 
 struct HabitView_Previews: PreviewProvider {
-    static let habit = Habit(name: "Strength Exercise", type: "Personal", notes: "")
-    static let activityLogs = [
-        ActivityLog(habitId: habit.id, date: Date(), notes: "Nothing really")
-    ]
+    static var storage = Storage(completed: true)
 
     static var previews: some View {
-        HabitView(habit: habit, activityLogs: activityLogs)
+        HabitView(habit: storage.habits[0], storage: storage)
     }
 }
