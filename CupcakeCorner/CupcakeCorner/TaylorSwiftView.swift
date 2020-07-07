@@ -14,6 +14,8 @@
 
 import SwiftUI
 
+// This file has info that is not part of the final project. It is just for learning how to get url data
+
 struct Response: Codable {
     var results: [Result]
 }
