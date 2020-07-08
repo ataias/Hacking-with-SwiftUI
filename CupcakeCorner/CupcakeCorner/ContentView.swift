@@ -8,26 +8,51 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var username = ""
-    @State private var email = ""
 
-    var disableForm: Bool {
-        return username.count < 5 || email.count < 5
-    }
+    @ObservedObject var order = Order()
 
     var body: some View {
-        Form {
-            Section {
-                TextField("Username", text: $username)
-                TextField("Email", text: $email)
-            }
+        NavigationView {
+            Form {
+                Section {
+                    Picker("Select your cake type", selection: $order.type) {
+                        ForEach(0..<Order.types.count) {
+                            Text(Order.types[$0])
+                        }
+                    }
 
-            Section {
-                Button("Create Account") {
-                    print("Creating account")
+                    Stepper(value: $order.quantity, in: 3...20) {
+                        Text("Number of cupcakes: \(order.quantity)")
+                    }
+                }
+
+                Section {
+                    // This animation makes the "if" below animate and show smoothly
+                    Toggle(isOn: $order.specialRequestEnabled.animation(), label: {
+                        Text("Any special requests?")
+                    })
+
+                    if order.specialRequestEnabled {
+
+                        Toggle(isOn: $order.extraFrosting) {
+                            Text("Add extra frosting")
+                        }
+
+                        Toggle(isOn: $order.addSprinkles, label: {
+                            Text("Add extra sprinkles")
+                        })
+                    }
+                }
+
+                Section {
+                    NavigationLink(
+                        destination: AddressView(order: order),
+                        label: {
+                            Text("Delivery details")
+                        })
                 }
             }
-            .disabled(disableForm)
+            .navigationBarTitle("Cupcake Corner")
         }
     }
 }
