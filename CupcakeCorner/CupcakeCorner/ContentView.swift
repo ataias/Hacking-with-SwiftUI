@@ -9,36 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @ObservedObject var order = Order()
+    @ObservedObject var storage = Storage()
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Picker("Select your cake type", selection: $order.type) {
+                    Picker("Select your cake type", selection: $storage.order.type) {
                         ForEach(0..<Order.types.count) {
                             Text(Order.types[$0])
                         }
                     }
 
-                    Stepper(value: $order.quantity, in: 3...20) {
-                        Text("Number of cupcakes: \(order.quantity)")
+                    Stepper(value: $storage.order.quantity, in: 3...20) {
+                        Text("Number of cupcakes: \(storage.order.quantity)")
                     }
                 }
 
                 Section {
                     // This animation makes the "if" below animate and show smoothly
-                    Toggle(isOn: $order.specialRequestEnabled.animation(), label: {
+                    Toggle(isOn: $storage.order.specialRequestEnabled.animation(), label: {
                         Text("Any special requests?")
                     })
 
-                    if order.specialRequestEnabled {
+                    if storage.order.specialRequestEnabled {
 
-                        Toggle(isOn: $order.extraFrosting) {
+                        Toggle(isOn: $storage.order.extraFrosting) {
                             Text("Add extra frosting")
                         }
 
-                        Toggle(isOn: $order.addSprinkles, label: {
+                        Toggle(isOn: $storage.order.addSprinkles, label: {
                             Text("Add extra sprinkles")
                         })
                     }
@@ -46,7 +46,7 @@ struct ContentView: View {
 
                 Section {
                     NavigationLink(
-                        destination: AddressView(order: order),
+                        destination: AddressView(storage: storage),
                         label: {
                             Text("Delivery details")
                         })

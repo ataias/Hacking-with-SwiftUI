@@ -7,14 +7,19 @@
 
 import SwiftUI
 
+enum AlertType {
+    case none
+    case error
+    case confirmation
+}
+
 struct CheckoutView: View {
-    @ObservedObject var order: Order
+    @ObservedObject var storage: Storage
 
     @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
-
+    @State private var showingAlert = false
+    @State private var alertType: AlertType = .none
     @State private var errorMessage = ""
-    @State private var showingError = false
 
     var body: some View {
         GeometryReader { geo in
@@ -26,7 +31,7 @@ struct CheckoutView: View {
                     //                        .scaledToFit()
                     //                        .frame(width: geo.size.width)
 
-                    Text("Your total is $\(order.cost, specifier: "%.2f")")
+                    Text("Your total is $\(storage.order.cost, specifier: "%.2f")")
                         .font(.title)
 
                     Button("Place Order") {
@@ -34,12 +39,16 @@ struct CheckoutView: View {
                     }
                     .padding()
                 }
-                .alert(isPresented: $showingConfirmation) {
-                    Alert(title: Text("Thank you!"), message: Text(confirmationMessage), dismissButton: .default(Text("OK")))
+                .alert(isPresented: $showingAlert) {
+                    switch alertType {
+                    case .error:
+                        return Alert(title: Text("An error occurred!"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                    default:
+                        return Alert(title: Text("Thank you!"), message: Text(confirmationMessage), dismissButton: .default(Text("OK")))
+
+                    }
                 }
-                .alert(isPresented: $showingError) {
-                    Alert(title: Text("An error occurred!"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-                }
+
             }
         }
         .navigationBarTitle("Check out", displayMode: .inline)
@@ -47,7 +56,7 @@ struct CheckoutView: View {
 
     func placeOrder() {
         // DONE 1. Convert our current order object into some JSON data that can be sent.
-        guard let encoded = try? JSONEncoder().encode(order) else {
+        guard let encoded = try? JSONEncoder().encode(storage.order) else {
             print("Encoding failed.")
             return
         }
@@ -65,7 +74,8 @@ struct CheckoutView: View {
             guard let data = data else {
                 print("No data in response: \(error?.localizedDescription ?? "Unknown error")")
                 errorMessage = "\(error?.localizedDescription ?? "Unknown error")"
-                showingError = true
+                alertType = .error
+                showingAlert = true
                 return
             }
 
@@ -74,14 +84,16 @@ struct CheckoutView: View {
                 return
             }
 
+            print("Decoded successfully: \(serverOrder)")
             confirmationMessage = "Your order for \(serverOrder.quantity)x \(Order.types[serverOrder.type].lowercased()) cupcakes is on its way!"
-            showingConfirmation = true
+            alertType = .confirmation
+            showingAlert = true
         }.resume()
     }
 }
 
 struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutView(order: Order())
+        CheckoutView(storage: Storage())
     }
 }
