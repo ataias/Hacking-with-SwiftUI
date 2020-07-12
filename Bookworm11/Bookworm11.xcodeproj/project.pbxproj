@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4235B1CC24BAEC2400492FC6 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235B1CB24BAEC2400492FC6 /* AddBookView.swift */; };
 		42D4DF5E24BA74FB0059B689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D4DF5D24BA74FB0059B689 /* AppDelegate.swift */; };
 		42D4DF6024BA74FB0059B689 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D4DF5F24BA74FB0059B689 /* SceneDelegate.swift */; };
 		42D4DF6324BA74FB0059B689 /* Bookworm11.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42D4DF6124BA74FB0059B689 /* Bookworm11.xcdatamodeld */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4235B1CB24BAEC2400492FC6 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		42D4DF5A24BA74FB0059B689 /* Bookworm11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookworm11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42D4DF5D24BA74FB0059B689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42D4DF5F24BA74FB0059B689 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				42D4DF6B24BA74FD0059B689 /* LaunchScreen.storyboard */,
 				42D4DF6E24BA74FD0059B689 /* Info.plist */,
 				42D4DF6124BA74FB0059B689 /* Bookworm11.xcdatamodeld */,
+				4235B1CB24BAEC2400492FC6 /* AddBookView.swift */,
 				42D4DF6824BA74FD0059B689 /* Preview Content */,
 			);
 			path = Bookworm11;
@@ -153,6 +156,7 @@
 				42D4DF5E24BA74FB0059B689 /* AppDelegate.swift in Sources */,
 				42D4DF6524BA74FB0059B689 /* ContentView.swift in Sources */,
 				42D4DF6024BA74FB0059B689 /* SceneDelegate.swift in Sources */,
+				4235B1CC24BAEC2400492FC6 /* AddBookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
