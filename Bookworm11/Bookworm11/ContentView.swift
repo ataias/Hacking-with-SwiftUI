@@ -16,9 +16,18 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(books, id: \.self.id) { book in
-                    VStack {
-                        Text(book.title!)
+                List(books, id: \.self) { book in
+                    NavigationLink(destination: Text(book.title ?? "Unknown")) {
+
+                        EmojiRatingView(rating: book.rating)
+                            .font(.largeTitle)
+
+                        VStack(alignment: .leading) {
+                            Text(book.title ?? "Unknown Title")
+                                .font(.headline)
+                            Text(book.author ?? "Unknown Author")
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
 
