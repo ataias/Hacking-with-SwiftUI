@@ -16,13 +16,25 @@ struct DetailView: View {
 
     let book: Book
 
+    var formattedLaunchDate: String {
+        if let launchDate = book.date {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            return formatter.string(from: launchDate)
+        }
+        return "N/A"
+    }
+
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 ZStack(alignment: .bottomTrailing) {
-                    Image(self.book.genre ?? "Fantasy")
-                        .frame(maxWidth: geometry.size.width)
-                    Text(self.book.genre?.uppercased() ?? "FANTASY")
+                    self.image()
+                        .resizable()
+                        .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height / 3)
+                        .clipped()
+                    Text(self.book.genre?.uppercased() ?? "UNKNOWN")
                         .font(.caption)
                         .fontWeight(.black)
                         .foregroundColor(Color.white)
@@ -37,6 +49,9 @@ struct DetailView: View {
                     .foregroundColor(.secondary)
 
                 Text(self.book.review ?? "No review")
+                    .padding()
+
+                Text("Added: \(self.formattedLaunchDate)")
                     .padding()
 
                 RatingView(rating: .constant(Int(self.book.rating)))
@@ -69,6 +84,15 @@ struct DetailView: View {
         try? moc.save()
         presentationMode.wrappedValue.dismiss()
     }
+
+    func image() -> Image {
+        if book.genre?.isEmpty ?? false {
+            return Image("Unknown")
+        }
+        return Image(book.genre ?? "Unknown")
+    }
+
+
 }
 
 struct DetailView_Previews: PreviewProvider {
@@ -77,9 +101,10 @@ struct DetailView_Previews: PreviewProvider {
         let book = Book(context: moc)
         book.title = "Test book"
         book.author = "Test author"
-        book.genre = "Fantasy"
+        book.genre = ""
         book.rating = 4
         book.review = "This was a great book; I really enjoyed it."
+        book.date = Date()
         return NavigationView {
             DetailView(book: book)
         }
