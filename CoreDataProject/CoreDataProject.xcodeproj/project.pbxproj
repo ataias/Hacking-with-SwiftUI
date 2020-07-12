@@ -14,6 +14,8 @@
 		42DE988D24BB4C9700A29DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DE988C24BB4C9700A29DE8 /* Assets.xcassets */; };
 		42DE989024BB4C9700A29DE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DE988F24BB4C9700A29DE8 /* Preview Assets.xcassets */; };
 		42DE989324BB4C9700A29DE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DE989124BB4C9700A29DE8 /* LaunchScreen.storyboard */; };
+		42DE98A024BB540D00A29DE8 /* Ship+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE989E24BB540D00A29DE8 /* Ship+CoreDataClass.swift */; };
+		42DE98A124BB540D00A29DE8 /* Ship+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE989F24BB540D00A29DE8 /* Ship+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		42DE988F24BB4C9700A29DE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42DE989224BB4C9700A29DE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42DE989424BB4C9700A29DE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42DE989E24BB540D00A29DE8 /* Ship+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ship+CoreDataClass.swift"; sourceTree = "<group>"; };
+		42DE989F24BB540D00A29DE8 /* Ship+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ship+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		42DE98A224BB54CF00A29DE8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +63,12 @@
 		42DE988224BB4C9500A29DE8 /* CoreDataProject */ = {
 			isa = PBXGroup;
 			children = (
+				42DE989E24BB540D00A29DE8 /* Ship+CoreDataClass.swift */,
+				42DE989F24BB540D00A29DE8 /* Ship+CoreDataProperties.swift */,
 				42DE988324BB4C9500A29DE8 /* AppDelegate.swift */,
 				42DE988524BB4C9500A29DE8 /* SceneDelegate.swift */,
 				42DE988A24BB4C9500A29DE8 /* ContentView.swift */,
+				42DE98A224BB54CF00A29DE8 /* README.md */,
 				42DE988C24BB4C9700A29DE8 /* Assets.xcassets */,
 				42DE989124BB4C9700A29DE8 /* LaunchScreen.storyboard */,
 				42DE989424BB4C9700A29DE8 /* Info.plist */,
@@ -149,10 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DE98A024BB540D00A29DE8 /* Ship+CoreDataClass.swift in Sources */,
 				42DE988424BB4C9500A29DE8 /* AppDelegate.swift in Sources */,
 				42DE988624BB4C9500A29DE8 /* SceneDelegate.swift in Sources */,
 				42DE988B24BB4C9500A29DE8 /* ContentView.swift in Sources */,
 				42DE988924BB4C9500A29DE8 /* CoreDataProject.xcdatamodeld in Sources */,
+				42DE98A124BB540D00A29DE8 /* Ship+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
