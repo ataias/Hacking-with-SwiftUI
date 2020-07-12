@@ -7,16 +7,23 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct FilteredList: View {
-    var fetchRequest: FetchRequest<Singer>
+struct FilteredList<T: NSManagedObject, Content: View>: View {
+    var fetchRequest: FetchRequest<T>
+    var items: FetchedResults<T> { fetchRequest.wrappedValue }
 
-    init(filter: String) {
-        fetchRequest = FetchRequest<Singer>(entity: Singer.entity(), sortDescriptors: [], predicate: NSPredicate(format: "lastName BEGINSWITH %@", filter))
+    let content: (T) -> Content
+
+    init(filterKey: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
+        fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: [], predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
+        self.content = content
     }
+
     var body: some View {
-        List(fetchRequest.wrappedValue, id: \.self) { singer in
-            Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
+        List(items, id: \.self) { item in
+            self.content(item)
         }
     }
+
 }
