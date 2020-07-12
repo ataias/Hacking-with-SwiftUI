@@ -9,7 +9,46 @@
 import SwiftUI
 import CoreData
 
+// Dynamic Core Data Predicate
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @State private var lastNameFilter = "A"
+
+//    @FetchRequest(entity: Ship.entity(), sortDescriptors: [], predicate: NSPredicate(format: "universe == %@", "Star Wars")) var ships: FetchedResults<Ship>
+
+
+    var body: some View {
+        VStack {
+            FilteredList(filter: lastNameFilter)
+
+            Button("Add Examples") {
+                let taylor = Singer(context: self.moc)
+                taylor.firstName = "Taylor"
+                taylor.lastName = "Swift"
+
+                let ed = Singer(context: self.moc)
+                ed.firstName = "Ed"
+                ed.lastName = "Sheeran"
+
+                let adele = Singer(context: self.moc)
+                adele.firstName = "Adele"
+                adele.lastName = "Adkins"
+
+                try? self.moc.save()
+            }
+
+            Button("Show A") {
+                self.lastNameFilter = "A"
+            }
+
+            Button("Show S") {
+                self.lastNameFilter = "S"
+            }
+        }
+    }
+}
+
+struct StaticPredicateView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Ship.entity(), sortDescriptors: [], predicate: NSPredicate(format: "universe == %@", "Star Wars")) var ships: FetchedResults<Ship>
 
@@ -41,6 +80,7 @@ struct ContentView: View {
         }
     }
 }
+
 
 struct NoRepeatedCoreDataSaveView: View {
     @Environment(\.managedObjectContext) var moc
