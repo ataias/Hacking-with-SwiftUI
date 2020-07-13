@@ -9,7 +9,8 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+// Core Data Relationships
+struct CoreDataRelantionshipsView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Country.entity(), sortDescriptors: []) var countries: FetchedResults<Country>
 
@@ -65,17 +66,20 @@ struct ContentView: View {
     }
 }
 
-
-struct DynamicPredicateView: View {
+// Dynamic Predicate
+struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @State private var lastNameFilter = "A"
 
 //    @FetchRequest(entity: Ship.entity(), sortDescriptors: [], predicate: NSPredicate(format: "universe == %@", "Star Wars")) var ships: FetchedResults<Ship>
 
+    var filter: Filter {
+        return Filter.beginsWith("lastName", lastNameFilter)
+    }
 
     var body: some View {
         VStack {
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            FilteredList(filter: filter, sortDescriptors: [NSSortDescriptor(keyPath: \Singer.firstName, ascending: true)]) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
 
