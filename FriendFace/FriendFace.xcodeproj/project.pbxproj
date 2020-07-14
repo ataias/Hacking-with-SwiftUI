@@ -13,6 +13,7 @@
 		423BCD3524BDAC1600F83D41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 423BCD3424BDAC1600F83D41 /* Preview Assets.xcassets */; };
 		423BCD3D24BDAC3500F83D41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BCD3C24BDAC3500F83D41 /* User.swift */; };
 		423BCD3F24BDACAD00F83D41 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BCD3E24BDACAD00F83D41 /* Friend.swift */; };
+		42AEAEB324BDB82C003ADCD1 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEAEB224BDB82C003ADCD1 /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		423BCD3624BDAC1600F83D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		423BCD3C24BDAC3500F83D41 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		423BCD3E24BDACAD00F83D41 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		42AEAEB224BDB82C003ADCD1 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				423BCD2D24BDAC1400F83D41 /* FriendFaceApp.swift */,
 				423BCD2F24BDAC1400F83D41 /* ContentView.swift */,
+				42AEAEB224BDB82C003ADCD1 /* UserView.swift */,
 				423BCD3C24BDAC3500F83D41 /* User.swift */,
 				423BCD3E24BDACAD00F83D41 /* Friend.swift */,
 				423BCD3124BDAC1600F83D41 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			files = (
 				423BCD3024BDAC1400F83D41 /* ContentView.swift in Sources */,
 				423BCD2E24BDAC1400F83D41 /* FriendFaceApp.swift in Sources */,
+				42AEAEB324BDB82C003ADCD1 /* UserView.swift in Sources */,
 				423BCD3D24BDAC3500F83D41 /* User.swift in Sources */,
 				423BCD3F24BDACAD00F83D41 /* Friend.swift in Sources */,
 			);

@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(users) { user in
-                NavigationLink(destination: Text(user.name)) {
+                NavigationLink(destination: UserView(user: user)) {
                     VStack(alignment: .leading) {
                         Text(user.name)
                             .font(.headline)
@@ -23,6 +23,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationBarTitle("FriendFace")
         }
         .onAppear(perform: getUserData)
     }
@@ -42,7 +43,6 @@ struct ContentView: View {
                 return
             }
 
-            print(data)
             let decoder = JSONDecoder()
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -54,7 +54,6 @@ struct ContentView: View {
             }
 
             self.users = users
-            print(users)
 
         }.resume()
     }
