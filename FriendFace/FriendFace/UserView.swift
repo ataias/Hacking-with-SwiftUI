@@ -7,26 +7,92 @@
 
 import SwiftUI
 
+struct StatusView: View {
+    let color: Color
+
+    init(isActive: Bool) {
+        color = isActive ? Color.green : Color.gray
+    }
+    var body: some View {
+        Circle()
+            .foregroundColor(color)
+            .frame(width: 20, height: 20, alignment: .center)
+    }
+}
+
+struct StaticFormItem: View {
+    let title: String
+    let data: String
+
+    var body: some View {
+        HStack(alignment: .top) {
+            Text("\(title): ").bold()
+            Text(data)
+        }
+        .padding(.bottom, 8)
+    }
+}
+
+struct UserInfo: View {
+    let user: User
+
+    var body: some View {
+        Section(header: Text("Info").font(.title)) {
+            VStack(alignment: .leading) {
+
+                StaticFormItem(title: "Company", data: user.company)
+                StaticFormItem(title: "Email", data: user.email)
+                StaticFormItem(title: "Address", data: user.address)
+                StaticFormItem(title: "Tags", data: user.tags.joined(separator: ", "))
+                StaticFormItem(title: "Age", data: "\(user.age)")
+                    .padding(.bottom)
+            }
+            .padding(8)
+            .card()
+        }
+
+        .padding(.bottom, 10)
+    }
+}
+
+extension View {
+    func card() -> some View {
+        self.modifier(CardLike())
+    }
+}
+
+
+struct CardLike: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 3)
+            )
+    }
+}
+
+
 struct UserView: View {
     let user: User
 
     var body: some View {
         VStack(alignment: .leading) {
-            Section(header: Text(user.name).font(.title)) {
-                Text(user.isActive ? "Active" : "Inactive") // TODO change by circle with color
+            Section(header: HStack {
+                Text(user.name).font(.title)
+                Spacer()
+                StatusView(isActive: user.isActive)
+            }) {
                 // TODO for the next fields and any missing ones, you could have a "userdetailitem" view to show it. It could show them aligned, with a different style for the header and another for the value
-                Text("Company: \(user.company)")
-                Text("Email: \(user.email)")
-                Text("Address: \(user.address)")
-                Text("Tags: \(user.tags.joined(separator: ", "))")
-                Text("Age: \(user.age)")
-                    .padding(.bottom)
-
+                UserInfo(user: user)
             }
 
             Section(header: Text("About").font(.title)) {
                 Text(user.about)
+                    .padding(8)
+                    .card()
             }
+
 
             Spacer()
 
@@ -38,8 +104,9 @@ struct UserView: View {
 }
 
 struct UserView_Previews: PreviewProvider {
-    static let user = User(id: UUID(), isActive: true, name: "Ataias Pereira Reis", age: 26, company: "XYZ Corporation", email: "ataias@ataias.com", address: "Casa da Esquina 123", about: "Laboris ut dolore ullamco officia mollit reprehenderit qui eiusmod anim cillum qui ipsum esse reprehenderit. Deserunt quis consequat ut ex officia aliqua nostrud fugiat Lorem voluptate sunt consequat. Sint exercitation Lorem irure aliquip duis eiusmod enim. Excepteur non deserunt id eiusmod quis ipsum et consequat proident nulla cupidatat tempor aute. Aliquip amet in ut ad ullamco. Eiusmod anim anim officia magna qui exercitation incididunt eu eiusmod irure officia aute enim.", registered: Date(), tags: ["programmer", "husband"], friends: [])
+    static let users: [User] = Bundle.main.decode("friendface.json")
+
     static var previews: some View {
-        UserView(user: user)
+        UserView(user: users[0])
     }
 }
