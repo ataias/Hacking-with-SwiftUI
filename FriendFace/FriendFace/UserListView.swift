@@ -10,11 +10,20 @@ import SwiftUI
 struct UserListView: View {
 
     let users: [User]
+    let showOnly: [User]
+
+    init(users: [User], filter: [Friend]?) {
+        self.users = users
+        if let filter = filter {
+            self.showOnly = filter.compactMap { friend in users.first(where: { friend.id == $0.id }) }
+        } else {
+            self.showOnly = users
+        }
+    }
 
     var body: some View {
-        NavigationView {
-            List(users) { user in
-                NavigationLink(destination: UserView(user: user)) {
+            List(showOnly) { user in
+                NavigationLink(destination: UserView(user: user, users: users)) {
                     HStack {
                         StatusView(isActive: user.isActive)
                         VStack(alignment: .leading) {
@@ -25,8 +34,6 @@ struct UserListView: View {
                     }
                 }
             }
-            .navigationBarTitle("FriendFace")
-        }
     }
 }
 
@@ -35,6 +42,6 @@ struct UserListView_Previews: PreviewProvider {
     static let users: [User] = Bundle.main.decode("friendface.json")
 
     static var previews: some View {
-        UserListView(users: users)
+        UserListView(users: users, filter: nil)
     }
 }

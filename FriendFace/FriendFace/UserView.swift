@@ -75,31 +75,43 @@ struct CardLike: ViewModifier {
 
 struct UserView: View {
     let user: User
+    let users: [User]
+
+    init(user: User, users: [User]) {
+        self.user = user
+        self.users = users
+    }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Section(header: HStack {
-                Text(user.name).font(.title)
+        ScrollView(.vertical) {
+            VStack(alignment: .leading) {
+                Section(header: HStack {
+                    Text(user.name).font(.title)
+                    Spacer()
+                    StatusView(isActive: user.isActive)
+                }) {
+                    // TODO for the next fields and any missing ones, you could have a "userdetailitem" view to show it. It could show them aligned, with a different style for the header and another for the value
+                    UserInfo(user: user)
+                }
+
+                Section(header: Text("About").font(.title)) {
+                    Text(user.about)
+                        .padding(8)
+                        .card()
+                }
+
+                Section(header: Text("Friends").font(.title)) {
+                    UserListView(users: users, filter: user.friends)
+                }
+                .padding(.top, 10)
+
                 Spacer()
-                StatusView(isActive: user.isActive)
-            }) {
-                // TODO for the next fields and any missing ones, you could have a "userdetailitem" view to show it. It could show them aligned, with a different style for the header and another for the value
-                UserInfo(user: user)
+
+                // TODO Add friends list (will need the user data list)
+                // About the navigation link, how to handle it? I could add one to go to their friends, but would this go indefinitely? or do I limit it somehow?
             }
-
-            Section(header: Text("About").font(.title)) {
-                Text(user.about)
-                    .padding(8)
-                    .card()
-            }
-
-
-            Spacer()
-
-            // TODO Add friends list (will need the user data list)
-            // About the navigation link, how to handle it? I could add one to go to their friends, but would this go indefinitely? or do I limit it somehow?
+            .padding([.leading, .trailing], 20)
         }
-        .padding(.all, 20)
     }
 }
 
@@ -107,6 +119,6 @@ struct UserView_Previews: PreviewProvider {
     static let users: [User] = Bundle.main.decode("friendface.json")
 
     static var previews: some View {
-        UserView(user: users[0])
+        UserView(user: users[0], users: users)
     }
 }

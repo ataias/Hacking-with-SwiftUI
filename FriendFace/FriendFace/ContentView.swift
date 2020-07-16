@@ -13,8 +13,11 @@ struct ContentView: View {
     @State private var users = [User]()
 
     var body: some View {
-        UserListView(users: users)
-            .onAppear(perform: getUserData)
+        NavigationView {
+            UserListView(users: users, filter: nil)
+                .navigationBarTitle("FriendFace")
+                .onAppear(perform: getUserData)
+        }
     }
 
     func getUserData() {
