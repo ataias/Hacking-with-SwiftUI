@@ -90,7 +90,6 @@ struct UserView: View {
                     Spacer()
                     StatusView(isActive: user.isActive)
                 }) {
-                    // TODO for the next fields and any missing ones, you could have a "userdetailitem" view to show it. It could show them aligned, with a different style for the header and another for the value
                     UserInfo(user: user)
                 }
 
@@ -102,13 +101,12 @@ struct UserView: View {
 
                 Section(header: Text("Friends").font(.title)) {
                     UserListView(users: users, filter: user.friends)
+                        .frame(minHeight: 500)
                 }
                 .padding(.top, 10)
 
-                Spacer()
 
-                // TODO Add friends list (will need the user data list)
-                // About the navigation link, how to handle it? I could add one to go to their friends, but would this go indefinitely? or do I limit it somehow?
+                Spacer()
             }
             .padding([.leading, .trailing], 20)
         }
