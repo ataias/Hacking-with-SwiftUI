@@ -23,6 +23,15 @@ struct ContentView: View {
     }
 
     func getUserData() {
+
+        // TODO Fetch users from Core Data
+//        let fetchRequest: FetchRequest<CoreUser> = FetchRequest<CoreUser>(entity: CoreUser.entity(), sortDescriptors: [])
+//        let items: FetchedResults<CoreUser> = fetchRequest.wrappedValue
+//        let fetchedUsers = items.map({$0.data})
+
+
+        // TODO If results have data, just set users based on that
+        // TODO If results don't have data, do the request and then update core data AND users based on it
         // Prepare a URLRequest to send our encoded data as JSON.
         let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
         let request = URLRequest(url: url)
@@ -37,16 +46,12 @@ struct ContentView: View {
                 return
             }
 
-            let decoder = JSONDecoder()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            decoder.dateDecodingStrategy = .formatted(formatter)
-
-            guard let users = try? decoder.decode([User].self, from: data) else {
+            guard let users = try? UserDecoder.decoder.decode([User].self, from: data) else {
                 print("Response or decoder is wrong")
                 return
             }
 
+            print("Http Request happened")
             self.users = users
 
         }.resume()
