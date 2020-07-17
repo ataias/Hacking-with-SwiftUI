@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct FriendFaceApp: App {
+    let context = PersistentCloudKitContainer.persistentContainer.viewContext
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environment(\.managedObjectContext, context)
         }
     }
 }

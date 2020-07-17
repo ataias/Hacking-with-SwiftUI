@@ -13,6 +13,8 @@
 		423BCD3524BDAC1600F83D41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 423BCD3424BDAC1600F83D41 /* Preview Assets.xcassets */; };
 		423BCD3D24BDAC3500F83D41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BCD3C24BDAC3500F83D41 /* User.swift */; };
 		423BCD3F24BDACAD00F83D41 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423BCD3E24BDACAD00F83D41 /* Friend.swift */; };
+		423FB3D924C19EFE00931B87 /* PersistentCloudKitContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB3D824C19EFE00931B87 /* PersistentCloudKitContainer.swift */; };
+		423FB3DC24C19FF500931B87 /* FriendModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 423FB3DA24C19FF500931B87 /* FriendModel.xcdatamodeld */; };
 		42AEAEB324BDB82C003ADCD1 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEAEB224BDB82C003ADCD1 /* UserView.swift */; };
 		42D57C6724BF089B001D4EB2 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */; };
 		42D57C6924BF094F001D4EB2 /* friendface.json in Resources */ = {isa = PBXBuildFile; fileRef = 42D57C6824BF094E001D4EB2 /* friendface.json */; };
@@ -28,6 +30,8 @@
 		423BCD3624BDAC1600F83D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		423BCD3C24BDAC3500F83D41 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		423BCD3E24BDACAD00F83D41 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		423FB3D824C19EFE00931B87 /* PersistentCloudKitContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentCloudKitContainer.swift; sourceTree = "<group>"; };
+		423FB3DB24C19FF500931B87 /* FriendModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendModel.xcdatamodel; sourceTree = "<group>"; };
 		42AEAEB224BDB82C003ADCD1 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		42D57C6824BF094E001D4EB2 /* friendface.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = friendface.json; sourceTree = "<group>"; };
@@ -48,6 +52,7 @@
 		423BCD2124BDAC1400F83D41 = {
 			isa = PBXGroup;
 			children = (
+				423FB3DA24C19FF500931B87 /* FriendModel.xcdatamodeld */,
 				423BCD2C24BDAC1400F83D41 /* FriendFace */,
 				423BCD2B24BDAC1400F83D41 /* Products */,
 			);
@@ -65,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				423BCD2D24BDAC1400F83D41 /* FriendFaceApp.swift */,
+				423FB3D824C19EFE00931B87 /* PersistentCloudKitContainer.swift */,
 				423BCD2F24BDAC1400F83D41 /* ContentView.swift */,
 				42D57C6A24BF0C18001D4EB2 /* UserListView.swift */,
 				42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */,
@@ -158,10 +164,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D57C6B24BF0C18001D4EB2 /* UserListView.swift in Sources */,
+				423FB3DC24C19FF500931B87 /* FriendModel.xcdatamodeld in Sources */,
 				423BCD3024BDAC1400F83D41 /* ContentView.swift in Sources */,
 				423BCD2E24BDAC1400F83D41 /* FriendFaceApp.swift in Sources */,
 				42AEAEB324BDB82C003ADCD1 /* UserView.swift in Sources */,
 				423BCD3D24BDAC3500F83D41 /* User.swift in Sources */,
+				423FB3D924C19EFE00931B87 /* PersistentCloudKitContainer.swift in Sources */,
 				423BCD3F24BDACAD00F83D41 /* Friend.swift in Sources */,
 				42D57C6724BF089B001D4EB2 /* Bundle-Decodable.swift in Sources */,
 			);
@@ -352,6 +360,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		423FB3DA24C19FF500931B87 /* FriendModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				423FB3DB24C19FF500931B87 /* FriendModel.xcdatamodel */,
+			);
+			currentVersion = 423FB3DB24C19FF500931B87 /* FriendModel.xcdatamodel */;
+			path = FriendModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 423BCD2224BDAC1400F83D41 /* Project object */;
 }

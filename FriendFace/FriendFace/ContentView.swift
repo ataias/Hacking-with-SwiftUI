@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @Environment(\.managedObjectContext) var moc
+
     @State private var errorMessage = ""
     @State private var users = [User]()
 
