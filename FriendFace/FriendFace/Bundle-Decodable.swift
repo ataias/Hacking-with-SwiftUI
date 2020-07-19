@@ -18,7 +18,7 @@ extension Bundle {
             fatalError("Failed to load \(file) from bundle.")
         }
 
-        guard let loaded = try? UserDecoder.decoder.decode(T.self, from: data) else {
+        guard let loaded = try? User.decoder.decode(T.self, from: data) else {
             fatalError("Failed to decode \(file) from bundle")
         }
 

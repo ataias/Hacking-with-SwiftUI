@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: CoreUser.entity(), sortDescriptors: []) var coreUsers: FetchedResults<CoreUser>
 
     @State private var errorMessage = ""
     @State private var users = [User]()
@@ -22,15 +23,28 @@ struct ContentView: View {
         }
     }
 
+    func addUser(user: User) {
+        let coreUser = CoreUser(context: self.moc)
+        coreUser.id = user.id
+        let userData = try! User.encoder.encode(user)
+        coreUser.data = String(decoding: userData, as: UTF8.self)
+        try? self.moc.save()
+    }
+
     func getUserData() {
 
-        // TODO Fetch users from Core Data
-//        let fetchRequest: FetchRequest<CoreUser> = FetchRequest<CoreUser>(entity: CoreUser.entity(), sortDescriptors: [])
-//        let items: FetchedResults<CoreUser> = fetchRequest.wrappedValue
-//        let fetchedUsers = items.map({$0.data})
+        // DONE If results have data, just set users based on that
+        if coreUsers.count > 0 {
+            var tempUsers = [User]()
+            for coreUser in coreUsers {
+                let jsonStr: Data = coreUser.data!.data(using: .utf8)!
+                let tempUser = try! User.decoder.decode(User.self, from: jsonStr)
+                tempUsers.append(tempUser)
+            }
+            users = tempUsers
+            return
+        }
 
-
-        // TODO If results have data, just set users based on that
         // TODO If results don't have data, do the request and then update core data AND users based on it
         // Prepare a URLRequest to send our encoded data as JSON.
         let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
@@ -46,13 +60,15 @@ struct ContentView: View {
                 return
             }
 
-            guard let users = try? UserDecoder.decoder.decode([User].self, from: data) else {
+            guard let users = try? User.decoder.decode([User].self, from: data) else {
                 print("Response or decoder is wrong")
                 return
             }
 
             print("Http Request happened")
             self.users = users
+
+            users.forEach(addUser)
 
         }.resume()
     }

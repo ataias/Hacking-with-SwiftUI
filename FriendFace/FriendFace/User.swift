@@ -19,4 +19,21 @@ struct User: Codable, Identifiable {
     let registered: Date
     let tags: [String]
     let friends: [Friend]
+
+    public static var decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return decoder
+    }()
+
+    public static var encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        encoder.dateEncodingStrategy = .formatted(formatter)
+        return encoder
+    }()
+
 }

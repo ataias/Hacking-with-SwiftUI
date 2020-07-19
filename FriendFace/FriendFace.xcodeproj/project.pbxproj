@@ -17,7 +17,6 @@
 		423FB3DC24C19FF500931B87 /* FriendModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 423FB3DA24C19FF500931B87 /* FriendModel.xcdatamodeld */; };
 		423FB3E324C1A34B00931B87 /* CoreUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB3E124C1A34B00931B87 /* CoreUser+CoreDataClass.swift */; };
 		423FB3E424C1A34B00931B87 /* CoreUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB3E224C1A34B00931B87 /* CoreUser+CoreDataProperties.swift */; };
-		423FB3E624C1A63600931B87 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB3E524C1A63600931B87 /* Decoder.swift */; };
 		42AEAEB324BDB82C003ADCD1 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEAEB224BDB82C003ADCD1 /* UserView.swift */; };
 		42D57C6724BF089B001D4EB2 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */; };
 		42D57C6924BF094F001D4EB2 /* friendface.json in Resources */ = {isa = PBXBuildFile; fileRef = 42D57C6824BF094E001D4EB2 /* friendface.json */; };
@@ -37,7 +36,6 @@
 		423FB3DB24C19FF500931B87 /* FriendModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendModel.xcdatamodel; sourceTree = "<group>"; };
 		423FB3E124C1A34B00931B87 /* CoreUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		423FB3E224C1A34B00931B87 /* CoreUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		423FB3E524C1A63600931B87 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		42AEAEB224BDB82C003ADCD1 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		42D57C6824BF094E001D4EB2 /* friendface.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = friendface.json; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				423BCD2D24BDAC1400F83D41 /* FriendFaceApp.swift */,
 				423FB3D824C19EFE00931B87 /* PersistentCloudKitContainer.swift */,
 				423BCD2F24BDAC1400F83D41 /* ContentView.swift */,
-				423FB3E524C1A63600931B87 /* Decoder.swift */,
 				42D57C6A24BF0C18001D4EB2 /* UserListView.swift */,
 				42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */,
 				42AEAEB224BDB82C003ADCD1 /* UserView.swift */,
@@ -182,7 +179,6 @@
 				423FB3D924C19EFE00931B87 /* PersistentCloudKitContainer.swift in Sources */,
 				423FB3E324C1A34B00931B87 /* CoreUser+CoreDataClass.swift in Sources */,
 				423BCD3F24BDACAD00F83D41 /* Friend.swift in Sources */,
-				423FB3E624C1A63600931B87 /* Decoder.swift in Sources */,
 				42D57C6724BF089B001D4EB2 /* Bundle-Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
