@@ -32,20 +32,18 @@ struct ContentView: View {
     }
 
     func getUserData() {
-
-        // DONE If results have data, just set users based on that
-        if coreUsers.count > 0 {
-            var tempUsers = [User]()
-            for coreUser in coreUsers {
-                let jsonStr: Data = coreUser.data!.data(using: .utf8)!
-                let tempUser = try! User.decoder.decode(User.self, from: jsonStr)
-                tempUsers.append(tempUser)
-            }
-            users = tempUsers
+        // Data already initialized
+        if users.count > 0 {
             return
         }
 
-        // TODO If results don't have data, do the request and then update core data AND users based on it
+        // Data not initialized, let's see if we can get it from core data
+        if coreUsers.count > 0 {
+            users = coreUsers.map({try! User.decoder.decode(User.self, from: $0.data!.data(using: .utf8)!)})
+            return
+        }
+
+        // Fetch from web if not available in core data
         // Prepare a URLRequest to send our encoded data as JSON.
         let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
         let request = URLRequest(url: url)

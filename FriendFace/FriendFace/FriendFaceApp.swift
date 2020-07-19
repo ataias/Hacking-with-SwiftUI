@@ -16,4 +16,6 @@ struct FriendFaceApp: App {
             ContentView().environment(\.managedObjectContext, context)
         }
     }
+
+
 }
