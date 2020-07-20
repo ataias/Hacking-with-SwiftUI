@@ -36,6 +36,7 @@
 		423FB3DB24C19FF500931B87 /* FriendModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendModel.xcdatamodel; sourceTree = "<group>"; };
 		423FB3E124C1A34B00931B87 /* CoreUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		423FB3E224C1A34B00931B87 /* CoreUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		424ADEFD24C4F2CD00D6FAAB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42AEAEB224BDB82C003ADCD1 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		42D57C6824BF094E001D4EB2 /* friendface.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = friendface.json; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 				423BCD2D24BDAC1400F83D41 /* FriendFaceApp.swift */,
 				423FB3D824C19EFE00931B87 /* PersistentCloudKitContainer.swift */,
 				423BCD2F24BDAC1400F83D41 /* ContentView.swift */,
+				424ADEFD24C4F2CD00D6FAAB /* README.md */,
 				42D57C6A24BF0C18001D4EB2 /* UserListView.swift */,
 				42D57C6624BF089B001D4EB2 /* Bundle-Decodable.swift */,
 				42AEAEB224BDB82C003ADCD1 /* UserView.swift */,
