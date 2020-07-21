@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4227CB3C24C6F49C0077EFE2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227CB3B24C6F49C0077EFE2 /* ImagePicker.swift */; };
 		424FB04D24C596FD00A7F905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424FB04C24C596FD00A7F905 /* AppDelegate.swift */; };
 		424FB04F24C596FD00A7F905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424FB04E24C596FD00A7F905 /* SceneDelegate.swift */; };
 		424FB05124C596FD00A7F905 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424FB05024C596FD00A7F905 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4227CB3B24C6F49C0077EFE2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		424FB04924C596FD00A7F905 /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		424FB04C24C596FD00A7F905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		424FB04E24C596FD00A7F905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				424FB06124C59C1C00A7F905 /* CustomBindingView.swift */,
 				424FB06324C59C4100A7F905 /* ActionSheetTestView.swift */,
 				424FB06524C5A04500A7F905 /* CoreImageTestView.swift */,
+				4227CB3B24C6F49C0077EFE2 /* ImagePicker.swift */,
 				424FB05224C596FE00A7F905 /* Assets.xcassets */,
 				424FB05724C596FE00A7F905 /* LaunchScreen.storyboard */,
 				424FB05A24C596FE00A7F905 /* Info.plist */,
@@ -160,6 +163,7 @@
 				424FB04D24C596FD00A7F905 /* AppDelegate.swift in Sources */,
 				424FB04F24C596FD00A7F905 /* SceneDelegate.swift in Sources */,
 				424FB05124C596FD00A7F905 /* ContentView.swift in Sources */,
+				4227CB3C24C6F49C0077EFE2 /* ImagePicker.swift in Sources */,
 				424FB06424C59C4100A7F905 /* ActionSheetTestView.swift in Sources */,
 				424FB06224C59C1C00A7F905 /* CustomBindingView.swift in Sources */,
 				424FB06624C5A04500A7F905 /* CoreImageTestView.swift in Sources */,

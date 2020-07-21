@@ -13,14 +13,22 @@ import UIKit
 
 struct CoreImageTestView: View {
     @State private var image: Image?
+    @State private var showingImagePicker = false
 
     var body: some View {
         VStack {
             image?
                 .resizable()
                 .scaledToFit()
+
+            Button("Select Image") {
+                self.showingImagePicker = true
+            }
         }
-        .onAppear(perform: loadImage)
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker()
+        }
+//        .onAppear(perform: loadImage)
 
     }
 
@@ -31,14 +39,26 @@ struct CoreImageTestView: View {
         let beginImage = CIImage(image: inputImage)
 
         let context = CIContext()
-        let currentFilter = CIFilter.sepiaTone()
-        currentFilter.inputImage = beginImage
-        currentFilter.intensity = 1
+//        let currentFilter = CIFilter.crystallize()
+////        currentFilter.inputImage = beginImage
+//        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+//        currentFilter.radius = 2
+////        currentFilter.radius
 
-        guard let outputImage = currentFilter.outputImage else { return }
+        guard let currentFilter = CIFilter(name: "CITwirlDistortion") else { return }
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        currentFilter.setValue(700, forKey: kCIInputRadiusKey)
+        currentFilter.setValue(CIVector(x: inputImage.size.width / 2 + 300, y: inputImage.size.height / 2 + 350), forKey: kCIInputCenterKey)
+
+        guard let outputImage = currentFilter.outputImage else {
+            print("Pixelation failed")
+            return
+        }
         if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
             let uiImage = UIImage(cgImage: cgimg).rotate(radians: .pi/2)
             image = Image(uiImage: uiImage)
+        } else {
+            print("Setting image failed")
         }
     }
 }
@@ -50,6 +70,9 @@ struct CoreImageTestView_Previews: PreviewProvider {
 }
 
 extension UIImage {
+    // From StackOverflow
+    // https://stackoverflow.com/a/48781122/2304697
+    // License: https://creativecommons.org/licenses/by-sa/4.0/
     func rotate(radians: CGFloat) -> UIImage {
         let rotatedSize = CGRect(origin: .zero, size: size)
             .applying(CGAffineTransform(rotationAngle: CGFloat(radians)))
