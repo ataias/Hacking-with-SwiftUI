@@ -12,6 +12,7 @@ import CoreImage.CIFilterBuiltins
 import UIKit
 
 struct CoreImageTestView: View {
+    @State private var inputImage: UIImage?
     @State private var image: Image?
     @State private var showingImagePicker = false
 
@@ -25,11 +26,15 @@ struct CoreImageTestView: View {
                 self.showingImagePicker = true
             }
         }
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker()
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadInputImage) {
+            ImagePicker(image: self.$inputImage)
         }
-//        .onAppear(perform: loadImage)
 
+    }
+
+    func loadInputImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
     }
 
     func loadImage() {
