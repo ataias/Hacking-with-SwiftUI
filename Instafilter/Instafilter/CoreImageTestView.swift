@@ -35,6 +35,8 @@ struct CoreImageTestView: View {
     func loadInputImage() {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: inputImage)
     }
 
     func loadImage() {
