@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		4227CB3B24C6F49C0077EFE2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		424C0B3A24C843F200072803 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
-		424FB04924C596FD00A7F905 /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		424FB04924C596FD00A7F905 /* InstafilterPrep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstafilterPrep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		424FB04C24C596FD00A7F905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		424FB04E24C596FD00A7F905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		424FB05024C596FD00A7F905 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		424FB04024C596FD00A7F905 = {
 			isa = PBXGroup;
 			children = (
-				424FB04B24C596FD00A7F905 /* Instafilter */,
+				424FB04B24C596FD00A7F905 /* InstafilterPrep */,
 				424FB04A24C596FD00A7F905 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,12 +59,12 @@
 		424FB04A24C596FD00A7F905 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				424FB04924C596FD00A7F905 /* Instafilter.app */,
+				424FB04924C596FD00A7F905 /* InstafilterPrep.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		424FB04B24C596FD00A7F905 /* Instafilter */ = {
+		424FB04B24C596FD00A7F905 /* InstafilterPrep */ = {
 			isa = PBXGroup;
 			children = (
 				424FB04C24C596FD00A7F905 /* AppDelegate.swift */,
@@ -81,7 +81,7 @@
 				424FB05A24C596FE00A7F905 /* Info.plist */,
 				424FB05424C596FE00A7F905 /* Preview Content */,
 			);
-			path = Instafilter;
+			path = InstafilterPrep;
 			sourceTree = "<group>";
 		};
 		424FB05424C596FE00A7F905 /* Preview Content */ = {
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		424FB04824C596FD00A7F905 /* Instafilter */ = {
+		424FB04824C596FD00A7F905 /* InstafilterPrep */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 424FB05D24C596FE00A7F905 /* Build configuration list for PBXNativeTarget "Instafilter" */;
+			buildConfigurationList = 424FB05D24C596FE00A7F905 /* Build configuration list for PBXNativeTarget "InstafilterPrep" */;
 			buildPhases = (
 				424FB04524C596FD00A7F905 /* Sources */,
 				424FB04624C596FD00A7F905 /* Frameworks */,
@@ -107,9 +107,9 @@
 			);
 			dependencies = (
 			);
-			name = Instafilter;
+			name = InstafilterPrep;
 			productName = Instafilter;
-			productReference = 424FB04924C596FD00A7F905 /* Instafilter.app */;
+			productReference = 424FB04924C596FD00A7F905 /* InstafilterPrep.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -127,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 424FB04424C596FD00A7F905 /* Build configuration list for PBXProject "Instafilter" */;
+			buildConfigurationList = 424FB04424C596FD00A7F905 /* Build configuration list for PBXProject "InstafilterPrep" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -140,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				424FB04824C596FD00A7F905 /* Instafilter */,
+				424FB04824C596FD00A7F905 /* InstafilterPrep */,
 			);
 		};
 /* End PBXProject section */
@@ -307,16 +307,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Instafilter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InstafilterPrep/Preview Content\"";
 				DEVELOPMENT_TEAM = 8XPT9US388;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Instafilter/Info.plist;
+				INFOPLIST_FILE = InstafilterPrep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.ataias.Instafilter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ataias.InstafilterPrep;
+				PRODUCT_NAME = InstafilterPrep;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -327,16 +327,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Instafilter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InstafilterPrep/Preview Content\"";
 				DEVELOPMENT_TEAM = 8XPT9US388;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Instafilter/Info.plist;
+				INFOPLIST_FILE = InstafilterPrep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.ataias.Instafilter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.ataias.InstafilterPrep;
+				PRODUCT_NAME = InstafilterPrep;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -345,7 +345,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		424FB04424C596FD00A7F905 /* Build configuration list for PBXProject "Instafilter" */ = {
+		424FB04424C596FD00A7F905 /* Build configuration list for PBXProject "InstafilterPrep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				424FB05B24C596FE00A7F905 /* Debug */,
@@ -354,7 +354,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		424FB05D24C596FE00A7F905 /* Build configuration list for PBXNativeTarget "Instafilter" */ = {
+		424FB05D24C596FE00A7F905 /* Build configuration list for PBXNativeTarget "InstafilterPrep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				424FB05E24C596FE00A7F905 /* Debug */,
