@@ -21,6 +21,8 @@ struct ContentView: View {
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
 
     @State private var showingFilterSheet = false
+    @State private var showingSaveAlert = false
+    @State private var saveMessage = ""
 
     let context = CIContext()
 
@@ -68,14 +70,21 @@ struct ContentView: View {
                         Spacer()
 
                         Button("Save") {
-                            guard let processedImage = self.processedImage else { return }
+                            guard let processedImage = self.processedImage else {
+                                self.saveMessage = "Oops: there is no image selected!"
+                                self.showingSaveAlert = true
+                                return
+                            }
+
                             let imageSaver = ImageSaver()
                             imageSaver.successHandler = {
-                                print("Success!")
+                                self.saveMessage = "Success!"
+                                self.showingSaveAlert = true
                             }
 
                             imageSaver.errorHandler = {
-                                print("Oops: \($0.localizedDescription)")
+                                self.saveMessage = "Oops: \($0.localizedDescription)"
+                                self.showingSaveAlert = true
                             }
                             imageSaver.writePhotoToAlbum(image: processedImage)
                         }
@@ -97,6 +106,9 @@ struct ContentView: View {
                         .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
                         .cancel()
                     ])
+                }
+                .alert(isPresented: $showingSaveAlert) {
+                    Alert(title: Text("Save Status"), message: Text(saveMessage), dismissButton: .cancel())
                 }
             }
         )
