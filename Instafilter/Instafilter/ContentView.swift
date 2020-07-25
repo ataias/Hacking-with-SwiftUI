@@ -10,11 +10,6 @@ import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-struct Filter {
-    let name: String
-    let ciFilter: CIFilter
-}
-
 struct ContentView: View {
     @State private var image: Image?
     @State private var inputImage: UIImage?
@@ -23,21 +18,11 @@ struct ContentView: View {
     @State private var filterIntensity = 0.5
     @State private var showingImagePicker = false
 
-    @State private var currentFilter: Filter = ContentView.filters[4]
+    @State private var currentFilter: Filter = Filter.all[4]
 
     @State private var showingFilterSheet = false
     @State private var showingSaveAlert = false
     @State private var saveMessage = ""
-
-    static let filters: [Filter] = [
-        Filter(name: "Crystallize", ciFilter: CIFilter.crystallize()) ,
-        Filter(name: "Edges", ciFilter: CIFilter.edges()),
-        Filter(name: "Gaussian Blur", ciFilter: CIFilter.gaussianBlur()),
-        Filter(name: "Pixellate", ciFilter: CIFilter.pixellate()),
-        Filter(name: "Sepia Tone", ciFilter: CIFilter.sepiaTone()),
-        Filter(name: "Unsharp Mask", ciFilter: CIFilter.unsharpMask()),
-        Filter(name: "Vignette", ciFilter: CIFilter.vignette()),
-    ]
 
     let context = CIContext()
 
@@ -55,54 +40,17 @@ struct ContentView: View {
         return (
             NavigationView {
                 VStack {
-                    ZStack {
-                        Rectangle()
-                            .fill(Color.secondary)
-                        if image != nil {
-                            image?
-                                .resizable()
-                                .scaledToFit()
-                        } else {
-                            Text("Tap to select a picture")
-                                .foregroundColor(.white)
-                                .font(.headline)
-                        }
-                    }
-                    .onTapGesture {
-                        self.showingImagePicker = true
-                    }
-
+                    ImageViewer(image: image)
+                        .onTapGesture { self.showingImagePicker = true }
                     HStack {
                         Text("Intensity")
                         Slider(value: intensity, in: 0.0...1.0)
                     }.padding(.vertical)
 
                     HStack {
-                        Button(currentFilter.name) {
-                            self.showingFilterSheet = true
-                        }
-
+                        Button(currentFilter.name) { self.showingFilterSheet = true }
                         Spacer()
-
-                        Button("Save") {
-                            guard let processedImage = self.processedImage else {
-                                self.saveMessage = "Oops: there is no image selected!"
-                                self.showingSaveAlert = true
-                                return
-                            }
-
-                            let imageSaver = ImageSaver()
-                            imageSaver.successHandler = {
-                                self.saveMessage = "Success!"
-                                self.showingSaveAlert = true
-                            }
-
-                            imageSaver.errorHandler = {
-                                self.saveMessage = "Oops: \($0.localizedDescription)"
-                                self.showingSaveAlert = true
-                            }
-                            imageSaver.writePhotoToAlbum(image: processedImage)
-                        }
+                        Button("Save") { self.saveImage() }
                     }
                 }
                 .padding([.horizontal, .bottom])
@@ -111,8 +59,7 @@ struct ContentView: View {
                     ImagePicker(image: self.$inputImage)
                 }
                 .actionSheet(isPresented: $showingFilterSheet) {
-
-                    let buttons: [Alert.Button] = (ContentView.filters.map { filter in .default(Text(filter.name), action: { self.setFilter(filter) }) }) + [.cancel()]
+                    let buttons: [Alert.Button] = (Filter.all.map { filter in .default(Text(filter.name), action: { self.setFilter(filter) }) }) + [.cancel()]
                     return (
                         ActionSheet(title: Text("Select a filter"), buttons: buttons)
                     )
@@ -127,17 +74,17 @@ struct ContentView: View {
     func loadImage() {
         guard let inputImage = inputImage else { return }
         let beginImage = CIImage(image: inputImage)
-        currentFilter.ciFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        currentFilter.ci.setValue(beginImage, forKey: kCIInputImageKey)
         applyProcessing()
     }
 
     func applyProcessing() {
-        let inputKeys = currentFilter.ciFilter.inputKeys
-        if inputKeys.contains(kCIInputIntensityKey) { currentFilter.ciFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.ciFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
-        if inputKeys.contains(kCIInputScaleKey) { currentFilter.ciFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
+        let inputKeys = currentFilter.ci.inputKeys
+        if inputKeys.contains(kCIInputIntensityKey) { currentFilter.ci.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
+        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.ci.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
+        if inputKeys.contains(kCIInputScaleKey) { currentFilter.ci.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
 
-        guard let outputImage = currentFilter.ciFilter.outputImage else { return }
+        guard let outputImage = currentFilter.ci.outputImage else { return }
 
         if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
             let uiImage = UIImage(cgImage: cgimg)
@@ -149,6 +96,26 @@ struct ContentView: View {
     func setFilter(_ filter: Filter) {
         currentFilter = filter
         loadImage()
+    }
+
+    func saveImage() {
+        guard let processedImage = self.processedImage else {
+            self.saveMessage = "Oops: there is no image selected!"
+            self.showingSaveAlert = true
+            return
+        }
+
+        let imageSaver = ImageSaver()
+        imageSaver.successHandler = {
+            self.saveMessage = "Success!"
+            self.showingSaveAlert = true
+        }
+
+        imageSaver.errorHandler = {
+            self.saveMessage = "Oops: \($0.localizedDescription)"
+            self.showingSaveAlert = true
+        }
+        imageSaver.writePhotoToAlbum(image: processedImage)
     }
 }
 
