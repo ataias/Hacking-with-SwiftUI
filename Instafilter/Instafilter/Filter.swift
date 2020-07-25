@@ -23,4 +23,9 @@ struct Filter {
         Filter(name: "Unsharp Mask", ci: CIFilter.unsharpMask()),
         Filter(name: "Vignette", ci: CIFilter.vignette()),
     ]
+
+    var hasIntensity: Bool { ci.inputKeys.contains(kCIInputIntensityKey) }
+    var hasRadius: Bool { ci.inputKeys.contains(kCIInputRadiusKey) }
+    var hasScale: Bool { ci.inputKeys.contains(kCIInputScaleKey) }
+
 }

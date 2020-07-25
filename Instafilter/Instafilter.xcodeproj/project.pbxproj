@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4206217024CC482E00316DD7 /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206216F24CC482E00316DD7 /* ImageViewer.swift */; };
 		4206217224CC4A4500316DD7 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206217124CC4A4500316DD7 /* Filter.swift */; };
+		4206217424CC4C6200316DD7 /* FilterSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206217324CC4C6200316DD7 /* FilterSlider.swift */; };
 		421E720524C990E50044CBE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421E720424C990E50044CBE4 /* AppDelegate.swift */; };
 		421E720724C990E50044CBE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421E720624C990E50044CBE4 /* SceneDelegate.swift */; };
 		421E720924C990E50044CBE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421E720824C990E50044CBE4 /* ContentView.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		4206216F24CC482E00316DD7 /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
 		4206217124CC4A4500316DD7 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		4206217324CC4C6200316DD7 /* FilterSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSlider.swift; sourceTree = "<group>"; };
 		421E720124C990E50044CBE4 /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		421E720424C990E50044CBE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		421E720624C990E50044CBE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				421E720424C990E50044CBE4 /* AppDelegate.swift */,
 				421E720624C990E50044CBE4 /* SceneDelegate.swift */,
 				421E720824C990E50044CBE4 /* ContentView.swift */,
+				4206217324CC4C6200316DD7 /* FilterSlider.swift */,
 				4206216F24CC482E00316DD7 /* ImageViewer.swift */,
 				4206217124CC4A4500316DD7 /* Filter.swift */,
 				4252B62524CAE7CF00514757 /* ImageSaver.swift */,
@@ -164,6 +167,7 @@
 				4252B62624CAE7CF00514757 /* ImageSaver.swift in Sources */,
 				4206217024CC482E00316DD7 /* ImageViewer.swift in Sources */,
 				421E720724C990E50044CBE4 /* SceneDelegate.swift in Sources */,
+				4206217424CC4C6200316DD7 /* FilterSlider.swift in Sources */,
 				421E720924C990E50044CBE4 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
