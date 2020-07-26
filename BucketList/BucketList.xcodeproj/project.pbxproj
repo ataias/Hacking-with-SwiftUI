@@ -42,7 +42,6 @@
 		424EEAFA24CE069300BBB4D4 = {
 			isa = PBXGroup;
 			children = (
-				424EEB1A24CE06A800BBB4D4 /* MapView.swift */,
 				424EEB0524CE069300BBB4D4 /* BucketList */,
 				424EEB0424CE069300BBB4D4 /* Products */,
 			);
@@ -62,6 +61,7 @@
 				424EEB0624CE069300BBB4D4 /* AppDelegate.swift */,
 				424EEB0824CE069300BBB4D4 /* SceneDelegate.swift */,
 				424EEB0A24CE069300BBB4D4 /* ContentView.swift */,
+				424EEB1A24CE06A800BBB4D4 /* MapView.swift */,
 				424EEB0C24CE069500BBB4D4 /* Assets.xcassets */,
 				424EEB1124CE069500BBB4D4 /* LaunchScreen.storyboard */,
 				424EEB1424CE069500BBB4D4 /* Info.plist */,
