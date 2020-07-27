@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var locations = [MKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showingPlaceDetails = false
+    @State private var showingEditScreen = false
 
     var body: some View {
         ZStack {
@@ -32,6 +33,8 @@ struct ContentView: View {
                         newLocation.title = "Example title"
                         newLocation.coordinate = self.centerCoordinate
                         self.locations.append(newLocation)
+                        self.selectedPlace = newLocation
+                        self.showingEditScreen = true
                     }) {
                         Image(systemName: "plus")
                     }
@@ -49,13 +52,18 @@ struct ContentView: View {
             let message = Text(selectedPlace?.subtitle ?? "Missing place information")
             let primaryButton = Alert.Button.default(Text("OK"))
             let secondaryButton = Alert.Button.default(Text("Edit")) {
-                // do something
+                self.showingEditScreen = true
             }
 
             return (
                 Alert(title: title, message: message, primaryButton: primaryButton, secondaryButton: secondaryButton)
             )
         }
+        .sheet(isPresented: $showingEditScreen, content: {
+            if self.selectedPlace != nil {
+                EditView(placemark: self.selectedPlace!)
+            }
+        })
     }
 }
 
