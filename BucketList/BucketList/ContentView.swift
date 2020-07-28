@@ -11,7 +11,7 @@ import MapKit
 
 struct ContentView: View {
     @State private var centerCoordinate = CLLocationCoordinate2D()
-    @State private var locations = [MKPointAnnotation]()
+    @State private var locations = [CodableMKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showingPlaceDetails = false
     @State private var showingEditScreen = false
@@ -29,8 +29,9 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let newLocation = MKPointAnnotation()
+                        let newLocation = CodableMKPointAnnotation()
                         newLocation.title = "Example title"
+//                        newLocation.subtitle = "Example subtitle"
                         newLocation.coordinate = self.centerCoordinate
                         self.locations.append(newLocation)
                         self.selectedPlace = newLocation
@@ -59,11 +60,35 @@ struct ContentView: View {
                 Alert(title: title, message: message, primaryButton: primaryButton, secondaryButton: secondaryButton)
             )
         }
-        .sheet(isPresented: $showingEditScreen, content: {
+        .onAppear(perform: loadData)
+        .sheet(isPresented: $showingEditScreen, onDismiss: saveData, content: {
             if self.selectedPlace != nil {
                 EditView(placemark: self.selectedPlace!)
             }
         })
+    }
+
+    func loadData() {
+        let filename = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
+
+        do {
+            let data = try Data(contentsOf: filename)
+            locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
+        } catch {
+            print("Unable to load saved data: \(error)")
+        }
+    }
+
+    func saveData() {
+        do {
+            let filename = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
+            let data = try JSONEncoder().encode(self.locations)
+            // complete file protection will set encryption for us!
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+            print("Saved Data!")
+        } catch {
+            print("Unable to save data.")
+        }
     }
 }
 
