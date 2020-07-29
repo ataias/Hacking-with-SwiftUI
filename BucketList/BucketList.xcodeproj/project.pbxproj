@@ -10,6 +10,10 @@
 		420D85F824CED43500B3B6CD /* MKPointAnnotation-ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D85F724CED43500B3B6CD /* MKPointAnnotation-ObservableObject.swift */; };
 		420D85FA24CED4E800B3B6CD /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D85F924CED4E800B3B6CD /* EditView.swift */; };
 		420D85FC24CED84900B3B6CD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D85FB24CED84900B3B6CD /* Result.swift */; };
+		4231DE0A24D17A18007E01F7 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4231DE0924D17A18007E01F7 /* PlusButton.swift */; };
+		4231DE0C24D17AD5007E01F7 /* BigBlueCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4231DE0B24D17AD5007E01F7 /* BigBlueCircle.swift */; };
+		4231DE0E24D17B4F007E01F7 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4231DE0D24D17B4F007E01F7 /* CapsuleButton.swift */; };
+		4231DE1024D17D3F007E01F7 /* MainMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4231DE0F24D17D3F007E01F7 /* MainMapView.swift */; };
 		4237101524D024FC00B38BB5 /* MKPointAnnotation-Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237101424D024FC00B38BB5 /* MKPointAnnotation-Codable.swift */; };
 		4237101724D0283200B38BB5 /* FileManager-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237101624D0283200B38BB5 /* FileManager-Extensions.swift */; };
 		424EEB0724CE069300BBB4D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424EEB0624CE069300BBB4D4 /* AppDelegate.swift */; };
@@ -25,6 +29,11 @@
 		420D85F724CED43500B3B6CD /* MKPointAnnotation-ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-ObservableObject.swift"; sourceTree = "<group>"; };
 		420D85F924CED4E800B3B6CD /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		420D85FB24CED84900B3B6CD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		4231DE0824D175C5007E01F7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4231DE0924D17A18007E01F7 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		4231DE0B24D17AD5007E01F7 /* BigBlueCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueCircle.swift; sourceTree = "<group>"; };
+		4231DE0D24D17B4F007E01F7 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
+		4231DE0F24D17D3F007E01F7 /* MainMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapView.swift; sourceTree = "<group>"; };
 		4237101424D024FC00B38BB5 /* MKPointAnnotation-Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-Codable.swift"; sourceTree = "<group>"; };
 		4237101624D0283200B38BB5 /* FileManager-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Extensions.swift"; sourceTree = "<group>"; };
 		424EEB0324CE069300BBB4D4 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +80,11 @@
 				424EEB0624CE069300BBB4D4 /* AppDelegate.swift */,
 				424EEB0824CE069300BBB4D4 /* SceneDelegate.swift */,
 				424EEB0A24CE069300BBB4D4 /* ContentView.swift */,
+				4231DE0924D17A18007E01F7 /* PlusButton.swift */,
+				4231DE0B24D17AD5007E01F7 /* BigBlueCircle.swift */,
+				4231DE0D24D17B4F007E01F7 /* CapsuleButton.swift */,
+				4231DE0F24D17D3F007E01F7 /* MainMapView.swift */,
+				4231DE0824D175C5007E01F7 /* README.md */,
 				424EEB1A24CE06A800BBB4D4 /* MapView.swift */,
 				420D85FB24CED84900B3B6CD /* Result.swift */,
 				4237101424D024FC00B38BB5 /* MKPointAnnotation-Codable.swift */,
@@ -167,11 +181,15 @@
 				424EEB0724CE069300BBB4D4 /* AppDelegate.swift in Sources */,
 				424EEB1B24CE06A800BBB4D4 /* MapView.swift in Sources */,
 				420D85FA24CED4E800B3B6CD /* EditView.swift in Sources */,
+				4231DE0C24D17AD5007E01F7 /* BigBlueCircle.swift in Sources */,
 				424EEB0924CE069300BBB4D4 /* SceneDelegate.swift in Sources */,
 				420D85FC24CED84900B3B6CD /* Result.swift in Sources */,
 				4237101724D0283200B38BB5 /* FileManager-Extensions.swift in Sources */,
+				4231DE0E24D17B4F007E01F7 /* CapsuleButton.swift in Sources */,
 				420D85F824CED43500B3B6CD /* MKPointAnnotation-ObservableObject.swift in Sources */,
+				4231DE1024D17D3F007E01F7 /* MainMapView.swift in Sources */,
 				4237101524D024FC00B38BB5 /* MKPointAnnotation-Codable.swift in Sources */,
+				4231DE0A24D17A18007E01F7 /* PlusButton.swift in Sources */,
 				424EEB0B24CE069300BBB4D4 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

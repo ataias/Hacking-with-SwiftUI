@@ -16,61 +16,21 @@ struct ContentView: View {
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showingPlaceDetails = false
     @State private var showingEditScreen = false
+    @State private var showingAuthError = false
+    @State private var authErrorMessage = ""
 
     @State private var isUnlocked = false
 
     var body: some View {
         ZStack {
             if isUnlocked {
-                MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, annotations: locations)
-                    .edgesIgnoringSafeArea(.all)
-                Circle()
-                    .fill(Color.blue)
-                    .opacity(0.3)
-                    .frame(width: 32, height: 32)
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            let newLocation = CodableMKPointAnnotation()
-                            newLocation.title = "Example title"
-                            newLocation.coordinate = self.centerCoordinate
-                            self.locations.append(newLocation)
-                            self.selectedPlace = newLocation
-                            self.showingEditScreen = true
-                        }) {
-                            Image(systemName: "plus")
-                        }
-                        .padding()
-                        .background(Color.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
-                    }
-                }
+                MainMapView(centerCoordinate: $centerCoordinate, locations: $locations, selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, showingEditScreen: $showingEditScreen)
             } else {
-                Button("Unlock Places") {
-                    self.authenticate()
-                }
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .clipShape(Capsule())
+                CapsuleButton(text: "UnlockPlaces", perform: self.authenticate)
             }
         }
-        .alert(isPresented: $showingPlaceDetails) {
-            let title = Text(selectedPlace?.title ?? "Unknown")
-            let message = Text(selectedPlace?.subtitle ?? "Missing place information")
-            let primaryButton = Alert.Button.default(Text("OK"))
-            let secondaryButton = Alert.Button.default(Text("Edit")) {
-                self.showingEditScreen = true
-            }
-
-            return (
-                Alert(title: title, message: message, primaryButton: primaryButton, secondaryButton: secondaryButton)
-            )
+        .alert(isPresented: $showingAuthError) {
+            Alert(title: Text("Auth Error"), message: Text(authErrorMessage), dismissButton: .default(Text("Ok")))
         }
         .onAppear(perform: loadData)
         .sheet(isPresented: $showingEditScreen, onDismiss: saveData, content: {
@@ -116,7 +76,8 @@ struct ContentView: View {
                     if success {
                         self.isUnlocked = true
                     } else {
-                        // error
+                        self.showingAuthError = true
+                        self.authErrorMessage = authenticationError.debugDescription
                     }
                 }
             }
@@ -124,6 +85,7 @@ struct ContentView: View {
             // no biometrics
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
