@@ -9,14 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var estimate = 25.0
+
     var body: some View {
         VStack {
-            Text("Your score is")
-            Text("1000")
-                .font(.title)
+            VStack {
+                Text("Your score is")
+                Text("1000")
+                    .font(.title)
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibility(label: Text("Your score is 1000"))
+
+            VStack {
+                Slider(value: $estimate, in: 0...50)
+                .padding()
+                .accessibility(value: Text("\(Int(estimate))"))
+            }
         }
-        .accessibilityElement(children: .ignore)
-        .accessibility(label: Text("Your score is 1000"))
     }
 }
 
@@ -43,7 +53,7 @@ struct ButtonImageView: View {
             .scaledToFit()
             .onTapGesture {
                 self.selectedPicture = Int.random(in: 0...3)
-            }
+        }
         .accessibility(label: Text(labels[self.selectedPicture]))
         .accessibility(addTraits: .isButton)
     }
