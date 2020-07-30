@@ -27,9 +27,11 @@ struct CheckoutView: View {
                 VStack {
                     // TODO Find out what is happening below: I commented the resizing code but I saw no difference in the image. I also removed the GeometryReader and again saw no difference. Maybe I will see a difference if I run in another simulator? Another screen size.
                     Image("cupcakes")
-                    //                        .resizable()
-                    //                        .scaledToFit()
-                    //                        .frame(width: geo.size.width)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: geo.size.width)
+                        .accessibilityElement(children: .ignore)
+
 
                     Text("Your total is $\(storage.order.cost, specifier: "%.2f")")
                         .font(.title)

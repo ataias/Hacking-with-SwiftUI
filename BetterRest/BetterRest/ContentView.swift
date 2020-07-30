@@ -39,6 +39,7 @@ struct ContentView: View {
 
                     Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
                         Text("\(sleepAmount, specifier: "%g") hours")
+                            .accessibility(label: Text("\(sleepAmountAccessibility) of desired sleep time"))
                     }
                 }
                 Section {
@@ -61,6 +62,19 @@ struct ContentView: View {
             .navigationBarTitle("BetterRest")
         }
     }
+
+    var sleepAmountAccessibility: String {
+        let hours: Int = Int(sleepAmount) % 24
+        let hoursSuffix = hours == 1 ? "hour" : "hours"
+        let minutes: Int = Int(sleepAmount * 60) % 60
+        let minutesSuffix = minutes == 1 ? "minute" : "minutes"
+
+        if minutes == 0 {
+            return "\(hours) \(hoursSuffix)"
+        }
+        return "\(hours) \(hoursSuffix) \(minutes) \(minutesSuffix)"
+    }
+
     var bedTime: String? {
         let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
         let hour = (components.hour ?? 0) * 60 * 60
