@@ -43,7 +43,9 @@ struct ContentView: View {
                         Image(systemName: "plus")
                             .padding()
                             .sheet(isPresented: showingNewPhotoEdit) {
-                                Text("FIXME")
+                                if self.inputImage != nil {
+                                    EditPhotoInfoView(uiImage: self.inputImage!)
+                                }
                             }
                     }))
                     // TODO Right now it only allows you to select the image, but there is no processing

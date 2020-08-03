@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4229803C24D80FDD00AE28B2 /* EditPhotoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4229803B24D80FDD00AE28B2 /* EditPhotoInfoView.swift */; };
+		4229803E24D8121400AE28B2 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4229803D24D8121400AE28B2 /* UIImage+Extensions.swift */; };
 		424A55C024D4237C0076387D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424A55BF24D4237C0076387D /* AppDelegate.swift */; };
 		424A55C224D4237C0076387D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424A55C124D4237C0076387D /* SceneDelegate.swift */; };
 		424A55C424D4237C0076387D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424A55C324D4237C0076387D /* ContentView.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4229803B24D80FDD00AE28B2 /* EditPhotoInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoInfoView.swift; sourceTree = SOURCE_ROOT; };
+		4229803D24D8121400AE28B2 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		424A55BC24D4237C0076387D /* PhotoNameList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoNameList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		424A55BF24D4237C0076387D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		424A55C124D4237C0076387D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +66,9 @@
 		424A55BE24D4237C0076387D /* PhotoNameList */ = {
 			isa = PBXGroup;
 			children = (
+				4229803B24D80FDD00AE28B2 /* EditPhotoInfoView.swift */,
 				424A55D524D425280076387D /* ImageSaver.swift */,
+				4229803D24D8121400AE28B2 /* UIImage+Extensions.swift */,
 				424A55D324D424F50076387D /* ImagePicker.swift */,
 				424A55BF24D4237C0076387D /* AppDelegate.swift */,
 				424A55C124D4237C0076387D /* SceneDelegate.swift */,
@@ -157,10 +163,12 @@
 			files = (
 				424A55C024D4237C0076387D /* AppDelegate.swift in Sources */,
 				424A55D424D424F50076387D /* ImagePicker.swift in Sources */,
+				4229803C24D80FDD00AE28B2 /* EditPhotoInfoView.swift in Sources */,
 				424A55D624D425280076387D /* ImageSaver.swift in Sources */,
 				424A55C224D4237C0076387D /* SceneDelegate.swift in Sources */,
 				424A55D824D427760076387D /* PhotoNameListView.swift in Sources */,
 				424A55C424D4237C0076387D /* ContentView.swift in Sources */,
+				4229803E24D8121400AE28B2 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
