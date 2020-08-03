@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var inputImage: UIImage?
+
     @State private var showingImagePicker = false
     //    @State private var showingSaveAlert = false
     //    @State private var saveMessage = ""
@@ -21,20 +22,36 @@ struct ContentView: View {
 
     // TODO In Content View, you should only have the basic functionality to read and write from the file; you give that data to a child view then
     var body: some View {
-        NavigationView {
-            PhotoNameListView()
-                .navigationBarTitle("PhotoNameList")
-                .navigationBarItems(trailing: Button(action: {
-                    self.showingImagePicker = true
-                }, label: {
-                    Image(systemName: "plus")
-                        .padding()
-                }))
-                // TODO Right now it only allows you to select the image, but there is no processing
-                .sheet(isPresented: $showingImagePicker) {
-                    ImagePicker(image: self.$inputImage)
+        let showingNewPhotoEdit = Binding<Bool>(
+            get: {
+                self.inputImage != nil
+            },
+            set: {
+                if !$0 {
+                    self.inputImage = nil
+                }
             }
-        }
+        )
+
+        return (
+            NavigationView {
+                PhotoNameListView()
+                    .navigationBarTitle("PhotoNameList")
+                    .navigationBarItems(trailing: Button(action: {
+                        self.showingImagePicker = true
+                    }, label: {
+                        Image(systemName: "plus")
+                            .padding()
+                            .sheet(isPresented: showingNewPhotoEdit) {
+                                Text("FIXME")
+                            }
+                    }))
+                    // TODO Right now it only allows you to select the image, but there is no processing
+                    .sheet(isPresented: $showingImagePicker) {
+                        ImagePicker(image: self.$inputImage)
+                }
+            }
+        )
     }
 }
 
