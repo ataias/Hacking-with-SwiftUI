@@ -14,4 +14,12 @@ struct Person: Codable, Identifiable {
     let firstName: String
     let lastName: String
     let photoId: UUID
+
+    init(firstName: String, lastName: String, photoId: UUID) {
+        self.id = UUID()
+        self.firstName = firstName
+        self.lastName = lastName
+        self.createdAt = Date()
+        self.photoId = photoId
+    }
 }

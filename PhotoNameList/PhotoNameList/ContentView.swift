@@ -16,8 +16,6 @@ struct ContentView: View {
     //    @State private var showingSaveAlert = false
     //    @State private var saveMessage = ""
 
-    // TODO Add a way to trigger adding new item from list
-    // TODO After selecting an image, save it to disk and also serialize the picture info in a json for writing to the file
     // TODO Every time a new image is added, save the file again; on open, read the file to initialize data
 
     // TODO In Content View, you should only have the basic functionality to read and write from the file; you give that data to a child view then
@@ -35,7 +33,8 @@ struct ContentView: View {
 
         return (
             NavigationView {
-                PhotoNameListView()
+                // TODO get actual arguments
+                PhotoNameListView(people: [], images: [UUID: Image]())
                     .navigationBarTitle("PhotoNameList")
                     .navigationBarItems(trailing: Button(action: {
                         self.showingImagePicker = true
@@ -55,6 +54,8 @@ struct ContentView: View {
             }
         )
     }
+
+    // TODO load data from file and images
 }
 
 struct ContentView_Previews: PreviewProvider {

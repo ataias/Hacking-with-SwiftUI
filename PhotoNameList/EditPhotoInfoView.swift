@@ -59,17 +59,23 @@ struct EditPhotoInfoView: View {
             try FileManager().createDirectory(at: photoDir, withIntermediateDirectories: true)
             let photoFile = photoDir.appendingPathComponent("\(photoId).jpeg")
 
-            // DONE Save Image
             if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
                 try jpegData.write(to: photoFile, options: [.atomicWrite, .completeFileProtection])
             }
 
-            // TODO Save user data
-            // -> TODO Read previously saved data in an array (or have multiple files in a directory? then you don't need to read previous data)
-            // -> TODO Save new data
-//            let data = try JSONEncoder().encode(self.locations)
-//            // complete file protection will set encryption for us!
-//            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+            let userFile = userDir.appendingPathComponent("users.json")
+
+            var people = [Person]()
+            if let data = try? Data(contentsOf: userFile) {
+                let decoder = JSONDecoder()
+                people = try! decoder.decode([Person].self, from: data)
+            }
+
+            let newPerson = Person(firstName: firstName, lastName: firstName, photoId: photoId)
+            people.append(newPerson)
+
+            let data = try JSONEncoder().encode(people)
+            try data.write(to: userFile, options: [.atomicWrite, .completeFileProtection])
             print("Saved Data!")
         } catch {
             print("Unable to save data: \(error.localizedDescription)")
