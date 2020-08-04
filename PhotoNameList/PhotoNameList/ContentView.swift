@@ -34,7 +34,7 @@ struct ContentView: View {
         return (
             NavigationView {
                 // TODO get actual arguments
-                PhotoNameListView(people: [], images: [UUID: Image]())
+                PhotoNameListView()
                     .navigationBarTitle("PhotoNameList")
                     .navigationBarItems(trailing: Button(action: {
                         self.showingImagePicker = true
