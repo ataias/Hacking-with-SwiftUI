@@ -42,11 +42,6 @@ struct EditPhotoInfoView: View {
             Section(header: Text("Notes"), content: {
                 TextField("", text: $notes)
             })
-
-
-
-            // TODO Idea: what about user goes to a screen just to fill habits? We send them habits to track for today one by one and he can skip or fill
-            // TODO Add a date picker; default is today but user can change
         }
         .onDisappear(perform: saveData)
     }

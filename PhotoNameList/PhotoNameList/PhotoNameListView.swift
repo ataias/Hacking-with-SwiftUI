@@ -45,7 +45,6 @@ struct PhotoNameListView: View {
     }
 
     var body: some View {
-        // TODO Add detail view when user clicks
         List(people) { person in
             NavigationLink(destination: PersonDetailView(person: person, image: images[person.photoId]!)) {
                 HStack {

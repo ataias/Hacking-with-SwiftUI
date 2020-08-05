@@ -16,9 +16,6 @@ struct ContentView: View {
     //    @State private var showingSaveAlert = false
     //    @State private var saveMessage = ""
 
-    // TODO Every time a new image is added, save the file again; on open, read the file to initialize data
-
-    // TODO In Content View, you should only have the basic functionality to read and write from the file; you give that data to a child view then
     var body: some View {
         let showingNewPhotoEdit = Binding<Bool>(
             get: {
@@ -33,7 +30,6 @@ struct ContentView: View {
 
         return (
             NavigationView {
-                // TODO get actual arguments
                 PhotoNameListView()
                     .navigationBarTitle("PhotoNameList")
                     .navigationBarItems(trailing: Button(action: {
@@ -47,7 +43,6 @@ struct ContentView: View {
                                 }
                             }
                     }))
-                    // TODO Right now it only allows you to select the image, but there is no processing
                     .sheet(isPresented: $showingImagePicker) {
                         ImagePicker(image: self.$inputImage)
                 }
@@ -55,7 +50,6 @@ struct ContentView: View {
         )
     }
 
-    // TODO load data from file and images
 }
 
 struct ContentView_Previews: PreviewProvider {

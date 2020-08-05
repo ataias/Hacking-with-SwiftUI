@@ -35,7 +35,6 @@ struct PersonDetailView: View {
 
                     HFormItem {
                         Text("Meeting Date: ").bold()
-                        // TODO format date
                         Text("\(date)")
                     }
 
