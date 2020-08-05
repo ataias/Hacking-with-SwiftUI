@@ -30,7 +30,7 @@ struct EditPhotoInfoView: View {
                     .resizable()
                     .scaledToFit()
                 TextField("First Name", text: $firstName)
-                TextField("Last Name", text: $firstName)
+                TextField("Last Name", text: $lastName)
             }
 
             Section(header: Text("DATE"), content: {
@@ -71,12 +71,11 @@ struct EditPhotoInfoView: View {
                 people = try! decoder.decode([Person].self, from: data)
             }
 
-            let newPerson = Person(firstName: firstName, lastName: firstName, photoId: photoId)
+            let newPerson = Person(firstName: firstName, lastName: lastName, photoId: photoId, notes: notes)
             people.append(newPerson)
 
             let data = try JSONEncoder().encode(people)
             try data.write(to: userFile, options: [.atomicWrite, .completeFileProtection])
-            print("Saved Data!")
         } catch {
             print("Unable to save data: \(error.localizedDescription)")
         }

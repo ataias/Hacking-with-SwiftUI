@@ -35,12 +35,12 @@ struct PhotoNameListView: View {
             images[person.photoId] = Image(uiImage: uiImage)
         }
 
-        self.people = people
+        self.people = people.sorted()
         self.images = images
     }
 
     init(people: [Person], images: [UUID: Image]) {
-        self.people = people
+        self.people = people.sorted()
         self.images = images
     }
 
@@ -66,8 +66,8 @@ struct PhotoNameListView: View {
 struct PhotoNameListView_Previews: PreviewProvider {
     static let uuids: [UUID] = (0...2).map { _ -> UUID in UUID() }
     static let basePeople = [
-        Person(firstName: "Fulano", lastName: "De Tal", photoId: uuids[0]),
-        Person(firstName: "Cicrano", lastName: "De Tal", photoId: uuids[1]),
+        Person(firstName: "Fulano", lastName: "De Tal", photoId: uuids[0], notes: "Bla"),
+        Person(firstName: "Cicrano", lastName: "De Tal", photoId: uuids[1], notes: "Hey Hey"),
     ]
     static let people = (0...20).map { basePeople[$0 % 2] }
 
