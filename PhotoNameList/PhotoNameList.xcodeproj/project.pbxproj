@@ -20,6 +20,7 @@
 		424A55D824D427760076387D /* PhotoNameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424A55D724D427760076387D /* PhotoNameListView.swift */; };
 		42ACCD5024D81A47000E17F7 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCD4F24D81A47000E17F7 /* Person.swift */; };
 		42ACCD5224D81BD8000E17F7 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACCD5124D81BD8000E17F7 /* FileManager+Extensions.swift */; };
+		42C937F124DAB32300165A15 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C937F024DAB32300165A15 /* PersonDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		424A55D724D427760076387D /* PhotoNameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNameListView.swift; sourceTree = "<group>"; };
 		42ACCD4F24D81A47000E17F7 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		42ACCD5124D81BD8000E17F7 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
+		42C937F024DAB32300165A15 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		42F5FE2D24D962F100C4108A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				4229803B24D80FDD00AE28B2 /* EditPhotoInfoView.swift */,
+				42C937F024DAB32300165A15 /* PersonDetailView.swift */,
 				42F5FE2D24D962F100C4108A /* README.md */,
 				42ACCD5124D81BD8000E17F7 /* FileManager+Extensions.swift */,
 				424A55D524D425280076387D /* ImageSaver.swift */,
@@ -178,6 +181,7 @@
 				42ACCD5024D81A47000E17F7 /* Person.swift in Sources */,
 				42ACCD5224D81BD8000E17F7 /* FileManager+Extensions.swift in Sources */,
 				424A55C424D4237C0076387D /* ContentView.swift in Sources */,
+				42C937F124DAB32300165A15 /* PersonDetailView.swift in Sources */,
 				4229803E24D8121400AE28B2 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

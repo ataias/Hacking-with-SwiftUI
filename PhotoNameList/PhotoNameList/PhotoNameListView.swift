@@ -47,11 +47,13 @@ struct PhotoNameListView: View {
     var body: some View {
         // TODO Add detail view when user clicks
         List(people) { person in
-            NavigationLink(destination: Text("TODO")) {
+            NavigationLink(destination: PersonDetailView(person: person, image: images[person.photoId]!)) {
                 HStack {
-                    images[person.photoId]?
+                    images[person.photoId]!
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
+                        .frame(width: 44, height: 44)
+                        .clipped()
                     VStack(alignment: .leading) {
                         Text(person.firstName)
                         Text(person.lastName)
@@ -71,7 +73,7 @@ struct PhotoNameListView_Previews: PreviewProvider {
     ]
     static let people = (0...20).map { basePeople[$0 % 2] }
 
-    static let red = UIImage.getColoredRectImageWith(color: UIColor.red.cgColor, andSize: CGSize(width: 50, height: 50))
+    static let red = UIImage.getColoredRectImageWith(color: UIColor.red.cgColor, andSize: CGSize(width: 50, height: 100))
     static let blue = UIImage.getColoredRectImageWith(color: UIColor.blue.cgColor, andSize: CGSize(width: 50, height: 50))
     static let green = UIImage.getColoredRectImageWith(color: UIColor.green.cgColor, andSize: CGSize(width: 50, height: 50))
 
