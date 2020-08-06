@@ -13,8 +13,6 @@ struct ContentView: View {
     @State private var inputImage: UIImage?
 
     @State private var showingImagePicker = false
-    //    @State private var showingSaveAlert = false
-    //    @State private var saveMessage = ""
 
     var body: some View {
         let showingNewPhotoEdit = Binding<Bool>(

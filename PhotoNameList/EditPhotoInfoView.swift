@@ -48,29 +48,9 @@ struct EditPhotoInfoView: View {
 
     func saveData() {
         do {
-            let userDir = FileManager.documentsDirectory
-            let photoId = UUID()
-            let photoDir = userDir.appendingPathComponent("photos", isDirectory: true)
-            try FileManager().createDirectory(at: photoDir, withIntermediateDirectories: true)
-            let photoFile = photoDir.appendingPathComponent("\(photoId).jpeg")
-
-            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
-                try jpegData.write(to: photoFile, options: [.atomicWrite, .completeFileProtection])
-            }
-
-            let userFile = userDir.appendingPathComponent("users.json")
-
-            var people = [Person]()
-            if let data = try? Data(contentsOf: userFile) {
-                let decoder = JSONDecoder()
-                people = try! decoder.decode([Person].self, from: data)
-            }
-
+            let photoId = try FileManager.save(inputImage)
             let newPerson = Person(firstName: firstName, lastName: lastName, photoId: photoId, notes: notes)
-            people.append(newPerson)
-
-            let data = try JSONEncoder().encode(people)
-            try data.write(to: userFile, options: [.atomicWrite, .completeFileProtection])
+            try FileManager.save(newPerson)
         } catch {
             print("Unable to save data: \(error.localizedDescription)")
         }

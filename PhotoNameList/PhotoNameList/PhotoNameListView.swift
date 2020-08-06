@@ -13,30 +13,9 @@ struct PhotoNameListView: View {
     let images: [UUID: Image]
 
     init() {
-        let userDir = FileManager.documentsDirectory
-        let userFile = userDir.appendingPathComponent("users.json")
-
-        var people = [Person]()
-        if let data = try? Data(contentsOf: userFile) {
-            let decoder = JSONDecoder()
-            people = try! decoder.decode([Person].self, from: data)
-        }
-
-        let photoDir = userDir.appendingPathComponent("photos", isDirectory: true)
-        var images = [UUID: Image]()
-        people.forEach { person in
-            let photoFile = photoDir.appendingPathComponent("\(person.photoId).jpeg")
-            guard let data = try? Data(contentsOf: photoFile) else {
-                fatalError("Image does not exist")
-            }
-            guard let uiImage = UIImage(data: data) else {
-                fatalError("Couldn't convert image")
-            }
-            images[person.photoId] = Image(uiImage: uiImage)
-        }
-
+        let people: [Person] = FileManager.decode(FileManager.userFile) ?? []
         self.people = people.sorted()
-        self.images = images
+        self.images = FileManager.readImages(people)
     }
 
     init(people: [Person], images: [UUID: Image]) {
