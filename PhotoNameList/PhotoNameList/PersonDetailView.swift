@@ -46,6 +46,13 @@ struct PersonDetailView: View {
                     Text("\(person.notes)")
                         .padding(.horizontal)
                         .frame(width: geometry.size.width, alignment: .leading)
+
+                    HFormItem {
+                        Text("Where I met this person: ").bold()
+                        NavigationLink("Lat: \(person.location.latitude); Long: \(person.location.longitude)", destination: MapView(person: person))
+
+                    }
+
                 }
             }
         }
