@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct PersonDetailView: View {
     let person: Person
@@ -77,7 +78,8 @@ struct PersonDetailView_Previews: PreviewProvider {
         Totam at eius excepturi deleniti sed, error repellat itaque omnis maiores tempora ratione dolor velit minus porro aspernatur repudiandae labore quas adipisci esse, nulla tempore voluptatibus cupiditate. Ab provident, atque.
     """
 
-    static let person = Person(firstName: "Fulano", lastName: "De Tal", photoId: uuid, notes: loremIpsum)
+    static let location = CLLocationCoordinate2D(latitude: -27.5902, longitude: -48.5425)
+    static let person = Person(firstName: "Fulano", lastName: "De Tal", photoId: uuid, notes: loremIpsum, location: location)
     static let red = UIImage.getColoredRectImageWith(color: UIColor.red.cgColor, andSize: CGSize(width: 50, height: 50))
     static let image = Image(uiImage: red)
 

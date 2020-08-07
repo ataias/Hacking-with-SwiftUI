@@ -7,18 +7,21 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct EditPhotoInfoView: View {
     let inputImage: UIImage
     let image: Image
+    let location: CLLocationCoordinate2D
     @State private var date = Date()
     @State private var firstName = ""
     @State private var lastName = ""
     @State private var notes = ""
 
-    init(uiImage: UIImage) {
+    init(uiImage: UIImage, location: CLLocationCoordinate2D) {
         self.inputImage = uiImage
         self.image = Image(uiImage: uiImage)
+        self.location = location
     }
 
     var body: some View {
@@ -49,7 +52,7 @@ struct EditPhotoInfoView: View {
     func saveData() {
         do {
             let photoId = try FileManager.save(inputImage)
-            let newPerson = Person(firstName: firstName, lastName: lastName, photoId: photoId, notes: notes)
+            let newPerson = Person(firstName: firstName, lastName: lastName, photoId: photoId, notes: notes, location: location)
             try FileManager.save(newPerson)
         } catch {
             print("Unable to save data: \(error.localizedDescription)")
@@ -60,8 +63,9 @@ struct EditPhotoInfoView: View {
 
 struct EditPhotoInfoView_Previews: PreviewProvider {
     static let placeholder = UIImage.getColoredRectImageWith(color: UIColor.red.cgColor, andSize: CGSize(width: 50, height: 50))
+    static let location = CLLocationCoordinate2D(latitude: -27.5902, longitude: -48.5425)
 
     static var previews: some View {
-        EditPhotoInfoView(uiImage: placeholder)
+        EditPhotoInfoView(uiImage: placeholder, location: location)
     }
 }

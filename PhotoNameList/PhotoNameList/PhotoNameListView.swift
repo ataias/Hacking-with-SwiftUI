@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct PhotoNameListView: View {
     let people: [Person]
@@ -45,9 +46,10 @@ struct PhotoNameListView: View {
 
 struct PhotoNameListView_Previews: PreviewProvider {
     static let uuids: [UUID] = (0...2).map { _ -> UUID in UUID() }
+    static let location = CLLocationCoordinate2D(latitude: -27.5902, longitude: -48.5425)
     static let basePeople = [
-        Person(firstName: "Fulano", lastName: "De Tal", photoId: uuids[0], notes: "Bla"),
-        Person(firstName: "Cicrano", lastName: "De Tal", photoId: uuids[1], notes: "Hey Hey"),
+        Person(firstName: "Fulano", lastName: "De Tal", photoId: uuids[0], notes: "Bla", location: location),
+        Person(firstName: "Cicrano", lastName: "De Tal", photoId: uuids[1], notes: "Hey Hey", location: location),
     ]
     static let people = (0...20).map { basePeople[$0 % 2] }
 

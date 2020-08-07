@@ -7,12 +7,15 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
 
     @State private var inputImage: UIImage?
 
     @State private var showingImagePicker = false
+
+    let locationFetcher = LocationFetcher()
 
     var body: some View {
         let showingNewPhotoEdit = Binding<Bool>(
@@ -37,7 +40,7 @@ struct ContentView: View {
                             .padding()
                             .sheet(isPresented: showingNewPhotoEdit) {
                                 if self.inputImage != nil {
-                                    EditPhotoInfoView(uiImage: self.inputImage!)
+                                    EditPhotoInfoView(uiImage: self.inputImage!, location: self.locationFetcher.lastKnownLocation!)
                                 }
                             }
                     }))
@@ -45,6 +48,7 @@ struct ContentView: View {
                         ImagePicker(image: self.$inputImage)
                 }
             }
+            .onAppear { self.locationFetcher.start() }
         )
     }
 
