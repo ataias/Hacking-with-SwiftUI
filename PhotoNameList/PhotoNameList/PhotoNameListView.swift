@@ -11,7 +11,7 @@ import CoreLocation
 
 struct PhotoNameListView: View {
     let people: [Person]
-    let images: [UUID: Image]
+    let images: [UUID: UIImage]
 
     init() {
         let people: [Person] = FileManager.decode(FileManager.userFile) ?? []
@@ -19,18 +19,20 @@ struct PhotoNameListView: View {
         self.images = FileManager.readImages(people)
     }
 
-    init(people: [Person], images: [UUID: Image]) {
+    init(people: [Person], images: [UUID: UIImage]) {
         self.people = people.sorted()
         self.images = images
     }
 
     var body: some View {
         List(people) { person in
-            NavigationLink(destination: PersonDetailView(person: person, image: images[person.photoId]!)) {
+            NavigationLink(destination: PersonDetailView(person: person, uiImage: images[person.photoId]!)) {
                 HStack {
-                    images[person.photoId]!
+                    Image(uiImage: images[person.photoId]!)
                         .resizable()
-                        .scaledToFill()
+                        // this workaround was suggested in
+                        // https://www.hackingwithswift.com/forums/100-days-of-swiftui/day-77-images-on-real-iphone-are-distorted/938
+                        .aspectRatio(images[person.photoId]!.size, contentMode: .fill)
                         .frame(width: 44, height: 44)
                         .clipped()
                     VStack(alignment: .leading) {
@@ -58,9 +60,9 @@ struct PhotoNameListView_Previews: PreviewProvider {
     static let green = UIImage.getColoredRectImageWith(color: UIColor.green.cgColor, andSize: CGSize(width: 50, height: 50))
 
     static let images = [
-        uuids[0]: Image(uiImage: red),
-        uuids[1]: Image(uiImage: blue),
-        uuids[2]: Image(uiImage: green),
+        uuids[0]: red,
+        uuids[1]: blue,
+        uuids[2]: green,
     ]
 
     static var previews: some View {

@@ -11,7 +11,7 @@ import CoreLocation
 
 struct PersonDetailView: View {
     let person: Person
-    let image: Image
+    let uiImage: UIImage
 
     var date: String {
         let formatter = DateFormatter()
@@ -24,32 +24,32 @@ struct PersonDetailView: View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
                 VStack {
-                    image
+                    Image(uiImage: uiImage)
                         .resizable()
-                        .scaledToFit()
+                        .aspectRatio(uiImage.size, contentMode: .fit) // FIXME some images are being distored anyway, why?
                         .frame(width: geometry.size.width)
 
                     HFormItem {
                         Text("Name: ").bold()
-                        Text("\(person.firstName) \(person.lastName)")
+                        Text("\(self.person.firstName) \(self.person.lastName)")
                     }
 
                     HFormItem {
                         Text("Meeting Date: ").bold()
-                        Text("\(date)")
+                        Text("\(self.date)")
                     }
 
                     HFormItem {
                         Text("Notes: ").bold()
                     }
 
-                    Text("\(person.notes)")
+                    Text("\(self.person.notes)")
                         .padding(.horizontal)
                         .frame(width: geometry.size.width, alignment: .leading)
 
                     HFormItem {
                         Text("Where I met this person: ").bold()
-                        NavigationLink("Lat: \(person.location.latitude); Long: \(person.location.longitude)", destination: MapView(person: person))
+                        NavigationLink("Lat: \(self.person.location.latitude); Long: \(self.person.location.longitude)", destination: MapView(person: self.person))
 
                     }
 
@@ -88,9 +88,8 @@ struct PersonDetailView_Previews: PreviewProvider {
     static let location = CLLocationCoordinate2D(latitude: -27.5902, longitude: -48.5425)
     static let person = Person(firstName: "Fulano", lastName: "De Tal", photoId: uuid, notes: loremIpsum, location: location)
     static let red = UIImage.getColoredRectImageWith(color: UIColor.red.cgColor, andSize: CGSize(width: 50, height: 50))
-    static let image = Image(uiImage: red)
 
     static var previews: some View {
-        PersonDetailView(person: person, image: image)
+        PersonDetailView(person: person, uiImage: red)
     }
 }

@@ -51,6 +51,8 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>When you add a new photo, we save your location so you can check it later.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>So that you can take live photos for new people!</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

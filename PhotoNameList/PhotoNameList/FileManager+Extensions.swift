@@ -68,8 +68,8 @@ extension FileManager {
         try data.write(to: userFile, options: [.atomicWrite, .completeFileProtection])
     }
 
-    static func readImages(_ people: [Person]) -> [UUID: Image] {
-        var images = [UUID: Image]()
+    static func readImages(_ people: [Person]) -> [UUID: UIImage] {
+        var images = [UUID: UIImage]()
         people.forEach { person in
             let photoFile = photoDir.appendingPathComponent("\(person.photoId).jpeg")
             guard let data = try? Data(contentsOf: photoFile) else {
@@ -78,7 +78,7 @@ extension FileManager {
             guard let uiImage = UIImage(data: data) else {
                 fatalError("Couldn't convert image")
             }
-            images[person.photoId] = Image(uiImage: uiImage)
+            images[person.photoId] = uiImage
         }
         return images
     }
