@@ -64,6 +64,21 @@ struct ContentView: View {
                 }
                 .tag(1)
 
+                VStack {
+                    Image("example")
+                        .interpolation(.none)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: .infinity)
+                        .background(Color.black)
+                        .edgesIgnoringSafeArea(.all)
+                }
+                .tabItem {
+                    Image(systemName: "doc")
+                    Text("Three")
+                }
+                .tag(2)
+
             }
         }
         .environmentObject(user)
