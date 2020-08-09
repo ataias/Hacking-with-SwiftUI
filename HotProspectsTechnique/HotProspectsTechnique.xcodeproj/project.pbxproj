@@ -13,6 +13,8 @@
 		42F30E3924DFFB0000A7F63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42F30E3824DFFB0000A7F63B /* Assets.xcassets */; };
 		42F30E3C24DFFB0000A7F63B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42F30E3B24DFFB0000A7F63B /* Preview Assets.xcassets */; };
 		42F30E3F24DFFB0000A7F63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F30E3D24DFFB0000A7F63B /* LaunchScreen.storyboard */; };
+		42F30E4824E0037200A7F63B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F30E4724E0037200A7F63B /* Network.swift */; };
+		42F30E4A24E00ABD00A7F63B /* DelayedUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F30E4924E00ABD00A7F63B /* DelayedUpdater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		42F30E3E24DFFB0000A7F63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42F30E4024DFFB0000A7F63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42F30E4624E000D600A7F63B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		42F30E4724E0037200A7F63B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		42F30E4924E00ABD00A7F63B /* DelayedUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedUpdater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				42F30E3224DFFAFE00A7F63B /* AppDelegate.swift */,
 				42F30E3424DFFAFE00A7F63B /* SceneDelegate.swift */,
 				42F30E3624DFFAFE00A7F63B /* ContentView.swift */,
+				42F30E4924E00ABD00A7F63B /* DelayedUpdater.swift */,
+				42F30E4724E0037200A7F63B /* Network.swift */,
 				42F30E3824DFFB0000A7F63B /* Assets.xcassets */,
 				42F30E3D24DFFB0000A7F63B /* LaunchScreen.storyboard */,
 				42F30E4024DFFB0000A7F63B /* Info.plist */,
@@ -150,7 +156,9 @@
 			files = (
 				42F30E3324DFFAFE00A7F63B /* AppDelegate.swift in Sources */,
 				42F30E3524DFFAFE00A7F63B /* SceneDelegate.swift in Sources */,
+				42F30E4824E0037200A7F63B /* Network.swift in Sources */,
 				42F30E3724DFFAFE00A7F63B /* ContentView.swift in Sources */,
+				42F30E4A24E00ABD00A7F63B /* DelayedUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

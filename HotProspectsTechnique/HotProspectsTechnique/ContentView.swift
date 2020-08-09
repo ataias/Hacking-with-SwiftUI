@@ -31,6 +31,7 @@ struct DisplayView: View {
 struct ContentView: View {
     let user = User()
     @State private var selectedTab = 0
+    @State private var urlResult = ""
 
     var body: some View {
         VStack {
@@ -40,6 +41,7 @@ struct ContentView: View {
                 VStack {
                     Text("Tab 1 - Show Only")
                     DisplayView()
+                    Text("URL Result: \(urlResult)")
                 }
                 .onTapGesture {
                     self.selectedTab = 1
@@ -63,7 +65,47 @@ struct ContentView: View {
             }
         }
         .environmentObject(user)
+        .onAppear {
+            self.fetchData(from: "https://www.apple.com") { result in
+                switch result {
+                case .success(let str):
+                    print(str)
+                    self.urlResult = str
+                case .failure(let error):
+                    switch error {
+                    case .badUrl:
+                        self.urlResult = "Invalid URL"
+                    case .requestFailed:
+                        self.urlResult = "Network error"
+                    case .unknown:
+                        self.urlResult = "Impossible!"
+                    }
+                }
+            }
+        }
     }
+
+
+    func fetchData(from urlString: String, completion: @escaping (Result<String, NetworkError>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(.badUrl))
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let data = data {
+                    let dataString = String(decoding: data, as: UTF8.self)
+                    completion(.success(dataString))
+                } else if error != nil {
+                    completion(.failure(.requestFailed))
+                } else {
+                    completion(.failure(.unknown))
+                }
+            }
+        }.resume()
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
