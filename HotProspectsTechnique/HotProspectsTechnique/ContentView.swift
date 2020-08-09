@@ -8,9 +8,61 @@
 
 import SwiftUI
 
-struct ContentView: View {
+class User: ObservableObject {
+    @Published var name = "Taylor Swift"
+}
+
+struct EditView: View {
+    @EnvironmentObject var user: User
+
     var body: some View {
-        Text("Hello, World!")
+        TextField("Name", text: $user.name)
+    }
+}
+
+struct DisplayView: View {
+    @EnvironmentObject var user: User
+
+    var body: some View {
+        Text(user.name)
+    }
+}
+
+struct ContentView: View {
+    let user = User()
+    @State private var selectedTab = 0
+
+    var body: some View {
+        VStack {
+
+
+            TabView(selection: $selectedTab) {
+                VStack {
+                    Text("Tab 1 - Show Only")
+                    DisplayView()
+                }
+                .onTapGesture {
+                    self.selectedTab = 1
+                }
+                .tabItem {
+                    Image(systemName: "star")
+                    Text("One")
+                }
+                .tag(0)
+
+                VStack {
+                    Text("Tab 2 - Edit View")
+                    EditView()
+                }
+                .tabItem {
+                    Image(systemName: "star.fill")
+                    Text("Two")
+                }
+                .tag(1)
+
+            }
+        }
+        .environmentObject(user)
     }
 }
 

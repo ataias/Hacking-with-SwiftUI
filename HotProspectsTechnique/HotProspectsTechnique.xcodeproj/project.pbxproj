@@ -24,6 +24,7 @@
 		42F30E3B24DFFB0000A7F63B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42F30E3E24DFFB0000A7F63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42F30E4024DFFB0000A7F63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42F30E4624E000D600A7F63B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 		42F30E2624DFFAFE00A7F63B = {
 			isa = PBXGroup;
 			children = (
+				42F30E4624E000D600A7F63B /* README.md */,
 				42F30E3124DFFAFE00A7F63B /* HotProspectsTechnique */,
 				42F30E3024DFFAFE00A7F63B /* Products */,
 			);
