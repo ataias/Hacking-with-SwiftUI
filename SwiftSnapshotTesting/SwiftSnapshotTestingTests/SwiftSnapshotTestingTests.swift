@@ -34,8 +34,24 @@ class SwiftSnapshotTestingTests: XCTestCase {
 
 
     func testDefaultAppearance() {
-        assertSnapshot(matching: SendButton().referenceFrame(), as: .image(size: referenceSize))
+        assertSnapshot(
+            matching: SendButton().referenceFrame(),
+            as: .image(size: referenceSize)
+        )
     }
+
+    func testRightToLeft() {
+        let sut = SendButton()
+            .referenceFrame()
+            .environment(\.layoutDirection, .rightToLeft)
+
+        assertSnapshot(
+            matching: sut.referenceFrame(),
+            as: .image(size: referenceSize)
+        )
+    }
+
+
 }
 
 
