@@ -33,6 +33,8 @@ struct ContentView: View {
     @State private var selectedTab = 0
     @State private var urlResult = ""
 
+    @ObservedObject var updater = DelayedUpdater()
+
     var body: some View {
         VStack {
 
@@ -41,7 +43,7 @@ struct ContentView: View {
                 VStack {
                     Text("Tab 1 - Show Only")
                     DisplayView()
-                    Text("URL Result: \(urlResult)")
+                    Text("Value: \(updater.value)")
                 }
                 .onTapGesture {
                     self.selectedTab = 1
