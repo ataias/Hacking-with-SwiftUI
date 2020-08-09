@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import SnapshotTesting
+import SwiftUI
 @testable import SwiftSnapshotTesting
 
 class SwiftSnapshotTestingTests: XCTestCase {
@@ -30,4 +32,16 @@ class SwiftSnapshotTestingTests: XCTestCase {
         }
     }
 
+
+    func testDefaultAppearance() {
+        assertSnapshot(matching: SendButton().referenceFrame(), as: .image(size: referenceSize))
+    }
+}
+
+
+private let referenceSize = CGSize(width: 150, height: 50)
+private extension SwiftUI.View {
+    func referenceFrame() -> some View {
+        self.frame(width: referenceSize.width, height: referenceSize.height)
+    }
 }
