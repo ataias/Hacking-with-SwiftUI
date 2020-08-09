@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		42F30E3F24DFFB0000A7F63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F30E3D24DFFB0000A7F63B /* LaunchScreen.storyboard */; };
 		42F30E4824E0037200A7F63B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F30E4724E0037200A7F63B /* Network.swift */; };
 		42F30E4A24E00ABD00A7F63B /* DelayedUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F30E4924E00ABD00A7F63B /* DelayedUpdater.swift */; };
+		42F30E4D24E0136000A7F63B /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 42F30E4C24E0136000A7F63B /* SamplePackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F30E4D24E0136000A7F63B /* SamplePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +101,9 @@
 			dependencies = (
 			);
 			name = HotProspectsTechnique;
+			packageProductDependencies = (
+				42F30E4C24E0136000A7F63B /* SamplePackage */,
+			);
 			productName = HotProspectsTechnique;
 			productReference = 42F30E2F24DFFAFE00A7F63B /* HotProspectsTechnique.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +132,9 @@
 				Base,
 			);
 			mainGroup = 42F30E2624DFFAFE00A7F63B;
+			packageReferences = (
+				42F30E4B24E0136000A7F63B /* XCRemoteSwiftPackageReference "SamplePackage" */,
+			);
 			productRefGroup = 42F30E3024DFFAFE00A7F63B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +360,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		42F30E4B24E0136000A7F63B /* XCRemoteSwiftPackageReference "SamplePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:twostraws/SamplePackage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		42F30E4C24E0136000A7F63B /* SamplePackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42F30E4B24E0136000A7F63B /* XCRemoteSwiftPackageReference "SamplePackage" */;
+			productName = SamplePackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 42F30E2724DFFAFE00A7F63B /* Project object */;
 }

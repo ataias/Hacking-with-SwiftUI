@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import UserNotifications
+import SamplePackage
 
 class User: ObservableObject {
     @Published var name = "Taylor Swift"
@@ -37,6 +39,14 @@ struct ContentView: View {
 
     @State private var backgroundColor = Color.red
 
+    let possibleNumbers = Array(1...60)
+
+    var results: String {
+        let selected = possibleNumbers.random(7).sorted()
+        let strings = selected.map(String.init)
+        return strings.joined(separator: ", ")
+    }
+
     var body: some View {
         VStack {
 
@@ -46,6 +56,9 @@ struct ContentView: View {
                     Text("Tab 1 - Show Only")
                     DisplayView()
                     Text("Value: \(updater.value)")
+
+                    // Using an external package
+                    Text(results)
                 }
                 .onTapGesture {
                     self.selectedTab = 1
@@ -108,6 +121,35 @@ struct ContentView: View {
                             }) {
                                 Text("Blue")
                             }
+                    }
+
+                    VStack {
+                        Button("Request Permission") {
+                            // first
+                            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                                if success {
+                                    print("All set!")
+                                } else if let error = error {
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
+
+                        Button("Schedule Notification") {
+                            // second
+                            let content = UNMutableNotificationContent()
+                            content.title = "Feed the cat"
+                            content.subtitle = "It looks hungry"
+                            content.sound = UNNotificationSound.default
+
+                            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+                            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+                            UNUserNotificationCenter.current().add(request)
+
+
+                        }
                     }
                 }
                 .tabItem {
