@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    var prospects = Prospects()
+
     var body: some View {
         TabView {
-            ProspectsView()
+            ProspectsView(filter: .none)
                 .tabItem {
                     Image(systemName: "person.3")
                     Text("Everyone")
                 }
-            ProspectsView()
+            ProspectsView(filter: .contacted)
                 .tabItem {
                     Image(systemName: "checkmark.circle")
                     Text("Contacted")
                 }
-            ProspectsView()
+            ProspectsView(filter: .uncontacted)
                 .tabItem {
                     Image(systemName: "questionmark.diamond")
                     Text("Uncontacted")
@@ -31,6 +33,7 @@ struct ContentView: View {
                     Text("Me")
                 }
         }
+        .environmentObject(prospects)
     }
 }
 

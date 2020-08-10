@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42445E3824E14A3B0031E1F8 /* Prospects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42445E3724E14A3B0031E1F8 /* Prospects.swift */; };
 		42911C3C24E146FD005B8841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42911C3B24E146FD005B8841 /* AppDelegate.swift */; };
 		42911C3E24E146FD005B8841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42911C3D24E146FD005B8841 /* SceneDelegate.swift */; };
 		42911C4024E146FD005B8841 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42911C3F24E146FD005B8841 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42445E3724E14A3B0031E1F8 /* Prospects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospects.swift; sourceTree = "<group>"; };
 		42911C3824E146FD005B8841 /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42911C3B24E146FD005B8841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42911C3D24E146FD005B8841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				42911C3B24E146FD005B8841 /* AppDelegate.swift */,
 				42911C3D24E146FD005B8841 /* SceneDelegate.swift */,
 				42911C3F24E146FD005B8841 /* ContentView.swift */,
+				42445E3724E14A3B0031E1F8 /* Prospects.swift */,
 				42911C5324E14733005B8841 /* MeView.swift */,
 				42911C5524E1473A005B8841 /* ProspectsView.swift */,
 				42911C4124E146FE005B8841 /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 				42911C5424E14733005B8841 /* MeView.swift in Sources */,
 				42911C3C24E146FD005B8841 /* AppDelegate.swift in Sources */,
 				42911C5624E1473A005B8841 /* ProspectsView.swift in Sources */,
+				42445E3824E14A3B0031E1F8 /* Prospects.swift in Sources */,
 				42911C3E24E146FD005B8841 /* SceneDelegate.swift in Sources */,
 				42911C4024E146FD005B8841 /* ContentView.swift in Sources */,
 			);
