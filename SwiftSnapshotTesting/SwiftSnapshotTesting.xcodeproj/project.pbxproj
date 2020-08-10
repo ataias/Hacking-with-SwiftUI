@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4278368624E0196800C56AE4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4278368824E0196800C56AE4 /* Localizable.strings */; };
 		4278368C24E019B800C56AE4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4278368E24E019B800C56AE4 /* Localizable.strings */; };
+		4278369024E0207C00C56AE4 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278368F24E0207C00C56AE4 /* Landmark.swift */; };
+		4278369224E020E300C56AE4 /* LandmarkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278369124E020E300C56AE4 /* LandmarkTest.swift */; };
 		427FA7C624DF58DF007C8A90 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 427FA7C524DF58DF007C8A90 /* SnapshotTesting */; };
 		427FA7C724DF58F7007C8A90 /* SnapshotTesting+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE7A724DF509300116B54 /* SnapshotTesting+SwiftUI.swift */; };
 		42CEE77224DF492100116B54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CEE77124DF492100116B54 /* AppDelegate.swift */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		4278368724E0196800C56AE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4278368D24E019B800C56AE4 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4278368F24E0207C00C56AE4 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		4278369124E020E300C56AE4 /* LandmarkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkTest.swift; sourceTree = "<group>"; };
 		42CEE76E24DF492100116B54 /* SwiftSnapshotTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSnapshotTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CEE77124DF492100116B54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CEE77324DF492100116B54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				42CEE77124DF492100116B54 /* AppDelegate.swift */,
 				42CEE77324DF492100116B54 /* SceneDelegate.swift */,
 				42CEE77524DF492100116B54 /* ContentView.swift */,
+				4278368F24E0207C00C56AE4 /* Landmark.swift */,
 				42CEE7A224DF49C700116B54 /* SendButton.swift */,
 				42CEE7A124DF493E00116B54 /* README.md */,
 				42CEE77724DF492200116B54 /* Assets.xcassets */,
@@ -152,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				42CEE78824DF492200116B54 /* SwiftSnapshotTestingTests.swift */,
+				4278369124E020E300C56AE4 /* LandmarkTest.swift */,
 				42CEE7A724DF509300116B54 /* SnapshotTesting+SwiftUI.swift */,
 				42CEE78A24DF492200116B54 /* Info.plist */,
 			);
@@ -312,6 +318,7 @@
 				42CEE7A324DF49C700116B54 /* SendButton.swift in Sources */,
 				42CEE77424DF492100116B54 /* SceneDelegate.swift in Sources */,
 				42CEE77624DF492100116B54 /* ContentView.swift in Sources */,
+				4278369024E0207C00C56AE4 /* Landmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +328,7 @@
 			files = (
 				427FA7C724DF58F7007C8A90 /* SnapshotTesting+SwiftUI.swift in Sources */,
 				42CEE78924DF492200116B54 /* SwiftSnapshotTestingTests.swift in Sources */,
+				4278369224E020E300C56AE4 /* LandmarkTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

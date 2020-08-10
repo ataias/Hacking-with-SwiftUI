@@ -51,11 +51,19 @@ class SwiftSnapshotTestingTests: XCTestCase {
         )
     }
 
+    func testPtBRLocale() {
+        let sut = SendButton()
+            .referenceFrame()
+            .environment(\.locale, Locale(identifier: "pt-BR"))
+
+        assertSnapshot(matching: sut.referenceFrame(), as: .image(size: referenceSize))
+    }
+
 
 }
 
 
-private let referenceSize = CGSize(width: 150, height: 50)
+private let referenceSize = CGSize(width: 150, height: 100)
 private extension SwiftUI.View {
     func referenceFrame() -> some View {
         self.frame(width: referenceSize.width, height: referenceSize.height)
