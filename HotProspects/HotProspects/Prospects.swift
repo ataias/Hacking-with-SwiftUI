@@ -11,7 +11,9 @@ class Prospect: Identifiable, Codable {
     var id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
-    var isContacted = false
+
+    /// isContacted should only be set in this file so that we can enforce sending the UI a notification of update
+    fileprivate(set) var isContacted = false
 }
 
 class Prospects: ObservableObject {
@@ -19,5 +21,10 @@ class Prospects: ObservableObject {
 
     init() {
         self.people = []
+    }
+
+    func toggle(_ prospect: Prospect) {
+        objectWillChange.send()
+        prospect.isContacted.toggle()
     }
 }
