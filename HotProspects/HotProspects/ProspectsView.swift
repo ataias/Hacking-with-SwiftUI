@@ -13,6 +13,8 @@ struct ProspectsView: View {
     let filter: FilterType
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
+    @State private var isShowingSortMenu = false
+    @Binding var sortKey: ProspectSortKey
 
     var title: String {
         switch filter {
@@ -39,7 +41,7 @@ struct ProspectsView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
+                ForEach(filteredProspects.sorted(by: sortKey)) { prospect in
                     HStack {
                         if filter == .none {
                             if prospect.isContacted {
@@ -64,6 +66,9 @@ struct ProspectsView: View {
                                 self.addNotification(for: prospect)
                             }
                         }
+                        Button("Sort By") {
+                            isShowingSortMenu.toggle()
+                        }
                     }
 
                 }
@@ -77,6 +82,12 @@ struct ProspectsView: View {
             })
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: self.handleScan)
+            }
+            .actionSheet(isPresented: $isShowingSortMenu) {
+                let buttons: [Alert.Button] = (ProspectSortKey.allCases.map { sortType in .default(Text(sortType.rawValue), action: { self.sortKey = sortType }) }) + [.cancel()]
+                return (
+                    ActionSheet(title: Text("Select a sorting key"), buttons: buttons)
+                )
             }
         }
     }
@@ -136,10 +147,26 @@ struct ProspectsView: View {
     enum FilterType {
         case none, contacted, uncontacted
     }
+
+}
+
+enum ProspectSortKey: String, CaseIterable {
+    case name, email
+}
+
+extension Array where Element: Prospect {
+    func sorted(by sortKey: ProspectSortKey) -> [Element] {
+        switch sortKey {
+        case .name:
+            return self.sorted(by: { (p1, p2) in p1.name < p2.name} )
+        case .email:
+            return self.sorted(by: { (p1, p2) in p1.emailAddress < p2.emailAddress} )
+        }
+    }
 }
 
 struct ProspectsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProspectsView(filter: .none)
+        ProspectsView(filter: .none, sortKey: .constant(ProspectSortKey.name))
     }
 }
