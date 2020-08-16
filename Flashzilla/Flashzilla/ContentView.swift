@@ -9,8 +9,81 @@ import SwiftUI
 import CoreHaptics
 
 struct ContentView: View {
+    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
+    @State private var scale: CGFloat = 1
+
+    var body: some View {
+        VStack {
+            HStack {
+                if differentiateWithoutColor {
+                    Image(systemName: "checkmark.circle")
+                }
+                Text("Success")
+            }
+            .padding()
+            .background(differentiateWithoutColor ? Color.black : Color.green)
+            .foregroundColor(Color.white)
+            .clipShape(Capsule())
+
+            Text("Hello, World!")
+                .scaleEffect(scale)
+                .onTapGesture {
+                    withOptionalAnimation {
+                        scale *= 1.5
+                    }
+                }
+        }
+    }
+}
+
+func withOptionalAnimation<Result>(_ animation: Animation? = .default, _ body: () throws -> Result) rethrows -> Result {
+    if UIAccessibility.isReduceMotionEnabled {
+        return try body()
+    } else {
+        return try withAnimation(animation, body)
+    }
+}
+
+struct EventsView: View {
+    let timer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
+
+    @State private var count = 0
+    @State private var time = Date()
+
+    var body: some View {
+        VStack {
+            Text("Hello, world! The count is \(count)")
+                .onReceive(timer) { time in
+                    if count == 10 {
+                        timer.upstream.connect().cancel()
+                    } else {
+                        self.time = time
+                    }
+                    count += 1
+            }
+            Text("Time: \(time)")
+            Text("Hello background!")
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: { _ in
+                    print("Moving to the background")
+                })
+
+            Text("Hello foreground!")
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification), perform: { _ in
+                    print("Moving back to foreground")
+                })
+
+            Text("Screenshot")
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.userDidTakeScreenshotNotification), perform: { _ in
+                    print("User took a screenshot!")
+                })
+        }
+    }
+}
+
+struct HapticEngineView: View {
 
     @State private var engine: CHHapticEngine?
+
 
     var body: some View {
         VStack(alignment: .center, spacing: 5) {
@@ -205,6 +278,14 @@ struct SingleGesturesView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+            ContentView()
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .environment(\.colorScheme, .dark)
+        }
     }
 }

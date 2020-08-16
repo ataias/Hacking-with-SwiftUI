@@ -15,3 +15,7 @@ Circle()
 
 - ContentShape is also very useful for `VStack`, as it allows you to make the whole tappable, even if there is spacing in the middle, which is by default not tappable
 - To disable tapping in a view that has it configured, you can use the modifier `allowsHitTesting`
+
+- Creating a timer with Combine is quite simple
+- Timers accept tolerance, which is used by iOS for performance optimization, so it is nice to set it if you don't have strict time requirements
+- The timer is best effort; there are no real time guarantees
