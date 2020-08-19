@@ -17,6 +17,8 @@ struct ContentView: View {
 
     @State private var isActive = true
     @State private var showingEditScreen = false
+    @State private var showingSettingsScreen = false
+    @State private var reinsertWrongCards = false
 
     var body: some View {
         ZStack {
@@ -34,7 +36,7 @@ struct ContentView: View {
                     .background(Capsule().fill(Color.black).opacity(0.75))
 
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
+                    ForEach(0..<cards.count) { index in
                         CardView(card: cards[index]) {
                             removeCard(at: index)
                         }
@@ -54,9 +56,22 @@ struct ContentView: View {
                 }
 
             }
+            .sheet(isPresented: $showingSettingsScreen, onDismiss: resetCards, content: {
+                Settings()
+            })
 
             VStack {
                 HStack {
+
+                    Button(action: {
+                        showingSettingsScreen = true
+                    }) {
+                        Image(systemName: "gear")
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+
                     Spacer()
 
                     Button(action: {
@@ -68,8 +83,13 @@ struct ContentView: View {
                             .clipShape(Circle())
                     }
                 }
+
                 Spacer()
             }
+            .sheet(isPresented: $showingEditScreen, onDismiss: resetCards, content: {
+                EditCards()
+            })
+
             .foregroundColor(.white)
             .font(.largeTitle)
             .padding()
@@ -124,21 +144,24 @@ struct ContentView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             isActive = !cards.isEmpty
         }
-        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards, content: {
-            EditCards()
-        })
         .onAppear(perform: resetCards)
     }
 
     func removeCard(at index: Int) {
         guard index >= 0 else { return }
-        cards.remove(at: index)
+        if reinsertWrongCards {
+            let removed = cards.remove(at: index)
+            cards.insert(removed, at: 0)
+        } else {
+            cards.remove(at: index)
+        }
         isActive = !cards.isEmpty
     }
 
     func resetCards() {
         timeRemaining = 100
         isActive = true
+        reinsertWrongCards = UserDefaults.standard.bool(forKey: "Reinsert")
         loadData()
     }
 
