@@ -17,6 +17,7 @@
 		42B900D624E7EC170068EB63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B900D524E7EC170068EB63 /* Assets.xcassets */; };
 		42B900D924E7EC170068EB63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B900D824E7EC170068EB63 /* Preview Assets.xcassets */; };
 		42B900DC24E7EC170068EB63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B900DA24E7EC170068EB63 /* LaunchScreen.storyboard */; };
+		42EE81D024ED1F7E0066BCD0 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EE81CF24ED1F7E0066BCD0 /* EditCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		42B900DB24E7EC170068EB63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42B900DD24E7EC170068EB63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42B900E324E7F7300068EB63 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		42EE81CF24ED1F7E0066BCD0 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			children = (
 				427B5A5424E9480D00AB2EC2 /* Technique */,
 				42B900CF24E7EC160068EB63 /* AppDelegate.swift */,
+				42EE81CF24ED1F7E0066BCD0 /* EditCards.swift */,
 				42B900D124E7EC160068EB63 /* SceneDelegate.swift */,
 				42B900D324E7EC160068EB63 /* ContentView.swift */,
 				427B5A5B24E94DE500AB2EC2 /* View+Extensions.swift */,
@@ -172,6 +175,7 @@
 				427B5A5824E949A400AB2EC2 /* Card.swift in Sources */,
 				427B5A5C24E94DE500AB2EC2 /* View+Extensions.swift in Sources */,
 				42B900D224E7EC160068EB63 /* SceneDelegate.swift in Sources */,
+				42EE81D024ED1F7E0066BCD0 /* EditCards.swift in Sources */,
 				427B5A5A24E94A8500AB2EC2 /* CardView.swift in Sources */,
 				42B900D424E7EC160068EB63 /* ContentView.swift in Sources */,
 			);
