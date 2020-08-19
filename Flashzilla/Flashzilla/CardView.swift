@@ -17,6 +17,8 @@ struct CardView: View {
 
     @State private var offset = CGSize.zero
 
+    @State private var feedback = UINotificationFeedbackGenerator()
+
     var answeredRight: Bool {
         offset.width > 0
     }
@@ -61,13 +63,23 @@ struct CardView: View {
         .rotationEffect(.degrees(Double(offset.width / 5)))
         .offset(x: offset.width * 5, y: 0)
         .opacity(2 - Double(abs(offset.width / 50)))
+        .accessibility(addTraits: .isButton)
         .gesture(
             DragGesture()
                 .onChanged { gesture in
                     offset = gesture.translation
+                    feedback.prepare()
                 }
                 .onEnded { _ in
                     if abs(offset.width) > 100 {
+                        if offset.width > 0 {
+                            // Think about the UX; a power user might get annoyed at so many notifications
+                            // Paul Hudson said if it were his app, he would keep the error and let the success case go, as success is likely more common; this way the error case becomes more "special"
+                            feedback.notificationOccurred(.success)
+                        } else {
+                            feedback.notificationOccurred(.error)
+                        }
+
                         removal?()
                     } else {
                         offset = .zero

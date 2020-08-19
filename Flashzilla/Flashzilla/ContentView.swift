@@ -37,6 +37,8 @@ struct ContentView: View {
                             removeCard(at: index)
                         }
                         .stacked(at: index, in: cards.count)
+                        .allowsHitTesting(index == cards.count - 1)
+                        .accessibility(hidden: index < cards.count - 1) // don't read all cards in accessibility mode, just top one
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
