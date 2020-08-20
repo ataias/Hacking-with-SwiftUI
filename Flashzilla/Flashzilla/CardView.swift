@@ -12,7 +12,7 @@ struct CardView: View {
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
 
     let card: Card
-    var removal: (() -> Void)? = nil
+    var removal: ((AnswerState) -> Void)? = nil
 
     @State private var isShowingAnswer = false
 
@@ -84,17 +84,25 @@ struct CardView: View {
                             // Think about the UX; a power user might get annoyed at so many notifications
                             // Paul Hudson said if it were his app, he would keep the error and let the success case go, as success is likely more common; this way the error case becomes more "special"
                             feedback.notificationOccurred(.success)
+                            removal?(.correct)
                         } else {
                             feedback.notificationOccurred(.error)
+                            removal?(.wrong)
                         }
 
-                        removal?()
+
                     } else {
                         offset = .zero
                     }
                 }
         )
     }
+
+    enum AnswerState {
+        case correct
+        case wrong
+    }
+
 
 }
 

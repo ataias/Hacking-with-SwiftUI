@@ -36,13 +36,13 @@ struct ContentView: View {
                     .background(Capsule().fill(Color.black).opacity(0.75))
 
                 ZStack {
-                    ForEach(0..<cards.count) { index in
-                        CardView(card: cards[index]) {
-                            removeCard(at: index)
+                    ForEach(cards) { card in
+                        CardView(card: card) { answerState in
+                            remove(card: card, answerState: answerState)
                         }
-                        .stacked(at: index, in: cards.count)
-                        .allowsHitTesting(index == cards.count - 1)
-                        .accessibility(hidden: index < cards.count - 1) // don't read all cards in accessibility mode, just top one
+                        .stacked(at: cards.firstIndex(where: {$0.id == card.id})!, in: cards.count)
+                        .allowsHitTesting(cards.firstIndex(where: {$0.id == card.id})! == cards.count - 1)
+                        .accessibility(hidden: cards.firstIndex(where: {$0.id == card.id})! < cards.count - 1) // don't read all cards in accessibility mode, just top one
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
@@ -101,7 +101,7 @@ struct ContentView: View {
                     HStack {
                         Button(action: {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                remove(card: cards[cards.count - 1], answerState: CardView.AnswerState.wrong)
                             }
                         }) {
                             Image(systemName: "xmark.circle")
@@ -115,7 +115,7 @@ struct ContentView: View {
                         Spacer()
                         Button(action: {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                remove(card: cards[cards.count - 1], answerState: CardView.AnswerState.correct)
                             }
                         }) {
                             Image(systemName: "checkmark.circle")
@@ -147,13 +147,15 @@ struct ContentView: View {
         .onAppear(perform: resetCards)
     }
 
-    func removeCard(at index: Int) {
-        guard index >= 0 else { return }
-        if reinsertWrongCards {
-            let removed = cards.remove(at: index)
+    func remove(card: Card?, answerState: CardView.AnswerState) {
+        guard let card = card else { return }
+        guard let index = cards.firstIndex(where: { $0.id == card.id }) else { return }
+
+        var removed = cards.remove(at: index)
+        if reinsertWrongCards && answerState == CardView.AnswerState.wrong {
+            // FIXME this feel like a real hack... what would be a proper solution?
+            removed.id = UUID()
             cards.insert(removed, at: 0)
-        } else {
-            cards.remove(at: index)
         }
         isActive = !cards.isEmpty
     }
