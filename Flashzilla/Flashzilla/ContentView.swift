@@ -20,6 +20,14 @@ struct ContentView: View {
     @State private var showingSettingsScreen = false
     @State private var reinsertWrongCards = false
 
+
+    /// This list of ordered cards was created to simplify code inside the foreach.
+    /// First, ForEach had a bug (or at least in this app it became a bug) that removing an item from the end of the list and reinserting it at the beginning didn't trigger a re-render of the card. The data was present, but the rendering was wrong then.
+    /// One hacky solution to it was updating the card id (UUID) before re-inserting. However, using a "compositeKey" you avoid this hack by having an id that depends on the position and triggering the re-render.
+    private var orderedCards: [(index: Int, card: Card, compositeId: String)] {
+        cards.enumerated().map { index, card in (index: index, card: card, compositeId: "\(index)\(card.id)") }
+    }
+
     var body: some View {
         ZStack {
             Image(decorative: "background") // this is to improve VoiceOver experience
@@ -35,17 +43,31 @@ struct ContentView: View {
                     .padding(.vertical, 5.0)
                     .background(Capsule().fill(Color.black).opacity(0.75))
 
-                ZStack {
-                    ForEach(cards) { card in
-                        CardView(card: card) { answerState in
-                            remove(card: card, answerState: answerState)
+
+                if timeRemaining > 0 {
+                    ZStack {
+                        ForEach(orderedCards, id: \.compositeId) { (index, card, _) in
+                            CardView(card: card) { answerState in
+                                remove(card: card, answerState: answerState)
+                            }
+                            .stacked(at: index, in: cards.count)
+                            .allowsHitTesting(index == cards.count - 1)
+                            .accessibility(hidden: index < cards.count - 1) // don't read all cards in accessibility mode, just top one
                         }
-                        .stacked(at: cards.firstIndex(where: {$0.id == card.id})!, in: cards.count)
-                        .allowsHitTesting(cards.firstIndex(where: {$0.id == card.id})! == cards.count - 1)
-                        .accessibility(hidden: cards.firstIndex(where: {$0.id == card.id})! < cards.count - 1) // don't read all cards in accessibility mode, just top one
                     }
+                } else {
+                    Button(action: resetCards) {
+                        VStack {
+                            Text("Time's Up!")
+                            Text("Start Again")
+                        }
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .foregroundColor(.black)
+                    .clipShape(Capsule())
+                    .padding()
                 }
-                .allowsHitTesting(timeRemaining > 0)
 
                 if cards.isEmpty {
                     Button("Start Again", action: resetCards)
@@ -151,10 +173,8 @@ struct ContentView: View {
         guard let card = card else { return }
         guard let index = cards.firstIndex(where: { $0.id == card.id }) else { return }
 
-        var removed = cards.remove(at: index)
+        let removed = cards.remove(at: index)
         if reinsertWrongCards && answerState == CardView.AnswerState.wrong {
-            // FIXME this feel like a real hack... what would be a proper solution?
-            removed.id = UUID()
             cards.insert(removed, at: 0)
         }
         isActive = !cards.isEmpty
