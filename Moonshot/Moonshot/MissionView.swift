@@ -32,16 +32,28 @@ struct MissionView: View {
         let astronaut: Astronaut
     }
 
+    @State private var initialYPosition: CGFloat? = nil
+
 
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
                 VStack {
-                    Image(self.mission.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: geometry.size.width * 0.7)
-                        .padding(.top)
+                    GeometryReader { imageGeometry in
+                        HStack {
+                            Spacer()
+                            Image(self.mission.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: calculateImageWidth(imageGeometry))
+                                .padding(.top)
+                                .onAppear {
+                                    initialYPosition = imageGeometry.frame(in: .global).midY
+                                }
+                            Spacer()
+                        }
+                    }
+
                     Text(self.mission.formattedLaunchDate)
                     Text(self.mission.description)
                         .padding()
@@ -67,13 +79,23 @@ struct MissionView: View {
                             }
                             .padding([.horizontal])
                         }
-                    .buttonStyle(PlainButtonStyle())
+                        .buttonStyle(PlainButtonStyle())
                     }
                     Spacer(minLength: 25)
                 }
             }
         }
         .navigationBarTitle(Text(mission.displayName))
+    }
+
+    func calculateImageWidth(_ imgProxy: GeometryProxy) -> CGFloat {
+        let y = imgProxy.frame(in: .global).midY
+        let difference = (initialYPosition ?? 0.0) - y
+        if difference <= 0 {
+            return imgProxy.size.height * 0.9
+        } else {
+            return imgProxy.size.height * 0.9 * 0.7
+        }
     }
 }
 
