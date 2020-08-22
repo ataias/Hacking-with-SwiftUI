@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4250D1A124F1985D00C05A98 /* PositioningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250D1A024F1985D00C05A98 /* PositioningView.swift */; };
+		4250D1A324F19A6600C05A98 /* GeometryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250D1A224F19A6600C05A98 /* GeometryTestView.swift */; };
+		4250D1A524F19D2500C05A98 /* GeometryCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250D1A424F19D2500C05A98 /* GeometryCustomView.swift */; };
+		4250D1A724F1A45000C05A98 /* ScrollViewGeometryEffectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250D1A624F1A45000C05A98 /* ScrollViewGeometryEffectsView.swift */; };
+		4250D1A924F1A97A00C05A98 /* CoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250D1A824F1A97A00C05A98 /* CoverFlowView.swift */; };
 		4287065824EFD32D00D9CDD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287065724EFD32D00D9CDD7 /* AppDelegate.swift */; };
 		4287065A24EFD32D00D9CDD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287065924EFD32D00D9CDD7 /* SceneDelegate.swift */; };
 		4287065C24EFD32D00D9CDD7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287065B24EFD32D00D9CDD7 /* ContentView.swift */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4250D1A024F1985D00C05A98 /* PositioningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositioningView.swift; sourceTree = "<group>"; };
+		4250D1A224F19A6600C05A98 /* GeometryTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryTestView.swift; sourceTree = "<group>"; };
+		4250D1A424F19D2500C05A98 /* GeometryCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryCustomView.swift; sourceTree = "<group>"; };
+		4250D1A624F1A45000C05A98 /* ScrollViewGeometryEffectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewGeometryEffectsView.swift; sourceTree = "<group>"; };
+		4250D1A824F1A97A00C05A98 /* CoverFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverFlowView.swift; sourceTree = "<group>"; };
 		4287065424EFD32D00D9CDD7 /* LayoutAndGeometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LayoutAndGeometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4287065724EFD32D00D9CDD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4287065924EFD32D00D9CDD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +74,11 @@
 				4287065924EFD32D00D9CDD7 /* SceneDelegate.swift */,
 				4287065B24EFD32D00D9CDD7 /* ContentView.swift */,
 				42FE622C24EFDDD30044257D /* CustomAlignmentGuide.swift */,
+				4250D1A024F1985D00C05A98 /* PositioningView.swift */,
+				4250D1A224F19A6600C05A98 /* GeometryTestView.swift */,
+				4250D1A424F19D2500C05A98 /* GeometryCustomView.swift */,
+				4250D1A624F1A45000C05A98 /* ScrollViewGeometryEffectsView.swift */,
+				4250D1A824F1A97A00C05A98 /* CoverFlowView.swift */,
 				4287066B24EFD8ED00D9CDD7 /* AlignmentView.swift */,
 				4287065D24EFD32F00D9CDD7 /* Assets.xcassets */,
 				4287066224EFD32F00D9CDD7 /* LaunchScreen.storyboard */,
@@ -151,10 +166,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4250D1A924F1A97A00C05A98 /* CoverFlowView.swift in Sources */,
 				42FE622D24EFDDD30044257D /* CustomAlignmentGuide.swift in Sources */,
 				4287066C24EFD8ED00D9CDD7 /* AlignmentView.swift in Sources */,
+				4250D1A724F1A45000C05A98 /* ScrollViewGeometryEffectsView.swift in Sources */,
+				4250D1A324F19A6600C05A98 /* GeometryTestView.swift in Sources */,
 				4287065824EFD32D00D9CDD7 /* AppDelegate.swift in Sources */,
 				4287065A24EFD32D00D9CDD7 /* SceneDelegate.swift in Sources */,
+				4250D1A524F19D2500C05A98 /* GeometryCustomView.swift in Sources */,
+				4250D1A124F1985D00C05A98 /* PositioningView.swift in Sources */,
 				4287065C24EFD32D00D9CDD7 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
