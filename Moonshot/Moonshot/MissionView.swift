@@ -32,27 +32,11 @@ struct MissionView: View {
         let astronaut: Astronaut
     }
 
-    @State private var initialYPosition: CGFloat? = nil
-
-
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
                 VStack {
-                    GeometryReader { imageGeometry in
-                        HStack {
-                            Spacer()
-                            Image(self.mission.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: calculateImageWidth(imageGeometry))
-                                .padding(.top)
-                                .onAppear {
-                                    initialYPosition = imageGeometry.frame(in: .global).midY
-                                }
-                            Spacer()
-                        }
-                    }
+                    BannerView(image: mission.image, geometry: geometry)
 
                     Text(self.mission.formattedLaunchDate)
                     Text(self.mission.description)
@@ -88,15 +72,7 @@ struct MissionView: View {
         .navigationBarTitle(Text(mission.displayName))
     }
 
-    func calculateImageWidth(_ imgProxy: GeometryProxy) -> CGFloat {
-        let y = imgProxy.frame(in: .global).midY
-        let difference = (initialYPosition ?? 0.0) - y
-        if difference <= 0 {
-            return imgProxy.size.height * 0.9
-        } else {
-            return imgProxy.size.height * 0.9 * 0.7
-        }
-    }
+
 }
 
 struct MissionView_Previews: PreviewProvider {
@@ -105,5 +81,44 @@ struct MissionView_Previews: PreviewProvider {
 
     static var previews: some View {
         MissionView(mission: missions[0], astronauts: astronauts)
+    }
+}
+
+struct BannerView: View {
+    let image: String
+    let geometry: GeometryProxy
+    @State private var initialY: CGFloat?
+    @State private var height: CGFloat?
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Image(image)
+                .resizable()
+                .scaledToFit()
+                .frame(height: height ?? getHeight())
+                .padding(.top)
+            Spacer()
+        }
+        .onChange(of: geometry.frame(in: .global).midY) { midY in
+            if initialY == nil && Int(midY) != 0 {
+                initialY = midY
+            }
+        }
+        .onChange(of: geometry.frame(in: .global).midY) { midY in
+            withAnimation {
+                height = getHeight()
+            }
+        }
+    }
+
+    func getHeight() -> CGFloat {
+        let y = geometry.frame(in: .global).midY
+        let difference = (initialY ?? 0.0) - y
+        if difference <= 0 {
+            return geometry.size.width * 0.9
+        } else {
+            return geometry.size.width * 0.9 * 0.5
+        }
     }
 }
