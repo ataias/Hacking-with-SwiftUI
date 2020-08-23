@@ -31,14 +31,7 @@ struct ContentView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .autocapitalization(.none)
-                List(usedWords, id: \.self) { word in
-                    HStack {
-                        Image(systemName: "\(word.count).circle")
-                        Text(word)
-                    }
-                    .accessibilityElement(children: .ignore)
-                    .accessibility(label: Text("\(word), \(word.count) letters"))
-                }
+                UsedWordsListView(usedWords: usedWords)
                 Text("Score: \(score)")
             }
             .navigationBarTitle(rootWord)
