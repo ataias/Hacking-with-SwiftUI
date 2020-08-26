@@ -13,6 +13,9 @@ struct ContentView: View {
     @State private var currentNumber = 5
     @State private var sides = 10
 
+    @FetchRequest(entity: Game.entity(), sortDescriptors: []) var games: FetchedResults<Game>
+    @Environment(\.managedObjectContext) var moc
+
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -35,7 +38,11 @@ struct ContentView: View {
                 .tag(0)
 
                 VStack {
-                    Text("Tab 2 - Edit View")
+                    List {
+                        ForEach(games, id: \.id) { game in
+                            Text("\(game.id!) \(game.date!)")
+                        }
+                    }
                 }
                 .tabItem {
                     Image(systemName: "gamecontroller")
@@ -62,6 +69,19 @@ struct ContentView: View {
             currentNumber = next
         }
         pendingRolls -= 1
+
+        if pendingRolls == 0 {
+            let game = Game(context: self.moc)
+            game.id = UUID()
+            game.date = Date()
+
+            let diceRoll = DiceRoll(context: self.moc)
+            diceRoll.game = game
+            diceRoll.sequence = 1
+            diceRoll.value = Int64(currentNumber)
+
+            try? self.moc.save()
+        }
     }
 }
 
