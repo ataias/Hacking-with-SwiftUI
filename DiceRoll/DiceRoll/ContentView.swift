@@ -38,6 +38,8 @@ struct ContentView: View {
                 .tag(0)
 
                 VStack {
+                    // TODO use ScoreView here
+                    // TODO in the ScoreView, remember to use the "scores" extension
                     List {
                         ForEach(games, id: \.id) { game in
                             Text("\(game.id!) \(game.date!)")
