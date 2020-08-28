@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScoreView: View {
     let score: Score
+    @Binding var isExpanded: Bool
 
     var scoreSum: Int {
         score.rolls.reduce(0) { acc, roll in
@@ -22,15 +23,47 @@ struct ScoreView: View {
         }
     }
 
-
     var body: some View {
         VStack {
             DisclosureGroup(
-                content: { VStack {
-                    Text("\(scoreSum)/\(maxPossibleScore)")
-                    // TODO finish this! Need to show an item for each of the rolls
-                    // --> Probably with a foreach
-                } },
+                isExpanded: $isExpanded,
+                content: {
+                    VStack {
+                        HStack {
+                            Text("Date: ").bold()
+                            Text("\(score.formattedDate)")
+                            Spacer()
+                        }
+
+
+                        HStack {
+                            VStack {
+                                ForEach(score.rolls) { roll in
+                                    HStack {
+                                        Text("Play \(roll.id): ").bold()
+                                        Text("\(roll.value)")
+                                    }
+                                }
+                            }
+                            VStack {
+                                ForEach(score.rolls) { roll in
+                                    HStack {
+                                        Text("#Dice Faces: ").bold()
+                                        Text("\(roll.maxValue)")
+                                    }
+                                }
+                            }
+                            Spacer()
+                        }
+
+                        HStack {
+                            Text("Total Score: ").bold()
+                            Text("\(scoreSum)/\(maxPossibleScore)")
+                            Spacer()
+                        }
+                    }
+
+                },
                 label: { HStack {
                     Text("Game \(score.id)").bold()
                     Spacer()
@@ -55,6 +88,12 @@ struct ScoreView_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        ScoreView(score: score)
+        Group {
+            ScoreView(score: score, isExpanded: .constant(false))
+                .previewLayout(PreviewLayout.sizeThatFits)
+
+            ScoreView(score: score, isExpanded: .constant(true))
+                .previewLayout(PreviewLayout.sizeThatFits)
+        }
     }
 }

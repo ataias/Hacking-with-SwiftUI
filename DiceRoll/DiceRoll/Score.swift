@@ -12,6 +12,12 @@ struct Score: Identifiable {
     var date: Date
     var rolls: [Roll]
 
+    var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
 }
 
 struct Roll: Identifiable {
