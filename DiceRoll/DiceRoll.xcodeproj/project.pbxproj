@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42186DE524FA5F31009F44E5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42186DE424FA5F31009F44E5 /* SettingsView.swift */; };
 		42CA710424F514F100336682 /* DiceRollApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA710324F514F100336682 /* DiceRollApp.swift */; };
 		42CA710624F514F100336682 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA710524F514F100336682 /* ContentView.swift */; };
 		42CA710824F514F300336682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CA710724F514F300336682 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42186DE424FA5F31009F44E5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4290D51B24F671C3002683EA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42CA710024F514F100336682 /* DiceRoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceRoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CA710324F514F100336682 /* DiceRollApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceRollApp.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				42F4016024F66A3600574FA3 /* Game+Extensions.swift */,
 				42EC12D924F7B314007946D5 /* Score.swift */,
 				42CA710524F514F100336682 /* ContentView.swift */,
+				42186DE424FA5F31009F44E5 /* SettingsView.swift */,
 				42EC12DB24F7B458007946D5 /* FetchedResults+Game+Extensions.swift */,
 				42EC12D724F7B15E007946D5 /* ScoreView.swift */,
 				42F4015B24F65FCA00574FA3 /* Model.xcdatamodeld */,
@@ -166,6 +169,7 @@
 				42EC12DA24F7B314007946D5 /* Score.swift in Sources */,
 				42F4015F24F65FE900574FA3 /* PersistentContainer.swift in Sources */,
 				42EC12DC24F7B458007946D5 /* FetchedResults+Game+Extensions.swift in Sources */,
+				42186DE524FA5F31009F44E5 /* SettingsView.swift in Sources */,
 				42F4016124F66A3600574FA3 /* Game+Extensions.swift in Sources */,
 				42EC12D824F7B15E007946D5 /* ScoreView.swift in Sources */,
 				42CA710424F514F100336682 /* DiceRollApp.swift in Sources */,

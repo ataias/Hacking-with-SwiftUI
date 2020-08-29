@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ScoreView: View {
     let score: Score
-    @Binding var isExpanded: Bool
 
     var scoreSum: Int {
         score.rolls.reduce(0) { acc, roll in
@@ -26,7 +25,6 @@ struct ScoreView: View {
     var body: some View {
         VStack {
             DisclosureGroup(
-                isExpanded: $isExpanded,
                 content: {
                     VStack {
                         HStack {
@@ -49,7 +47,11 @@ struct ScoreView: View {
                                 ForEach(score.rolls) { roll in
                                     HStack {
                                         Text("#Dice Faces: ").bold()
-                                        Text("\(roll.maxValue)")
+                                        if roll.maxValue != 0 {
+                                            Text("\(roll.maxValue)")
+                                        } else {
+                                            Text("N/A")
+                                        }
                                     }
                                 }
                             }
@@ -81,7 +83,7 @@ struct ScoreView_Previews: PreviewProvider {
             Roll(id: 1, value: 3, maxValue: 6),
             Roll(id: 2, value: 5, maxValue: 6),
             Roll(id: 3, value: 2, maxValue: 6),
-            Roll(id: 4, value: 3, maxValue: 6),
+            Roll(id: 4, value: 3, maxValue: 0),
         ]
 
         return Score(id: 1, date: Date(), rolls: rolls)
@@ -89,11 +91,9 @@ struct ScoreView_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            ScoreView(score: score, isExpanded: .constant(false))
+            ScoreView(score: score)
                 .previewLayout(PreviewLayout.sizeThatFits)
 
-            ScoreView(score: score, isExpanded: .constant(true))
-                .previewLayout(PreviewLayout.sizeThatFits)
         }
     }
 }
