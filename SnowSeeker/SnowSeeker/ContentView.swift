@@ -7,73 +7,32 @@
 
 import SwiftUI
 
-struct User: Identifiable {
-    var id = "Taylor Swift"
-}
-
-struct UserView: View {
-    var body: some View {
-        Group {
-            Text("Name: Paul")
-            Text("Country: England")
-            Text("Pets: Luna, Arya, and Toby")
-        }
-    }
-}
-
-struct SecondaryView: View {
-    @State private var selectedUser: User?
-    @State private var layoutVertically = false
-    @Environment(\.horizontalSizeClass) var sizeClass
-
-    var body: some View {
-        VStack {
-            Text("Secondary")
-            Text("Hello, World!")
-                .onTapGesture {
-                    self.selectedUser = User()
-                }
-                .alert(item: $selectedUser) { user in
-                    Alert(title: Text(user.id))
-                }
-
-            Group {
-                if layoutVertically {
-                    VStack {
-                        UserView()
-                    }
-                } else {
-                    HStack {
-                        UserView()
-                    }
-                }
-            }
-            .onTapGesture {
-                self.layoutVertically.toggle()
-            }
-            Spacer()
-            Group {
-                if sizeClass == .compact {
-                    VStack(content: UserView.init)
-                } else {
-                    HStack(content: UserView.init)
-                }
-            }
-
-
-        }
-    }
-}
-
 struct ContentView: View {
+    let resorts: [Resort] = Bundle.main.decode("resorts.json")
     var body: some View {
         NavigationView {
-            NavigationLink(destination: SecondaryView()) {
-                Text("Hello, World!")
-            }
-            .navigationBarTitle("Primary")
+            List(resorts) { resort in
+                NavigationLink(destination: ResortView(resort: resort)) {
+                    Image(resort.country)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 25)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5).stroke(Color.black, lineWidth: 1)
+                        )
 
-            SecondaryView()
+                    VStack(alignment: .leading) {
+                        Text(resort.name)
+                            .font(.headline)
+                        Text("\(resort.runs) runs")
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            .navigationBarTitle("Resorts")
+
+            WelcomeView()
         }
     }
 }
