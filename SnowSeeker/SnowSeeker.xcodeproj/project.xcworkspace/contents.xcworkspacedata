@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../SnowSeeker/Resort.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ataias/Projects/github.com/ataias/hacking-with-swiftui/SnowSeeker/SnowSeeker/resorts.json">
+   </FileRef>
+   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>

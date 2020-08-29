@@ -21,6 +21,7 @@
 		42253E5D24FA6D1600BE99AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42253E5F24FA6D1600BE99AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42253E6524FA6FDA00BE99AE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		42253E6624FADEE600BE99AE /* resorts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = resorts.json; path = "/Users/ataias/Projects/github.com/ataias/hacking-with-swiftui/SnowSeeker/SnowSeeker/resorts.json"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 		42253E5524FA6D1400BE99AE /* SnowSeeker */ = {
 			isa = PBXGroup;
 			children = (
+				42253E6724FADEF300BE99AE /* Data */,
 				42253E5624FA6D1400BE99AE /* SnowSeekerApp.swift */,
 				42253E5824FA6D1400BE99AE /* ContentView.swift */,
 				42253E6524FA6FDA00BE99AE /* README.md */,
@@ -69,6 +71,14 @@
 				42253E5D24FA6D1600BE99AE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		42253E6724FADEF300BE99AE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				42253E6624FADEE600BE99AE /* resorts.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
