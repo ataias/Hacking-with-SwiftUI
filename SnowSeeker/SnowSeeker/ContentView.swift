@@ -17,6 +17,7 @@ struct ContentView: View {
     private var sortedFilteredResorts: [Resort] {
         resorts.sorted(by: sort.sort)
             .filter { $0.price <= priceFilter }
+        // TODO add missing filters; requires update in another file
     }
 
     var body: some View {
