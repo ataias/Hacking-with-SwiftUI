@@ -27,3 +27,16 @@ struct Resort: Codable, Identifiable {
     static let allResorts: [Resort] = Bundle.main.decode("resorts.json")
     static let example = allResorts[0]
 }
+
+extension Array where Element == Resort {
+    func sorted(by: Options.Sort) -> [Element] {
+        switch by {
+        case .none:
+            return self
+        case .alphabetical:
+            return self.sorted { $0.name < $1.name }
+        case .country:
+            return self.sorted { $0.country < $1.country }
+        }
+    }
+}

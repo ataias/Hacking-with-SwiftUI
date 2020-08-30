@@ -10,11 +10,16 @@ import SwiftUI
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
 
+    @EnvironmentObject var sort: Sort
     @EnvironmentObject var favorites: Favorites
+
+    private var sortedResorts: [Resort] {
+        resorts.sorted(by: sort.sort)
+    }
 
     var body: some View {
         NavigationView {
-            List(resorts) { resort in
+            List(sortedResorts) { resort in
                 NavigationLink(destination: ResortView(resort: resort)) {
                     Image(resort.country)
                         .resizable()
@@ -41,7 +46,8 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle("Resorts")
+            .navigationBarTitle("Resorts", displayMode: .inline)
+            .navigationBarItems(leading: ActionMenuView())
 
             WelcomeView()
         }
