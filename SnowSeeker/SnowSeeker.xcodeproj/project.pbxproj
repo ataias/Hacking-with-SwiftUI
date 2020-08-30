@@ -19,6 +19,7 @@
 		42253E7324FAE89B00BE99AE /* ResortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42253E7224FAE89B00BE99AE /* ResortView.swift */; };
 		42253E7524FAE93400BE99AE /* SkiDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42253E7424FAE93400BE99AE /* SkiDetailsView.swift */; };
 		42253E7724FAE96400BE99AE /* ResortDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42253E7624FAE96400BE99AE /* ResortDetailsView.swift */; };
+		4288414F24FBA93A00656D02 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288414E24FBA93A00656D02 /* Facility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		42253E7224FAE89B00BE99AE /* ResortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortView.swift; sourceTree = "<group>"; };
 		42253E7424FAE93400BE99AE /* SkiDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDetailsView.swift; sourceTree = "<group>"; };
 		42253E7624FAE96400BE99AE /* ResortDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortDetailsView.swift; sourceTree = "<group>"; };
+		4288414E24FBA93A00656D02 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				42253E6C24FAE17A00BE99AE /* Bundle-Decodable.swift */,
 				42253E6A24FAE17400BE99AE /* Resort.swift */,
 				42253E6524FA6FDA00BE99AE /* README.md */,
+				4288414E24FBA93A00656D02 /* Facility.swift */,
 				42253E7224FAE89B00BE99AE /* ResortView.swift */,
 				42253E7424FAE93400BE99AE /* SkiDetailsView.swift */,
 				42253E7624FAE96400BE99AE /* ResortDetailsView.swift */,
@@ -175,6 +178,7 @@
 			files = (
 				42253E6F24FAE62600BE99AE /* WelcomeView.swift in Sources */,
 				42253E5924FA6D1400BE99AE /* ContentView.swift in Sources */,
+				4288414F24FBA93A00656D02 /* Facility.swift in Sources */,
 				42253E6B24FAE17400BE99AE /* Resort.swift in Sources */,
 				42253E7324FAE89B00BE99AE /* ResortView.swift in Sources */,
 				42253E5724FA6D1400BE99AE /* SnowSeekerApp.swift in Sources */,
