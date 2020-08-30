@@ -24,27 +24,6 @@ enum Options {
 }
 
 
-class Filter: ObservableObject {
-    private var filters: [Options.Filter]
-    private let saveKey = "Filters"
-
-    init() {
-        let stringFilters = UserDefaults.standard.stringArray(forKey: saveKey) ?? []
-        filters = stringFilters.compactMap(Options.Filter.init)
-    }
-
-    func set(_ filters: [Options.Filter]) {
-        objectWillChange.send()
-        self.filters = filters
-        save()
-    }
-
-    func save() {
-        let stringArray = filters.map(\.rawValue)
-        UserDefaults.standard.setValue(stringArray, forKey: saveKey)
-    }
-}
-
 struct SortButton: View {
     @EnvironmentObject var sort: Sort
     @State private var isShowingSheet = false
@@ -73,11 +52,26 @@ struct SortButton: View {
 }
 
 struct FilterButton: View {
-    @ObservedObject private var filter = Filter()
+    @AppStorage("price") var priceFilter: Int = 3
+    @State private var isShowingSheet = false
 
     var body: some View {
-        Button(action: {}, label: {
+        Button(action: {
+            isShowingSheet = true
+        }, label: {
             Image(systemName: "line.horizontal.3.decrease")
+        })
+        .sheet(isPresented: $isShowingSheet, content: {
+            Form {
+                Section(header: Text("Max Price")) {
+                    Picker("Max Price", selection: $priceFilter) {
+                        ForEach(1...3, id: \.self) { price in
+                            Text(String(repeating: "$", count: price))
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+            }
         })
     }
 }

@@ -12,14 +12,16 @@ struct ContentView: View {
 
     @EnvironmentObject var sort: Sort
     @EnvironmentObject var favorites: Favorites
+    @AppStorage("price") var priceFilter: Int = 3
 
-    private var sortedResorts: [Resort] {
+    private var sortedFilteredResorts: [Resort] {
         resorts.sorted(by: sort.sort)
+            .filter { $0.price <= priceFilter }
     }
 
     var body: some View {
         NavigationView {
-            List(sortedResorts) { resort in
+            List(sortedFilteredResorts) { resort in
                 NavigationLink(destination: ResortView(resort: resort)) {
                     Image(resort.country)
                         .resizable()
