@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SnowSeekerApp: App {
+    @ObservedObject var favorites = Favorites()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(favorites)
         }
     }
 }

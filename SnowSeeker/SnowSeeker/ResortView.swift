@@ -10,9 +10,10 @@ import SwiftUI
 struct ResortView: View {
     let resort: Resort
 
-    @State private var selectedFacility: String?
+    @State private var selectedFacility: Facility?
 
     @Environment(\.horizontalSizeClass) var sizeClass
+    @EnvironmentObject var favorites: Favorites
 
     var body: some View {
         ScrollView {
@@ -45,8 +46,8 @@ struct ResortView: View {
                         .font(.headline)
 
                     HStack {
-                        ForEach(resort.facilities, id: \.self) { facility in
-                            Facility.icon(for: facility)
+                        ForEach(resort.facilityTypes) { facility in
+                            facility.icon
                                 .font(.title)
                                 .onTapGesture {
                                     selectedFacility = facility
@@ -56,18 +57,22 @@ struct ResortView: View {
                     .padding(.vertical)
                 }
                 .padding(.horizontal)
+
+                Button(favorites.contains(resort) ? "Remove from Favorites" : "Add to Favorites") {
+                    if favorites.contains(resort) {
+                        favorites.remove(resort)
+                    } else {
+                        favorites.add(resort)
+                    }
+                }
+                .padding()
             }
+
+
         }
-        .alert(item: $selectedFacility) { facility in
-            Facility.alert(for: facility)
-        }
+        .alert(item: $selectedFacility, content: \.alert)
         .navigationBarTitle(Text("\(resort.name), \(resort.country)"), displayMode: .inline)
     }
-}
-
-// FIXME this is not desired; it is easy to mess up. You should use something else as identifiable in the alert instead of making all strings identifiable.
-extension String: Identifiable {
-    public var id: String { self }
 }
 
 struct ResortView_Previews: PreviewProvider {
