@@ -23,7 +23,6 @@ enum Options {
     }
 }
 
-
 struct SortButton: View {
     @EnvironmentObject var sort: Sort
     @State private var isShowingSheet = false
@@ -52,7 +51,10 @@ struct SortButton: View {
 }
 
 struct FilterButton: View {
-    // TODO is there a better way of storing filters? I tried initially an ObservableObject, but I failed to make it generic enough. I tried to have an enum and then iterate over the enum. I ended up trying to store a dictionary of bools, but then I noticed the filters are not bools. Each has its distinct type. I guess each needs to be written manually.
+    // TODO is there a better way of storing filters? I tried initially an ObservableObject, but
+    // I failed to make it generic enough. I tried to have an enum and then iterate over the
+    // enum. I ended up trying to store a dictionary of bools, but then I noticed the filters are not
+    // bools. Each has its distinct type. I guess each needs to be written manually.
 
     @AppStorage("price") var priceFilter: Int = 3
     @State private var isShowingSheet = false
@@ -77,7 +79,6 @@ struct FilterButton: View {
         })
     }
 }
-
 
 struct ActionMenuView: View {
     var body: some View {
