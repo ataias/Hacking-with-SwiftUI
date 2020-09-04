@@ -67,7 +67,6 @@ struct ResortView: View {
                 }
                 .padding()
             }
-
         }
         .alert(item: $selectedFacility, content: \.alert)
         .navigationBarTitle(Text("\(resort.name), \(resort.country)"), displayMode: .inline)

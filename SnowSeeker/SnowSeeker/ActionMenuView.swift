@@ -35,7 +35,6 @@ struct SortButton: View {
                 Image(systemName: "arrow.up.arrow.down")
             })
             .sheet(isPresented: $isShowingSheet, content: {
-
                 Form {
                     Picker(selection: $sort.sort, label: Text("Sort")) {
                         ForEach(Options.Sort.allCases, id: \.self) { sortOption in
@@ -44,7 +43,6 @@ struct SortButton: View {
                     }
                     .pickerStyle(WheelPickerStyle())
                 }
-
             })
         )
     }

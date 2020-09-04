@@ -13,7 +13,6 @@ class Favorites: ObservableObject {
 
     init() {
         resorts = Set(UserDefaults.standard.stringArray(forKey: saveKey) ?? [])
-
     }
 
     func contains(_ resort: Resort) -> Bool {

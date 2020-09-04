@@ -45,5 +45,4 @@ struct Facility: Identifiable {
         "Eco-friendly": "This resort has won an award for environmental friendliness.",
         "Family": "This resort is popular with families."
     ]
-
 }
