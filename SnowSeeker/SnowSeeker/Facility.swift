@@ -11,6 +11,7 @@ struct Facility: Identifiable {
     let id = UUID()
     var name: String
 
+    // MARK: - Facility computed properties
     var icon: some View {
         if let iconName = Self.icons[name] {
             let image = Image(systemName: iconName)
@@ -29,6 +30,8 @@ struct Facility: Identifiable {
             fatalError("Unknown facility type: \(name)")
         }
     }
+
+    // MARK: - Hard-coded resort data
 
     static let icons = [
         "Accommodation": "house",
